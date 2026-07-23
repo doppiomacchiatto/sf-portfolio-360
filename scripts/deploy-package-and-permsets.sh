@@ -24,7 +24,7 @@
 
 set -euo pipefail
 
-ORG_ALIAS="tsx"
+ORG_ALIAS=""
 PACKAGE_ALIAS="Portfolio Manager"
 PACKAGE_VERSION_ID=""
 TARGET_USER="brian.smith@demo.vrm"
