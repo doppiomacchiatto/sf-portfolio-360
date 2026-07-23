@@ -1,5 +1,22 @@
 {
-  "orgName": "whoami company",
+  "orgName": "pm-scratch",
   "edition": "Developer",
-  "features": []
+  "features": [
+  "ServiceCloud",
+  "Communities",
+  "Sites",
+  "FlowSites",
+  "EnableSetPasswordInApi"
+],
+"settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "experienceBundleSettings": {
+      "enableExperienceBundleMetadata": true
+    }
+  }
 }
