@@ -1,0 +1,12 @@
+{
+  "FirstName": "Brian",
+  "LastName": "Smith",
+  "Alias": "bsmith",
+  "Email": "brian.smith.executive@example.com",
+  "Username": "brian.smith.executive@example.com",
+  "TimeZoneSidKey": "America/New_York",
+  "LocaleSidKey": "en_US",
+  "EmailEncodingKey": "UTF-8",
+  "LanguageLocaleKey": "en_US",
+  "ProfileName": "Standard User"
+}
