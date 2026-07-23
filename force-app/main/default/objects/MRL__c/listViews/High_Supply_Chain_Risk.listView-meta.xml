@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>High_Supply_Chain_Risk</fullName>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Supply_Chain_Risk__c</field>
+        <operation>equals</operation>
+        <value>High,Critical</value>
+    </filters>
+    <label>High Supply Chain Risk</label>
+    <columns>NAME</columns>
+    <columns>Program__c</columns>
+    <columns>Assessment_Date__c</columns>
+    <columns>Manufacturing_Capability__c</columns>
+    <columns>Current_MRL__c</columns>
+    <columns>Supply_Chain_Risk__c</columns>
+</ListView>

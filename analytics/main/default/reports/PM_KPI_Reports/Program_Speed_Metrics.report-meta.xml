@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>KPIs #3-5 — Cycle time from mission need to funded, award to prototype, demo to mission use; grouped by program status.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>Program__c$Program_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Program_Speed_Metrics</name>
+    <reportType>Programs__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+</Report>

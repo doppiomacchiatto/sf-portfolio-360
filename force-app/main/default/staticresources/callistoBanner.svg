@@ -1,0 +1,131 @@
+<svg width="2400" height="900" viewBox="0 0 2400 900" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Aerospace hero banner background</title>
+<desc>Dark navy cinematic hero banner with a subtle star field, soft atmospheric glow on the right, and a thin elliptical orbital arc. Left side open for white headline text.</desc>
+
+<defs>
+  <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#060d1a"/>
+    <stop offset="55%" stop-color="#0a1628"/>
+    <stop offset="100%" stop-color="#0d2040"/>
+  </linearGradient>
+  <linearGradient id="glowH" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#0a1628" stop-opacity="0"/>
+    <stop offset="58%" stop-color="#0a1628" stop-opacity="0"/>
+    <stop offset="80%" stop-color="#1a3a6e" stop-opacity="0.3"/>
+    <stop offset="100%" stop-color="#2a5fa8" stop-opacity="0.5"/>
+  </linearGradient>
+  <linearGradient id="glowV" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0b1e40" stop-opacity="0"/>
+    <stop offset="40%" stop-color="#122d5c" stop-opacity="0.15"/>
+    <stop offset="72%" stop-color="#1a3a6e" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#0a1628" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="planetGlow" cx="82%" cy="68%" r="40%">
+    <stop offset="0%" stop-color="#1e4a8a" stop-opacity="0.38"/>
+    <stop offset="55%" stop-color="#0d2a5a" stop-opacity="0.15"/>
+    <stop offset="100%" stop-color="#060d1a" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="atmosphereGlow" cx="88%" cy="55%" r="30%">
+    <stop offset="0%" stop-color="#3a7ec8" stop-opacity="0.22"/>
+    <stop offset="60%" stop-color="#1a4a8a" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#060d1a" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="arcFade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#5dade2" stop-opacity="0"/>
+    <stop offset="18%" stop-color="#5dade2" stop-opacity="0.12"/>
+    <stop offset="52%" stop-color="#aed6f1" stop-opacity="0.72"/>
+    <stop offset="78%" stop-color="#5dade2" stop-opacity="0.35"/>
+    <stop offset="100%" stop-color="#5dade2" stop-opacity="0.04"/>
+  </linearGradient>
+  <linearGradient id="arc2Fade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#5dade2" stop-opacity="0"/>
+    <stop offset="25%" stop-color="#5dade2" stop-opacity="0.06"/>
+    <stop offset="60%" stop-color="#aed6f1" stop-opacity="0.22"/>
+    <stop offset="85%" stop-color="#5dade2" stop-opacity="0.1"/>
+    <stop offset="100%" stop-color="#5dade2" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#060d1a" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#060d1a" stop-opacity="0.7"/>
+  </linearGradient>
+</defs>
+
+<rect width="2400" height="900" fill="url(#bgGrad)"/>
+<rect width="2400" height="900" fill="url(#planetGlow)"/>
+<rect width="2400" height="900" fill="url(#atmosphereGlow)"/>
+<rect width="2400" height="900" fill="url(#glowH)"/>
+<rect width="2400" height="900" fill="url(#glowV)"/>
+
+<!-- star field layer 1 – bright anchors -->
+<circle fill="#ffffff" cx="185" cy="64" r="2.2" opacity="0.92"/>
+<circle fill="#aed6f1" cx="312" cy="32" r="1.6" opacity="0.75"/>
+<circle fill="#ffffff" cx="460" cy="85" r="2.5" opacity="0.88"/>
+<circle fill="#ffffff" cx="582" cy="22" r="1.8" opacity="0.7"/>
+<circle fill="#aed6f1" cx="742" cy="108" r="1.5" opacity="0.65"/>
+<circle fill="#ffffff" cx="876" cy="46" r="2.8" opacity="0.85"/>
+<circle fill="#ffffff" cx="1020" cy="140" r="1.6" opacity="0.68"/>
+<circle fill="#aed6f1" cx="1115" cy="28" r="1.4" opacity="0.6"/>
+<circle fill="#ffffff" cx="1268" cy="78" r="2.2" opacity="0.78"/>
+<circle fill="#ffffff" cx="1380" cy="168" r="1.5" opacity="0.55"/>
+<circle fill="#aed6f1" cx="1510" cy="55" r="2.4" opacity="0.72"/>
+<circle fill="#ffffff" cx="1628" cy="120" r="1.8" opacity="0.75"/>
+<circle fill="#ffffff" cx="1768" cy="38" r="2.6" opacity="0.9"/>
+<circle fill="#aed6f1" cx="1892" cy="148" r="1.5" opacity="0.58"/>
+<circle fill="#ffffff" cx="2025" cy="68" r="2.0" opacity="0.8"/>
+<circle fill="#ffffff" cx="2148" cy="195" r="1.6" opacity="0.62"/>
+<circle fill="#aed6f1" cx="2260" cy="88" r="1.8" opacity="0.7"/>
+<circle fill="#ffffff" cx="2355" cy="42" r="2.2" opacity="0.82"/>
+
+<!-- star field layer 2 – mid density -->
+<circle fill="#ffffff" cx="148" cy="218" r="1.6" opacity="0.6"/>
+<circle fill="#aed6f1" cx="278" cy="272" r="1.2" opacity="0.5"/>
+<circle fill="#ffffff" cx="415" cy="195" r="1.8" opacity="0.65"/>
+<circle fill="#ffffff" cx="548" cy="308" r="1.4" opacity="0.48"/>
+<circle fill="#aed6f1" cx="688" cy="248" r="1.5" opacity="0.55"/>
+<circle fill="#ffffff" cx="820" cy="335" r="1.7" opacity="0.6"/>
+<circle fill="#ffffff" cx="958" cy="210" r="1.3" opacity="0.52"/>
+<circle fill="#aed6f1" cx="1158" cy="288" r="1.6" opacity="0.48"/>
+<circle fill="#ffffff" cx="1328" cy="225" r="1.4" opacity="0.55"/>
+<circle fill="#aed6f1" cx="1728" cy="298" r="1.5" opacity="0.45"/>
+<circle fill="#ffffff" cx="1968" cy="218" r="1.7" opacity="0.58"/>
+<circle fill="#aed6f1" cx="2108" cy="305" r="1.3" opacity="0.42"/>
+<circle fill="#ffffff" cx="2238" cy="248" r="1.6" opacity="0.52"/>
+<circle fill="#ffffff" cx="2348" cy="290" r="1.4" opacity="0.48"/>
+
+<!-- star field layer 3 – sparse low opacity -->
+<circle fill="#ffffff" cx="105" cy="388" r="1.2" opacity="0.35"/>
+<circle fill="#aed6f1" cx="258" cy="422" r="1.0" opacity="0.3"/>
+<circle fill="#ffffff" cx="388" cy="368" r="1.4" opacity="0.38"/>
+<circle fill="#ffffff" cx="545" cy="448" r="1.0" opacity="0.28"/>
+<circle fill="#aed6f1" cx="698" cy="395" r="1.2" opacity="0.32"/>
+<circle fill="#ffffff" cx="848" cy="470" r="1.1" opacity="0.3"/>
+<circle fill="#ffffff" cx="102" cy="520" r="1.0" opacity="0.25"/>
+<circle fill="#aed6f1" cx="235" cy="558" r="0.9" opacity="0.22"/>
+<circle fill="#ffffff" cx="368" cy="505" r="1.1" opacity="0.28"/>
+
+<!-- extra right-zone stars -->
+<circle fill="#ffffff" cx="1768" cy="148" r="1.4" opacity="0.42"/>
+<circle fill="#aed6f1" cx="1868" cy="228" r="1.1" opacity="0.35"/>
+<circle fill="#ffffff" cx="1988" cy="338" r="1.2" opacity="0.3"/>
+<circle fill="#aed6f1" cx="2088" cy="158" r="1.3" opacity="0.38"/>
+<circle fill="#ffffff" cx="2188" cy="388" r="1.0" opacity="0.28"/>
+<circle fill="#aed6f1" cx="2308" cy="195" r="1.2" opacity="0.35"/>
+<circle fill="#ffffff" cx="2388" cy="305" r="1.1" opacity="0.3"/>
+
+<!-- primary orbital arc -->
+<ellipse fill="none" stroke="url(#arcFade)" stroke-width="2.2"
+  cx="1760" cy="1420" rx="1560" ry="1030" opacity="1"/>
+
+<!-- secondary ghost arc -->
+<ellipse fill="none" stroke="url(#arc2Fade)" stroke-width="1.2"
+  cx="1820" cy="1580" rx="1680" ry="1160" opacity="0.7"/>
+
+<!-- satellite node on arc -->
+<circle fill="#5dade2" cx="2050" cy="374" r="6" opacity="0.88"/>
+<circle fill="none" stroke="#aed6f1" stroke-width="1.5" cx="2050" cy="374" r="13" opacity="0.35"/>
+<circle fill="none" stroke="#aed6f1" stroke-width="0.8" cx="2050" cy="374" r="22" opacity="0.18"/>
+
+<!-- bottom vignette -->
+<rect width="2400" height="900" fill="url(#bottomFade)"/>
+
+</svg>

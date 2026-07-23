@@ -1,0 +1,22 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "Portfolio 360",
+      "versionName": "Summer '26 GA",
+      "versionNumber": "1.0.0.NEXT",
+      "versionDescription": "R&D Portfolio Manager — 14 KPI tracking across investment, speed, technical maturity, portfolio health, transition, and operational outcomes. Includes 7 custom objects, flows, LWCs, and permission sets."
+    },
+    {
+      "path": "experiences",
+      "default": false
+    }
+  ],
+  "name": "portfolio-360",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "66.0",
+  "packageAliases": {
+  }
+}

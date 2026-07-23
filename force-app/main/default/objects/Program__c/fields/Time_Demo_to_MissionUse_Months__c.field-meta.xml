@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_Demo_to_MissionUse_Months__c</fullName>
+    <description>KPI #13: Months from successful demo to mission use.</description>
+    <formula>IF(AND(NOT(ISBLANK(Mission_Use_Date__c)), NOT(ISBLANK(Successful_Demo_Date__c))), (Mission_Use_Date__c - Successful_Demo_Date__c) / 30, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
+    <label>Time Demo to Mission Use (Months)</label>
+    <precision>8</precision>
+    <scale>1</scale>
+    <type>Number</type>
+</CustomField>

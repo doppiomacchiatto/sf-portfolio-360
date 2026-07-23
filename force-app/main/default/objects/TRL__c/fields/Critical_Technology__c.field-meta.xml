@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Critical_Technology__c</fullName>
+    <description>Marks this technology element as a critical technology area. KPI #6 specifically tracks TRL gain for critical technology elements.</description>
+    <defaultValue>false</defaultValue>
+    <label>Critical Technology Element</label>
+    <type>Checkbox</type>
+</CustomField>

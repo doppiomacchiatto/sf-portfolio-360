@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Technical_Exam__c", "referenceId": "SEXRef_DIONE_1" },
+      "Program__c": "@PRef_DIONE",
+      "Exam_Date__c": "2025-10-01",
+      "Exam_Type__c": "Midterm",
+      "Exams_Administered__c": 16,
+      "Exams_Pass__c": 13
+    },
+    {
+      "attributes": { "type": "Technical_Exam__c", "referenceId": "SEXRef_IAPETUS_1" },
+      "Program__c": "@PRef_IAPETUS",
+      "Exam_Date__c": "2025-01-15",
+      "Exam_Type__c": "Midterm",
+      "Exams_Administered__c": 20,
+      "Exams_Pass__c": 17
+    },
+    {
+      "attributes": { "type": "Technical_Exam__c", "referenceId": "SEXRef_IAPETUS_2" },
+      "Program__c": "@PRef_IAPETUS",
+      "Exam_Date__c": "2025-09-01",
+      "Exam_Type__c": "Gate Review",
+      "Exams_Administered__c": 14,
+      "Exams_Pass__c": 12
+    },
+    {
+      "attributes": { "type": "Technical_Exam__c", "referenceId": "SEXRef_RHEA_1" },
+      "Program__c": "@PRef_RHEA",
+      "Exam_Date__c": "2024-08-01",
+      "Exam_Type__c": "Gate Review",
+      "Exams_Administered__c": 18,
+      "Exams_Pass__c": 16
+    },
+    {
+      "attributes": { "type": "Technical_Exam__c", "referenceId": "SEXRef_RHEA_2" },
+      "Program__c": "@PRef_RHEA",
+      "Exam_Date__c": "2025-01-10",
+      "Exam_Type__c": "Final",
+      "Exams_Administered__c": 20,
+      "Exams_Pass__c": 19
+    },
+    {
+      "attributes": { "type": "Technical_Exam__c", "referenceId": "SEXRef_TITAN_1" },
+      "Program__c": "@PRef_TITAN",
+      "Exam_Date__c": "2023-06-01",
+      "Exam_Type__c": "Final",
+      "Exams_Administered__c": 28,
+      "Exams_Pass__c": 27
+    },
+    {
+      "attributes": { "type": "Technical_Exam__c", "referenceId": "SEXRef_TITAN_2" },
+      "Program__c": "@PRef_TITAN",
+      "Exam_Date__c": "2023-09-01",
+      "Exam_Type__c": "Gate Review",
+      "Exams_Administered__c": 22,
+      "Exams_Pass__c": 21
+    }
+  ]
+}

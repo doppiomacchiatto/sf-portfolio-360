@@ -1,0 +1,6 @@
+./tsx-pull
+
+# Also ignore repository-root tsx-pull variant
+./venv
+
+./vscode

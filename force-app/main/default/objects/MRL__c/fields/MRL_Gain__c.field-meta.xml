@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MRL_Gain__c</fullName>
+    <description>KPI #7: Change in MRL level (Current minus Previous). Positive values indicate manufacturing maturity advancement.</description>
+    <formula>IF(AND(NOT(ISBLANK(Current_MRL__c)), NOT(ISBLANK(Previous_MRL__c))), Current_MRL__c - Previous_MRL__c, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
+    <label>MRL Gain</label>
+    <precision>2</precision>
+    <scale>0</scale>
+    <type>Number</type>
+</CustomField>

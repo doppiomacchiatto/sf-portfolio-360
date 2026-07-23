@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Program-centric home tab for portfolio execution.</description>
+    <flexiPage>Portfolio_Lead_Home</flexiPage>
+    <label>Program Home</label>
+    <motif>Custom57: Building Block</motif>
+</CustomTab>

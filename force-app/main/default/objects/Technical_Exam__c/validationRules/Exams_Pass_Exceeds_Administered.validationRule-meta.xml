@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exams_Pass_Exceeds_Administered</fullName>
+    <active>true</active>
+    <description>Exams passed cannot exceed exams administered.</description>
+    <errorConditionFormula>AND(NOT(ISBLANK(Exams_Pass__c)), NOT(ISBLANK(Exams_Administered__c)), Exams_Pass__c &gt; Exams_Administered__c)</errorConditionFormula>
+    <errorDisplayField>Exams_Pass__c</errorDisplayField>
+    <errorMessage>Exams Passed cannot exceed Exams Administered.</errorMessage>
+</ValidationRule>

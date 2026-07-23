@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Decision_Date_Before_Evidence_Date</fullName>
+    <active>true</active>
+    <description>Decision Date cannot be earlier than Evidence Provided Date.</description>
+    <errorConditionFormula>AND(NOT(ISBLANK(Decision_Date__c)), NOT(ISBLANK(Evidence_Provided_Date__c)), Decision_Date__c &lt; Evidence_Provided_Date__c)</errorConditionFormula>
+    <errorDisplayField>Decision_Date__c</errorDisplayField>
+    <errorMessage>Decision Date cannot be before Evidence Provided Date.</errorMessage>
+</ValidationRule>

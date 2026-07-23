@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PM Executive Experience Home</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="heroTitle" type="String" label="Hero Title" default="Executive Portfolio Command Center"/>
+            <property name="heroSubtitle" type="String" label="Hero Subtitle"/>
+            <property name="logoUrl" type="String" label="Logo URL"/>
+            <property name="bannerUrl" type="String" label="Banner URL"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

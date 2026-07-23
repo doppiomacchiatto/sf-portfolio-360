@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manufacturing_Capability__c</fullName>
+    <description>Name or description of the manufacturing capability being assessed (e.g., component fabrication, system integration, supply chain).</description>
+    <label>Manufacturing Capability</label>
+    <length>255</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

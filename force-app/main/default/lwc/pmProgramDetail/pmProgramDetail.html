@@ -1,0 +1,238 @@
+<template>
+  <div class="detail-page">
+
+    <template if:true={error}>
+      <div class="err-banner">{error}</div>
+    </template>
+
+    <!-- ══ HERO ══ -->
+    <section class="hero" style={heroStyle}>
+      <div class="hero-inner slds-size_1-of-1">
+        <div class="hero-left">
+          <button class="back-btn" type="button" onclick={handleBack}>&#8592; Portfolio Dashboard</button>
+          <h1 class="hero-title">{programName}</h1>
+          <div class="hero-chips">
+            <span class={statusPillClass}>{programStatus}</span>
+            <span class="chip">{fundAllocation}</span>
+            <span class="chip">{programBalance}</span>
+          </div>
+        </div>
+        <img class="hero-logo slds-shrink-none" src={resolvedLogoUrl} alt="Callisto" />
+      </div>
+    </section>
+
+    <main class="wrap">
+
+      <!-- ══ PROGRAM OVERVIEW ══ -->
+      <div class="section-label">Program Overview</div>
+      <div class="row c3">
+
+        <!-- Investment Profile -->
+        <div class="card">
+          <div class="card-hd">Investment Profile</div>
+          <dl class="field-dl">
+            <div class="field-pair">
+              <dt class="slds-shrink-none">Fund Allocation</dt>
+              <dd>{fundAllocation}</dd>
+            </div>
+            <div class="field-pair">
+              <dt class="slds-shrink-none">Portfolio Balance</dt>
+              <dd>{programBalance}</dd>
+            </div>
+            <div class="field-pair">
+              <dt class="slds-shrink-none">Experiment Cadence</dt>
+              <dd>{experimentCadence}<span class="unit"> / yr</span></dd>
+            </div>
+            <div class="field-pair">
+              <dt class="slds-shrink-none">Tracked Engagements</dt>
+              <dd>{engagementCount}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Technical Maturity -->
+        <div class="card">
+          <div class="card-hd">Technical Maturity</div>
+
+          <div class="rl-block">
+            <div class="rl-header">
+              <span class="rl-label">TRL</span>
+              <span class="rl-val-inline">{currentTrl} / 9</span>
+            </div>
+            <div class="pip-row">
+              <template for:each={trlLevelPips} for:item="pip">
+                <div key={pip.key} class={pip.pipClass}></div>
+              </template>
+            </div>
+            <div class="rl-meta">Prev: {previousTrl} · Gain: +{trlGain} · {trlDate}</div>
+            <template if:true={trlElement}>
+              <div class="rl-meta">{trlElement}</div>
+            </template>
+          </div>
+
+          <div class="rl-block" style="margin-top:14px">
+            <div class="rl-header">
+              <span class="rl-label">MRL</span>
+              <span class="rl-val-inline">{currentMrl} / 9</span>
+            </div>
+            <div class="pip-row">
+              <template for:each={mrlLevelPips} for:item="pip">
+                <div key={pip.key} class={pip.pipClass}></div>
+              </template>
+            </div>
+            <div class="rl-meta">Prev: {previousMrl} · Gain: +{mrlGain} · {mrlDate}</div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="kpi-lbl">Technical Exam Pass Rate</div>
+          <div class="kpi-val slds-line-height_reset">{examPassRate}<span class="kpi-unit">%</span></div>
+          <svg viewBox="0 0 180 90" style="width:100%;display:block;margin-top:8px" role="img" aria-label="Exam pass rate gauge">
+            <path d="M 20 80 A 70 70 0 0 1 160 80" fill="none" stroke="#e4eef8" stroke-width="14" stroke-linecap="round"/>
+            <path d={examGaugePath} fill="none" stroke="#3498db" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+          <div class="rl-meta" style="text-align:center">{examsPass} of {examsAdministered} passed
+            <template if:true={examType}> · {examType}</template>
+            · {examDate}
+          </div>
+        </div>
+
+        <!-- Operational Status -->
+        <div class="card">
+          <div class="card-hd">Operational Status</div>
+          <svg viewBox="0 0 180 100" style="width:100%;max-width:210px;display:block;margin:0 auto" role="img" aria-label="Operational index gauge">
+            <path d="M 20 80 A 70 70 0 0 1 160 80" fill="none" stroke="#e4eef8" stroke-width="16" stroke-linecap="round"/>
+            <path d={opsGaugePath} style={opsGaugeStyle}/>
+            <text x="90" y="80" text-anchor="middle" font-size="28" font-weight="800" fill="#1a2745">{operationalIndex}</text>
+            <text x="90" y="96" text-anchor="middle" font-size="10" fill="#5a6e92">Operational Index</text>
+          </svg>
+          <dl class="field-dl" style="margin-top:14px">
+            <div class="field-pair">
+              <dt class="slds-shrink-none">Transitioned</dt>
+              <dd><span class={transitionedClass}>{transitionedLabel}</span></dd>
+            </div>
+            <div class="field-pair">
+              <dt class="slds-shrink-none">Transition Outcome</dt>
+              <dd>{transitionOutcome}</dd>
+            </div>
+          </dl>
+          <template if:true={operationalOutcomes}>
+            <div class="kpi-lbl" style="margin-top:10px">Operational Outcomes</div>
+            <div class="outcomes-text">{operationalOutcomes}</div>
+          </template>
+        </div>
+
+      </div>
+
+      <!-- ══ TIMELINE & OUTCOMES ══ -->
+      <div class="section-label">Timeline &amp; Outcomes</div>
+      <div class="row c2">
+
+        <!-- Timeline + Speed -->
+        <div class="card">
+          <div class="card-hd">Program Timeline</div>
+          <ul class="timeline">
+            <template for:each={milestones} for:item="m">
+              <li key={m.key} class={m.itemClass}>
+                <div class="tl-dot slds-shrink-none"></div>
+                <div class="tl-body">
+                  <div class="tl-label">{m.label}</div>
+                  <div class="tl-date">{m.date}</div>
+                </div>
+              </li>
+            </template>
+          </ul>
+
+          <div class="divider"></div>
+          <div class="card-hd" style="margin-top:0">Speed KPIs</div>
+          <div class="speed-row">
+            <div class="speed-metric">
+              <div class="kpi-val slds-line-height_reset">{timeMissionToFunded}<span class="kpi-unit"> d</span></div>
+              <div class="kpi-lbl">Mission &#8594; Funded</div>
+            </div>
+            <div class="speed-metric">
+              <div class="kpi-val slds-line-height_reset">{timeAwardToPrototype}<span class="kpi-unit"> mo</span></div>
+              <div class="kpi-lbl">Award &#8594; Prototype</div>
+            </div>
+            <div class="speed-metric">
+              <div class="kpi-val slds-line-height_reset">{timeDemoToMissionUse}<span class="kpi-unit"> mo</span></div>
+              <div class="kpi-lbl">Demo &#8594; Mission Use</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transition, Evidence, Engagements -->
+        <div class="card">
+          <div class="card-hd">Transition Details</div>
+          <template if:true={hasTransition}>
+            <dl class="field-dl">
+              <div class="field-pair">
+                <dt class="slds-shrink-none">Transition Type</dt>
+                <dd>{transitionType}</dd>
+              </div>
+              <div class="field-pair">
+                <dt class="slds-shrink-none">Transition Owner</dt>
+                <dd>{transitionOwner}</dd>
+              </div>
+              <div class="field-pair">
+                <dt class="slds-shrink-none">Test Venue</dt>
+                <dd>{testVenue}</dd>
+              </div>
+              <div class="field-pair">
+                <dt class="slds-shrink-none">Agreement Signed</dt>
+                <dd><span class={transitionSignedClass}>{transitionSignedLabel}</span></dd>
+              </div>
+              <div class="field-pair">
+                <dt class="slds-shrink-none">Commitment Complete</dt>
+                <dd><span class={transitionCommittedClass}>{transitionCommittedLabel}</span></dd>
+              </div>
+              <div class="field-pair">
+                <dt class="slds-shrink-none">Funded Receiver Path</dt>
+                <dd><span class={fundedReceiverClass}>{fundedReceiverLabel}</span></dd>
+              </div>
+              <div class="field-pair">
+                <dt class="slds-shrink-none">Integration Plan</dt>
+                <dd><span class={integrationPlanClass}>{integrationPlanLabel}</span></dd>
+              </div>
+            </dl>
+          </template>
+          <template if:false={hasTransition}>
+            <div class="empty-state">No transition record on file.</div>
+          </template>
+
+          <div class="divider"></div>
+          <div class="card-hd" style="margin-top:0">Evidence Decisions</div>
+          <div class="ev-grid">
+            <div class="ev-box ev-continue">
+              <div class="ev-count slds-line-height_reset">{evidenceContinue}</div>
+              <div class="ev-label">Continue</div>
+            </div>
+            <div class="ev-box ev-pivot">
+              <div class="ev-count slds-line-height_reset">{evidencePivot}</div>
+              <div class="ev-label">Pivot</div>
+            </div>
+          </div>
+          <div class="ev-note">
+            {evidenceTotal} total decisions · avg <strong>{evidenceAvgDays}</strong> days to decision
+          </div>
+
+          <div class="divider"></div>
+          <div class="card-hd" style="margin-top:0">Engagement Breakdown</div>
+          <template if:true={hasEngagements}>
+            <template for:each={engagementRows} for:item="eng">
+              <div key={eng.engagementType} class="upe-row">
+                <div class="upe-type">{eng.engagementType}</div>
+                <div class="upe-bar slds-shrink-none"><div class="upe-fill" style={eng.barStyle}></div></div>
+                <div class="upe-count">{eng.count} · {eng.participants} pax</div>
+              </div>
+            </template>
+          </template>
+          <template if:false={hasEngagements}>
+            <div class="empty-state">No engagement records on file.</div>
+          </template>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</template>

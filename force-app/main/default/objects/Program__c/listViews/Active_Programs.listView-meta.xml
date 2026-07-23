@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Programs</fullName>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Program_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <label>Active Programs</label>
+    <columns>NAME</columns>
+    <columns>Fund_Allocation__c</columns>
+    <columns>Program_Balance__c</columns>
+    <columns>Award_Date__c</columns>
+    <columns>Operational_Index__c</columns>
+</ListView>

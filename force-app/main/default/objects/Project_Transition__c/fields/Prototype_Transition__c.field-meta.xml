@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prototype_Transition__c</fullName>
+    <description>KPI #12: The type of transition outcome targeted or achieved for this transition path.</description>
+    <label>Prototype Transition</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Program of Record</fullName><default>false</default><label>Program of Record</label></value>
+            <value><fullName>Operational Experiment</fullName><default>false</default><label>Operational Experiment</label></value>
+            <value><fullName>Fielded Prototype</fullName><default>false</default><label>Fielded Prototype</label></value>
+            <value><fullName>Commercial Adoption</fullName><default>false</default><label>Commercial Adoption</label></value>
+            <value><fullName>Sustained Use</fullName><default>false</default><label>Sustained Use</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

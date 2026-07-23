@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<office:document
+    xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+    xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
+    xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+    xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"
+    xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"
+    xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"
+    xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0"
+    office:version="1.3">
+  <office:styles>
+    <style:style style:name="gr1" style:family="graphic"/>
+    <style:style style:name="Title" style:family="paragraph">
+      <style:text-properties fo:font-size="30pt" fo:font-weight="bold" fo:color="#0f1f3d"/>
+    </style:style>
+    <style:style style:name="Subtitle" style:family="paragraph">
+      <style:text-properties fo:font-size="16pt" fo:font-weight="bold" fo:color="#3498db"/>
+    </style:style>
+    <style:style style:name="Body" style:family="paragraph">
+      <style:text-properties fo:font-size="14pt" fo:color="#1a2745"/>
+    </style:style>
+  </office:styles>
+  <office:automatic-styles>
+    <style:page-layout style:name="pm1">
+      <style:page-layout-properties fo:page-width="28cm" fo:page-height="21cm" style:print-orientation="landscape" fo:margin-top="1cm" fo:margin-bottom="1cm" fo:margin-left="1cm" fo:margin-right="1cm"/>
+    </style:page-layout>
+    <style:style style:name="dp1" style:family="drawing-page">
+      <style:drawing-page-properties draw:fill="solid" draw:fill-color="#edf4fb"/>
+    </style:style>
+  </office:automatic-styles>
+  <office:master-styles>
+    <style:master-page style:name="Default" style:page-layout-name="pm1" draw:style-name="dp1"/>
+  </office:master-styles>
+  <office:body>
+    <office:presentation>
+      <draw:page draw:name="Slide 1" draw:style-name="dp1" draw:master-page-name="Default">
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="1.2cm" svg:width="25.5cm" svg:height="3cm">
+          <draw:text-box>
+            <text:p text:style-name="Title">PM Executive - Portfolio Command Center</text:p>
+          </draw:text-box>
+        </draw:frame>
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="4.7cm" svg:width="25.5cm" svg:height="2cm">
+          <draw:text-box>
+            <text:p text:style-name="Subtitle">Use Case Definition</text:p>
+          </draw:text-box>
+        </draw:frame>
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="7cm" svg:width="25.5cm" svg:height="8cm">
+          <draw:text-box>
+            <text:p text:style-name="Body">Executive leadership needs a single, reliable view of R&amp;D portfolio performance to make faster investment and transition decisions.</text:p>
+            <text:p text:style-name="Body"/>
+            <text:p text:style-name="Body">This deck provides a concise PM Executive talk track for demos and stakeholder briefings.</text:p>
+          </draw:text-box>
+        </draw:frame>
+      </draw:page>
+
+      <draw:page draw:name="Slide 2" draw:style-name="dp1" draw:master-page-name="Default">
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="1cm" svg:width="25.5cm" svg:height="2cm">
+          <draw:text-box><text:p text:style-name="Subtitle">Problem Statement</text:p></draw:text-box>
+        </draw:frame>
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="3.3cm" svg:width="25.5cm" svg:height="14cm">
+          <draw:text-box>
+            <text:p text:style-name="Body">- Portfolio signals are fragmented across teams and objects.</text:p>
+            <text:p text:style-name="Body">- Leaders cannot quickly assess if funding aligns to mission priorities.</text:p>
+            <text:p text:style-name="Body">- Need-to-prototype and transition bottlenecks are hard to identify early.</text:p>
+            <text:p text:style-name="Body">- Existing reports are reactive instead of decision-ready.</text:p>
+          </draw:text-box>
+        </draw:frame>
+      </draw:page>
+
+      <draw:page draw:name="Slide 3" draw:style-name="dp1" draw:master-page-name="Default">
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="1cm" svg:width="25.5cm" svg:height="2cm">
+          <draw:text-box><text:p text:style-name="Subtitle">What PM Executive Delivers</text:p></draw:text-box>
+        </draw:frame>
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="3.3cm" svg:width="25.5cm" svg:height="14cm">
+          <draw:text-box>
+            <text:p text:style-name="Body">- One KPI-driven command center for investment, speed, transition, and operational outcomes.</text:p>
+            <text:p text:style-name="Body">- Pipeline visibility from ideation through demo and transition.</text:p>
+            <text:p text:style-name="Body">- Executive scorecards for cycle time, conversion rate, and operational index.</text:p>
+            <text:p text:style-name="Body">- Unified leadership experience across app and LWR site.</text:p>
+          </draw:text-box>
+        </draw:frame>
+      </draw:page>
+
+      <draw:page draw:name="Slide 4" draw:style-name="dp1" draw:master-page-name="Default">
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="1cm" svg:width="25.5cm" svg:height="2cm">
+          <draw:text-box><text:p text:style-name="Subtitle">60-Second Talk Track</text:p></draw:text-box>
+        </draw:frame>
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="3.3cm" svg:width="25.5cm" svg:height="14cm">
+          <draw:text-box>
+            <text:p text:style-name="Body">"PM Executive gives leadership a real-time portfolio command center.</text:p>
+            <text:p text:style-name="Body">Pipeline phases show where programs are concentrated.</text:p>
+            <text:p text:style-name="Body">Scorecards highlight active programs, mission-to-funded cycle time, award-to-prototype time, transition conversion rate, and operational index.</text:p>
+            <text:p text:style-name="Body">This replaces disconnected status reporting with rapid, confident portfolio decisions."</text:p>
+          </draw:text-box>
+        </draw:frame>
+      </draw:page>
+
+      <draw:page draw:name="Slide 5" draw:style-name="dp1" draw:master-page-name="Default">
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="1cm" svg:width="25.5cm" svg:height="2cm">
+          <draw:text-box><text:p text:style-name="Subtitle">Business Value</text:p></draw:text-box>
+        </draw:frame>
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="3.3cm" svg:width="25.5cm" svg:height="14cm">
+          <draw:text-box>
+            <text:p text:style-name="Body">- Faster executive decision cycles.</text:p>
+            <text:p text:style-name="Body">- Improved portfolio transparency.</text:p>
+            <text:p text:style-name="Body">- Better transition confidence from prototype to mission use.</text:p>
+            <text:p text:style-name="Body">- Stronger alignment across executive stakeholders.</text:p>
+          </draw:text-box>
+        </draw:frame>
+      </draw:page>
+
+      <draw:page draw:name="Slide 6" draw:style-name="dp1" draw:master-page-name="Default">
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="1cm" svg:width="25.5cm" svg:height="2cm">
+          <draw:text-box><text:p text:style-name="Subtitle">Executive Demo Flow</text:p></draw:text-box>
+        </draw:frame>
+        <draw:frame draw:style-name="gr1" svg:x="1cm" svg:y="3.3cm" svg:width="25.5cm" svg:height="14cm">
+          <draw:text-box>
+            <text:p text:style-name="Body">1) Log in as Brian Smith (PM_Executive).</text:p>
+            <text:p text:style-name="Body">2) Open PM Executive app and review Program Home pipeline + scorecards.</text:p>
+            <text:p text:style-name="Body">3) Open LWR site `/titanx` and run the interactive banner walkthrough:</text:p>
+            <text:p text:style-name="Body">   - Click Active Programs, then Transition Focus, then Reset Filters.</text:p>
+            <text:p text:style-name="Body">   - Select a phase in the pipeline strip and show Drill + Clear Drill.</text:p>
+            <text:p text:style-name="Body">   - Open KPI Drill (Speed/Transition) and close the deep-dive drawer.</text:p>
+            <text:p text:style-name="Body">   - In Open KPI Watches, filter severity and click Impacted programs.</text:p>
+            <text:p text:style-name="Body">4) Highlight Portfolio Events CTA: "Sign up for Beta Testing for Titan".</text:p>
+            <text:p text:style-name="Body">5) Close with governance message: PM Executive enables proactive portfolio management with real-time interactive oversight.</text:p>
+          </draw:text-box>
+        </draw:frame>
+      </draw:page>
+    </office:presentation>
+  </office:body>
+</office:document>

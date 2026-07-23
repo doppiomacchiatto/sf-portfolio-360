@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Decision__c</fullName>
+    <description>KPI #9: The decision made based on this evidence. Blank until a decision is reached.</description>
+    <label>Decision</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Pivot</fullName><default>false</default><label>Pivot</label></value>
+            <value><fullName>De-scope</fullName><default>false</default><label>De-scope</label></value>
+            <value><fullName>Merge</fullName><default>false</default><label>Merge</label></value>
+            <value><fullName>Terminate</fullName><default>false</default><label>Terminate</label></value>
+            <value><fullName>Continue</fullName><default>false</default><label>Continue</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

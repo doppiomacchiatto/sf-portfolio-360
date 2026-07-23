@@ -1,0 +1,12 @@
+{
+  "type" : "sfdc_cms__route",
+  "title" : "Program List",
+  "contentBody" : {
+    "activeViewId" : "Program_List",
+    "configurationTags" : [ ],
+    "pageAccess" : "UseParent",
+    "routeType" : "list-Program__c",
+    "urlPrefix" : "program"
+  },
+  "urlName" : "program-list"
+}

@@ -1,0 +1,35 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Project_Transition__c", "referenceId": "STRRef_IAPETUS" },
+      "Program__c": "@PRef_IAPETUS",
+      "Prototype_Transition__c": "Operational Experiment",
+      "Transition_Owner__c": "Dr. K. Osei",
+      "Signed_Transition_Agreement__c": false,
+      "Funded_Receiver_Path__c": false,
+      "Integration_Plan__c": false,
+      "Test_Venue__c": "Mojave Laser Array Test Range"
+    },
+    {
+      "attributes": { "type": "Project_Transition__c", "referenceId": "STRRef_RHEA" },
+      "Program__c": "@PRef_RHEA",
+      "Prototype_Transition__c": "Program of Record",
+      "Transition_Owner__c": "Maj. Gen. P. Nkosi",
+      "Signed_Transition_Agreement__c": true,
+      "Funded_Receiver_Path__c": true,
+      "Integration_Plan__c": false,
+      "Test_Venue__c": "Goldstone Deep Space Complex"
+    },
+    {
+      "attributes": { "type": "Project_Transition__c", "referenceId": "STRRef_TITAN" },
+      "Program__c": "@PRef_TITAN",
+      "Prototype_Transition__c": "Program of Record",
+      "Transition_Owner__c": "Adm. S. Okafor",
+      "Signed_Transition_Agreement__c": true,
+      "Funded_Receiver_Path__c": true,
+      "Integration_Plan__c": true,
+      "Mission_Use_Date__c": "2025-06-01",
+      "Test_Venue__c": "Stennis Space Center"
+    }
+  ]
+}

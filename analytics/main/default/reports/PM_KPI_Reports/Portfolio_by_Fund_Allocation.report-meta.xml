@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>KPI #1 — Portfolio balance by funding type</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>Program__c$Fund_Allocation__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Portfolio_by_Fund_Allocation</name>
+    <reportType>Programs__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+</Report>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transition_Commitment_Complete__c</fullName>
+    <description>KPI #11: True when all four commitment elements are in place — named owner, signed agreement, funded receiver path, and integration plan with test venue.</description>
+    <formula>AND(NOT(ISBLANK(Transition_Owner__c)), Signed_Transition_Agreement__c, Funded_Receiver_Path__c, Integration_Plan__c, NOT(ISBLANK(Test_Venue__c)))</formula>
+    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
+    <label>Transition Commitment Complete</label>
+    <type>Checkbox</type>
+</CustomField>

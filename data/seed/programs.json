@@ -1,0 +1,80 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Program__c", "referenceId": "PRef_SIGMA" },
+      "Name": "SIGMA-1",
+      "Program_Status__c": "Ideation",
+      "Fund_Allocation__c": "Validated",
+      "Program_Balance__c": "Disruptive/High Risk Bets",
+      "Experiment_Cadence__c": 2
+    },
+    {
+      "attributes": { "type": "Program__c", "referenceId": "PRef_NEXUS" },
+      "Name": "NEXUS-4",
+      "Program_Status__c": "Funded",
+      "Fund_Allocation__c": "Approved Critical Tech Area",
+      "Program_Balance__c": "Mission Pull",
+      "Mission_Need_Validated_Date__c": "2024-09-01",
+      "Funding_Start_Date__c": "2025-01-15",
+      "Experiment_Cadence__c": 4
+    },
+    {
+      "attributes": { "type": "Program__c", "referenceId": "PRef_SHIELD" },
+      "Name": "SHIELD-X",
+      "Program_Status__c": "Awarded",
+      "Fund_Allocation__c": "Security-Gap",
+      "Program_Balance__c": "Near Term",
+      "Mission_Need_Validated_Date__c": "2024-01-10",
+      "Funding_Start_Date__c": "2024-04-01",
+      "Award_Date__c": "2024-11-01",
+      "Experiment_Cadence__c": 6
+    },
+    {
+      "attributes": { "type": "Program__c", "referenceId": "PRef_FORGE" },
+      "Name": "FORGE",
+      "Program_Status__c": "Prototype",
+      "Fund_Allocation__c": "Threat-Informed",
+      "Program_Balance__c": "Defense Unique Technology",
+      "Award_Date__c": "2023-11-01",
+      "First_Prototype_Date__c": "2025-03-15",
+      "Experiment_Cadence__c": 8
+    },
+    {
+      "attributes": { "type": "Program__c", "referenceId": "PRef_APEX" },
+      "Name": "APEX-7",
+      "Program_Status__c": "Demo Complete",
+      "Fund_Allocation__c": "Threat-Informed",
+      "Program_Balance__c": "Near Term",
+      "Award_Date__c": "2023-02-01",
+      "First_Prototype_Date__c": "2024-04-01",
+      "Successful_Demo_Date__c": "2025-08-15",
+      "Experiment_Cadence__c": 11
+    },
+    {
+      "attributes": { "type": "Program__c", "referenceId": "PRef_CLARITY" },
+      "Name": "CLARITY",
+      "Program_Status__c": "Demo Complete",
+      "Fund_Allocation__c": "Security-Gap",
+      "Program_Balance__c": "Commercial Adoption",
+      "Award_Date__c": "2022-07-01",
+      "First_Prototype_Date__c": "2023-10-15",
+      "Successful_Demo_Date__c": "2024-09-01",
+      "Experiment_Cadence__c": 9
+    },
+    {
+      "attributes": { "type": "Program__c", "referenceId": "PRef_VECTOR" },
+      "Name": "VECTOR",
+      "Program_Status__c": "Operational",
+      "Fund_Allocation__c": "Validated",
+      "Program_Balance__c": "Near Term",
+      "Award_Date__c": "2021-04-01",
+      "First_Prototype_Date__c": "2022-09-01",
+      "Successful_Demo_Date__c": "2023-06-01",
+      "Mission_Use_Date__c": "2024-01-01",
+      "Transition_Outcome__c": "Program of Record",
+      "Operational_Index__c": 91,
+      "Operational_Outcomes__c": "Improvement Against Baseline;Reduced Manpower;Increased Survivability",
+      "Experiment_Cadence__c": 12
+    }
+  ]
+}

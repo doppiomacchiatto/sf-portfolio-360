@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_TRL__c</fullName>
+    <description>Current Technology Readiness Level (1–9). Refer to NASA TRL definitions.</description>
+    <label>Current TRL</label>
+    <precision>2</precision>
+    <required>true</required>
+    <scale>0</scale>
+    <type>Number</type>
+</CustomField>

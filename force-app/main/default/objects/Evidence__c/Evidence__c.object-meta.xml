@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>KPI #9: Records adverse or decision-driving evidence per program. Captures time from evidence to pivot/kill decision for the Evidence-based Pivot or Kill Rate KPI.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <compactLayoutAssignment>Evidence_Compact</compactLayoutAssignment>
+    <label>Evidence</label>
+    <nameField>
+        <label>Evidence Name</label>
+        <type>AutoNumber</type>
+        <displayFormat>EVD-{0000}</displayFormat>
+    </nameField>
+    <pluralLabel>Evidence Records</pluralLabel>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

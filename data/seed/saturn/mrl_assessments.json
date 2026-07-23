@@ -1,0 +1,103 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_ENCELADUS_1" },
+      "Program__c": "@PRef_ENCELADUS",
+      "Assessment_Date__c": "2026-01-01",
+      "Current_MRL__c": 2,
+      "Previous_MRL__c": 1,
+      "Manufacturing_Capability__c": "Stacked nano-cavity wafer fabrication",
+      "Supply_Chain_Risk__c": "High"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_TETHYS_1" },
+      "Program__c": "@PRef_TETHYS",
+      "Assessment_Date__c": "2025-08-01",
+      "Current_MRL__c": 3,
+      "Previous_MRL__c": 2,
+      "Manufacturing_Capability__c": "Nanoscale swarm unit batch production",
+      "Supply_Chain_Risk__c": "High"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_TETHYS_2" },
+      "Program__c": "@PRef_TETHYS",
+      "Assessment_Date__c": "2026-02-01",
+      "Current_MRL__c": 4,
+      "Previous_MRL__c": 3,
+      "Manufacturing_Capability__c": "Nanoscale swarm unit batch production",
+      "Supply_Chain_Risk__c": "High"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_DIONE_1" },
+      "Program__c": "@PRef_DIONE",
+      "Assessment_Date__c": "2024-12-01",
+      "Current_MRL__c": 4,
+      "Previous_MRL__c": 3,
+      "Manufacturing_Capability__c": "Cryo-biomedical hardware and xenon delivery system",
+      "Supply_Chain_Risk__c": "Medium"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_DIONE_2" },
+      "Program__c": "@PRef_DIONE",
+      "Assessment_Date__c": "2025-09-01",
+      "Current_MRL__c": 5,
+      "Previous_MRL__c": 4,
+      "Manufacturing_Capability__c": "Cryo-biomedical hardware and xenon delivery system",
+      "Supply_Chain_Risk__c": "Medium"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_IAPETUS_1" },
+      "Program__c": "@PRef_IAPETUS",
+      "Assessment_Date__c": "2024-09-01",
+      "Current_MRL__c": 5,
+      "Previous_MRL__c": 4,
+      "Manufacturing_Capability__c": "Graphene sail large-area deposition process",
+      "Supply_Chain_Risk__c": "High"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_IAPETUS_2" },
+      "Program__c": "@PRef_IAPETUS",
+      "Assessment_Date__c": "2025-08-01",
+      "Current_MRL__c": 6,
+      "Previous_MRL__c": 5,
+      "Manufacturing_Capability__c": "Graphene sail large-area deposition process",
+      "Supply_Chain_Risk__c": "High"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_RHEA_1" },
+      "Program__c": "@PRef_RHEA",
+      "Assessment_Date__c": "2024-11-01",
+      "Current_MRL__c": 6,
+      "Previous_MRL__c": 5,
+      "Manufacturing_Capability__c": "Space-qualified entangled photon source modules",
+      "Supply_Chain_Risk__c": "Medium"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_RHEA_2" },
+      "Program__c": "@PRef_RHEA",
+      "Assessment_Date__c": "2025-09-01",
+      "Current_MRL__c": 7,
+      "Previous_MRL__c": 6,
+      "Manufacturing_Capability__c": "Space-qualified entangled photon source modules",
+      "Supply_Chain_Risk__c": "Medium"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_TITAN_1" },
+      "Program__c": "@PRef_TITAN",
+      "Assessment_Date__c": "2023-06-01",
+      "Current_MRL__c": 8,
+      "Previous_MRL__c": 7,
+      "Manufacturing_Capability__c": "Helium-3 fuel processing and thruster assembly line",
+      "Supply_Chain_Risk__c": "Low"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "SMRef_TITAN_2" },
+      "Program__c": "@PRef_TITAN",
+      "Assessment_Date__c": "2024-03-01",
+      "Current_MRL__c": 9,
+      "Previous_MRL__c": 8,
+      "Manufacturing_Capability__c": "Helium-3 fuel processing and thruster assembly line",
+      "Supply_Chain_Risk__c": "Low"
+    }
+  ]
+}

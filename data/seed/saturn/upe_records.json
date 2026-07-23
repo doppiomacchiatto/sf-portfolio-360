@@ -1,0 +1,124 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_MIMAS_1" },
+      "Program__c": "@PRef_MIMAS",
+      "Engagement_Date__c": "2026-03-01",
+      "Engagement_Type__c": "User/Operator",
+      "Participant_Count__c": 6,
+      "Notes__c": "Deep space navigation requirements elicitation with NASA JPL and Space Force operators."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_ENCELADUS_1" },
+      "Program__c": "@PRef_ENCELADUS",
+      "Engagement_Date__c": "2025-12-01",
+      "Engagement_Type__c": "Acquirer/Program Office",
+      "Participant_Count__c": 10,
+      "Notes__c": "Deep space power architecture requirements review with Space Systems Command program office."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_TETHYS_1" },
+      "Program__c": "@PRef_TETHYS",
+      "Engagement_Date__c": "2025-07-01",
+      "Engagement_Type__c": "User/Operator",
+      "Participant_Count__c": 14,
+      "Notes__c": "Lunar habitat construction concept of operations review with Artemis mission planners."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_TETHYS_2" },
+      "Program__c": "@PRef_TETHYS",
+      "Engagement_Date__c": "2026-01-15",
+      "Engagement_Type__c": "Acquirer/Program Office",
+      "Participant_Count__c": 9,
+      "Notes__c": "Prototype acceptance criteria and in-situ resource utilization integration standards review."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_DIONE_1" },
+      "Program__c": "@PRef_DIONE",
+      "Engagement_Date__c": "2024-10-01",
+      "Engagement_Type__c": "User/Operator",
+      "Participant_Count__c": 18,
+      "Notes__c": "Crew habitability and medical safety review with NASA flight surgeons and long-duration mission astronauts."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_DIONE_2" },
+      "Program__c": "@PRef_DIONE",
+      "Engagement_Date__c": "2025-04-01",
+      "Engagement_Type__c": "Acquirer/Program Office",
+      "Participant_Count__c": 11,
+      "Notes__c": "Human-rating requirements and risk acceptance review with program office and medical ethics board."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_DIONE_3" },
+      "Program__c": "@PRef_DIONE",
+      "Engagement_Date__c": "2025-11-15",
+      "Engagement_Type__c": "Maintainer/Sustainment",
+      "Participant_Count__c": 7,
+      "Notes__c": "Spacecraft integration concept and pod depot maintenance planning with mission sustainment team."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_IAPETUS_1" },
+      "Program__c": "@PRef_IAPETUS",
+      "Engagement_Date__c": "2024-11-01",
+      "Engagement_Type__c": "User/Operator",
+      "Participant_Count__c": 22,
+      "Notes__c": "Interstellar probe mission concept review with JPL, ESA liaison, and DARPA Tactical Technology Office."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_IAPETUS_2" },
+      "Program__c": "@PRef_IAPETUS",
+      "Engagement_Date__c": "2025-06-01",
+      "Engagement_Type__c": "Acquirer/Program Office",
+      "Participant_Count__c": 16,
+      "Notes__c": "Transition to operational experiment — program office review of fielded prototype path and test venue selection."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_IAPETUS_3" },
+      "Program__c": "@PRef_IAPETUS",
+      "Engagement_Date__c": "2025-10-01",
+      "Engagement_Type__c": "Cyber/Mission Partner",
+      "Participant_Count__c": 8,
+      "Notes__c": "Laser array cyber hardening and uplink security review with NSA and Space Force cyber operators."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_RHEA_1" },
+      "Program__c": "@PRef_RHEA",
+      "Engagement_Date__c": "2024-07-01",
+      "Engagement_Type__c": "User/Operator",
+      "Participant_Count__c": 25,
+      "Notes__c": "Deep space communications concept of operations validation with Space Force Delta 8 and NASA DSN operators."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_RHEA_2" },
+      "Program__c": "@PRef_RHEA",
+      "Engagement_Date__c": "2024-12-01",
+      "Engagement_Type__c": "Acquirer/Program Office",
+      "Participant_Count__c": 18,
+      "Notes__c": "Transition to program of record review — integration with Space Force satellite communications architecture."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_RHEA_3" },
+      "Program__c": "@PRef_RHEA",
+      "Engagement_Date__c": "2025-08-01",
+      "Engagement_Type__c": "Maintainer/Sustainment",
+      "Participant_Count__c": 12,
+      "Notes__c": "Goldstone DSC sustainment team onboarding and relay station depot maintenance concept review."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_TITAN_1" },
+      "Program__c": "@PRef_TITAN",
+      "Engagement_Date__c": "2024-02-01",
+      "Engagement_Type__c": "Maintainer/Sustainment",
+      "Participant_Count__c": 35,
+      "Notes__c": "Stennis Space Center depot integration, Helium-3 fueling certification, and thruster lifecycle maintenance training."
+    },
+    {
+      "attributes": { "type": "User_Partner_Engagement__c", "referenceId": "SURef_TITAN_2" },
+      "Program__c": "@PRef_TITAN",
+      "Engagement_Date__c": "2025-09-01",
+      "Engagement_Type__c": "User/Operator",
+      "Participant_Count__c": 48,
+      "Notes__c": "Post-fielding operational assessment with deployed mission crew — crew survivability and mission range outcomes documented."
+    }
+  ]
+}

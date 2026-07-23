@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integration_Plan__c</fullName>
+    <description>KPI #11: Indicates a formal integration plan exists for incorporating this technology into the receiver system.</description>
+    <defaultValue>false</defaultValue>
+    <label>Integration Plan</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,38 @@
+Object,Field Label,API Name,Type,Required,Formula,Picklist Values,Notes
+Program__c,Program Status,Program_Status__c,Picklist,Yes,,Ideation|Validated Need|Funded|Awarded|Prototype|Demo Complete|Transitioning|Operational|Closed,Lifecycle stage
+Program__c,Mission Need Validated Date,Mission_Need_Validated_Date__c,Date,No,,,KPI #3 start
+Program__c,Funding Start Date,Funding_Start_Date__c,Date,No,,,KPI #3 end
+Program__c,Award Date,Award_Date__c,Date,No,,,KPI #4 start
+Program__c,First Prototype Date,First_Prototype_Date__c,Date,No,,,KPI #4 end
+Program__c,Successful Demo Date,Successful_Demo_Date__c,Date,No,,,KPI #13 start
+Program__c,Mission Use Date,Mission_Use_Date__c,Date,No,,,KPI #13 end
+Program__c,Time Mission to Funded (Days),Time_Mission_to_Funded_Days__c,Formula(Number),No,"IF(AND(NOT(ISBLANK(Funding_Start_Date__c)),NOT(ISBLANK(Mission_Need_Validated_Date__c))),Funding_Start_Date__c-Mission_Need_Validated_Date__c,NULL)",,KPI #3
+Program__c,Time Award to Prototype (Months),Time_Award_to_Prototype_Months__c,Formula(Number),No,"IF(AND(NOT(ISBLANK(First_Prototype_Date__c)),NOT(ISBLANK(Award_Date__c))),(First_Prototype_Date__c-Award_Date__c)/30,NULL)",,KPI #4
+Program__c,Time Demo to Mission Use (Months),Time_Demo_to_MissionUse_Months__c,Formula(Number),No,"IF(AND(NOT(ISBLANK(Mission_Use_Date__c)),NOT(ISBLANK(Successful_Demo_Date__c))),(Mission_Use_Date__c-Successful_Demo_Date__c)/30,NULL)",,KPI #13
+Program__c,Transition Outcome,Transition_Outcome__c,Picklist,No,,Program of Record|Operational Experiment|Fielded Prototype|Commercial Adoption|Sustained Use|No Transition,KPI #12 outcome
+Program__c,Is Transitioned,Is_Transitioned__c,Formula(Checkbox),No,"CASE(TEXT(Transition_Outcome__c),""Program of Record"",1,""Operational Experiment"",1,""Fielded Prototype"",1,""Commercial Adoption"",1,""Sustained Use"",1,0)=1",,KPI #12 flag
+Program__c,Operational Index,Operational_Index__c,Number(5,2),No,,,KPI #14 rollup target
+Program_Vendor__c,Program,Program__c,Master-Detail(Program__c),Yes,,,Program side of junction
+Program_Vendor__c,Vendor,Vendor__c,Lookup(Account),Yes,,,Account side of junction
+Program_Vendor__c,Vendor Role,Vendor_Role__c,Picklist,No,,Prime|Subcontractor|Integrator|Manufacturer|Research Partner|Other,Relationship context
+Operational_Outcome__c,Program,Program__c,Master-Detail(Program__c),Yes,,,Parent Program
+Operational_Outcome__c,Outcome Type,Outcome_Type__c,Picklist,Yes,,Improvement vs Baseline|Reduced Latency|Improved Detection|Increased Autonomy|Increased Resilience|Lower Cost per Outcome|Better Coverage|Reduced Manpower|Increased Survivability,KPI #14 dimension
+Operational_Outcome__c,Baseline Value,Baseline_Value__c,Number(16,4),No,,,Before state
+Operational_Outcome__c,Current Value,Current_Value__c,Number(16,4),No,,,Current state
+Operational_Outcome__c,Direction,Direction__c,Picklist,No,,Higher Better|Lower Better,Normalization hint
+Operational_Outcome__c,Weight,Weight__c,Percent(3,2),No,,,Weighted rollup input
+Operational_Outcome__c,Normalized Score,Normalized_Score__c,Number(5,2),No,,,0-100 normalized metric
+Program_KPI_Snapshot__c,Program,Program__c,Lookup(Program__c),Yes,,,Snapshot parent
+Program_KPI_Snapshot__c,Snapshot Date,Snapshot_Date__c,Date,Yes,,,As-of date
+Program_KPI_Snapshot__c,Fiscal Quarter,Fiscal_Quarter__c,Text(10),Yes,,,Example: FY26-Q1
+Program_KPI_Snapshot__c,KPI3 Time Mission to Funded Days,KPI3_Time_Mission_to_Funded_Days__c,Number(8,0),No,,,Snapshot metric
+Program_KPI_Snapshot__c,KPI4 Time Award to Prototype Months,KPI4_Time_Award_to_Prototype_Months__c,Number(8,1),No,,,Snapshot metric
+Program_KPI_Snapshot__c,KPI12 Is Transitioned,KPI12_Is_Transitioned__c,Checkbox,No,,,Snapshot metric
+Program_KPI_Snapshot__c,KPI12 Transition Outcome,KPI12_Transition_Outcome__c,Picklist,No,,Program of Record|Operational Experiment|Fielded Prototype|Commercial Adoption|Sustained Use|No Transition,Snapshot metric
+Program_KPI_Snapshot__c,KPI13 Time Demo to Mission Use Months,KPI13_Time_Demo_to_MissionUse_Months__c,Number(8,1),No,,,Snapshot metric
+Program_KPI_Snapshot__c,KPI14 Operational Index,KPI14_Operational_Index__c,Number(5,2),No,,,Snapshot metric
+Case,Program,Program__c,Lookup(Program__c),No,,,Program issue linkage
+Case,KPI Breach Type,KPI_Breach_Type__c,Picklist,No,,KPI #3|KPI #4|KPI #12|KPI #13|KPI #14|Data Quality,Escalation category
+Case,KPI Breach Value,KPI_Breach_Value__c,Number(8,2),No,,,Observed KPI value
+Case,KPI Threshold,KPI_Threshold__c,Number(8,2),No,,,Threshold baseline
+Case,Executive Visibility,Executive_Visibility__c,Checkbox,No,,,Dashboard visibility filter

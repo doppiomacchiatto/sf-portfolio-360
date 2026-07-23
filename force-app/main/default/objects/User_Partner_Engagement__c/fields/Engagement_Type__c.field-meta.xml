@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Type__c</fullName>
+    <description>KPI #10: Category of stakeholder engaged. Structured engagements only — not informal contact.</description>
+    <label>Engagement Type</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>User/Operator</fullName><default>false</default><label>User/Operator</label></value>
+            <value><fullName>Acquirer/Program Office</fullName><default>false</default><label>Acquirer/Program Office</label></value>
+            <value><fullName>Maintainer/Sustainment</fullName><default>false</default><label>Maintainer/Sustainment</label></value>
+            <value><fullName>Cyber/Mission Partner</fullName><default>false</default><label>Cyber/Mission Partner</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

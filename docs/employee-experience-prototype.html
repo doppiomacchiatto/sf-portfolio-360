@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio Manager – Portfolio Management Portal</title>
+  <style>
+    :root {
+      --p: #0f1f3d;
+      --pd: #060d1a;
+      --a: #3498db;
+      --as: #5dade2;
+      --al: #aed6f1;
+      --bg: #edf4fb;
+      --sf: #ffffff;
+      --tx: #18223d;
+      --mu: #4d5f7b;
+      --bd: #d6e3f1;
+      --sh: 0 8px 22px rgba(24,34,61,.08);
+      --r: 14px;
+      --ok: #16a34a;
+      --wa: #d97706;
+      --er: #dc2626;
+      --ok-bg: #e9f9ef;
+      --wa-bg: #fff4e6;
+      --er-bg: #feecec;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--tx);
+      background: linear-gradient(160deg, #f7fbff 0%, var(--bg) 42%, #e9f2fb 100%);
+      min-height: 100vh;
+    }
+
+    /* ── APP SHELL ── */
+    .app {
+      display: grid;
+      grid-template-columns: 256px 1fr;
+      min-height: 100vh;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: linear-gradient(180deg, var(--pd) 0%, var(--p) 100%);
+      color: #f6f8ff;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .brand img { height: 22px; width: auto; filter: brightness(0) invert(1); opacity: .92; }
+    .brand-name { font-size: 13px; font-weight: 700; color: #e2edf9; letter-spacing: .01em; }
+    .brand-tag { font-size: 10px; color: #7aa7d4; letter-spacing: .05em; }
+
+    .nav-section { margin-top: 18px; }
+    .nav-title {
+      font-size: 10px;
+      font-weight: 700;
+      opacity: .55;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: 0 10px;
+      margin-bottom: 6px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 10px;
+      border-radius: 9px;
+      color: #c2d9f0;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      cursor: pointer;
+    }
+    .nav-item:hover { background: rgba(93,173,226,.12); color: #fff; }
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(52,152,219,.28), rgba(174,214,241,.18));
+      color: #fff;
+    }
+    .nav-icon { font-size: 14px; width: 20px; text-align: center; flex-shrink: 0; }
+    .nav-badge {
+      margin-left: auto;
+      background: rgba(220,38,38,.8);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 999px;
+    }
+    .nav-badge.info { background: rgba(52,152,219,.5); }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .user-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 6px;
+    }
+    .avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--p), var(--a));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .user-name { font-size: 13px; font-weight: 600; color: #e2edf9; }
+    .user-role { font-size: 11px; color: #7aa7d4; }
+
+    /* ── MAIN ── */
+    .main { padding: 20px; overflow-y: auto; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--sf);
+      border: 1px solid var(--bd);
+      border-radius: var(--r);
+      box-shadow: var(--sh);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      gap: 16px;
+    }
+    .topbar-left h1 { font-size: 18px; font-weight: 700; }
+    .topbar-left p { font-size: 12px; color: var(--mu); margin-top: 2px; }
+    .topbar-right { display: flex; align-items: center; gap: 10px; }
+    .quick-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--bd);
+      background: var(--sf);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--p);
+      cursor: pointer;
+    }
+    .quick-btn.primary {
+      background: var(--a);
+      border-color: var(--a);
+      color: #fff;
+    }
+    .topbar-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--p), var(--a));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* ── GRID UTILITIES ── */
+    .row { display: grid; gap: 14px; margin-bottom: 14px; }
+    .c12 { grid-template-columns: repeat(12, 1fr); }
+    .c2  { grid-template-columns: 1fr 1fr; }
+    .c3  { grid-template-columns: repeat(3, 1fr); }
+    .c4  { grid-template-columns: repeat(4, 1fr); }
+    .s2  { grid-column: span 2; }
+    .s3  { grid-column: span 3; }
+    .s4  { grid-column: span 4; }
+    .s5  { grid-column: span 5; }
+    .s6  { grid-column: span 6; }
+    .s7  { grid-column: span 7; }
+    .s8  { grid-column: span 8; }
+    .s12 { grid-column: span 12; }
+
+    .card {
+      background: var(--sf);
+      border: 1px solid var(--bd);
+      border-radius: var(--r);
+      box-shadow: var(--sh);
+      padding: 16px;
+    }
+    .card-hd {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-hd-link { font-size: 11px; font-weight: 600; color: var(--a); cursor: pointer; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--mu);
+      margin: 4px 0 10px;
+      padding-left: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::after { content: ""; flex: 1; height: 1px; background: var(--bd); }
+
+    /* ── KPI MINI CARDS ── */
+    .kpi-mini { padding: 12px 14px; }
+    .kpi-mini .km-lbl { font-size: 10px; font-weight: 700; color: var(--mu); text-transform: uppercase; letter-spacing: .05em; line-height: 1.3; }
+    .kpi-mini .km-val { font-size: 22px; font-weight: 800; color: var(--p); margin-top: 4px; line-height: 1; }
+    .kpi-mini .km-unit { font-size: 11px; font-weight: 500; color: var(--mu); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 3px;
+      margin-top: 6px; padding: 2px 8px;
+      border-radius: 999px; font-size: 10px; font-weight: 700;
+    }
+    .badge::before { content: "●"; font-size: 7px; }
+    .badge.ok   { background: var(--ok-bg); color: var(--ok); }
+    .badge.warn { background: var(--wa-bg); color: var(--wa); }
+    .badge.bad  { background: var(--er-bg); color: var(--er); }
+    .badge.neu  { background: #eaf4fd; color: var(--p); }
+
+    /* ── PROGRESS BAR ── */
+    .prog-row { margin-bottom: 9px; }
+    .prog-lbl { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 3px; font-weight: 500; }
+    .prog-lbl span:last-child { color: var(--mu); font-weight: 400; }
+    .prog-track { height: 6px; background: #e4eef8; border-radius: 999px; overflow: hidden; }
+    .prog-fill { height: 100%; border-radius: 999px; background: var(--a); }
+    .prog-fill.ok   { background: var(--ok); }
+    .prog-fill.warn { background: var(--wa); }
+    .prog-fill.bad  { background: var(--er); }
+
+    /* ── PROGRAM LIST ── */
+    .prog-list { list-style: none; }
+    .prog-row-item {
+      border: 1px solid var(--bd);
+      border-radius: 10px;
+      padding: 11px 13px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .prog-row-item:last-child { margin-bottom: 0; }
+    .prog-status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .prog-info { flex: 1; min-width: 0; }
+    .prog-name { font-size: 13px; font-weight: 600; }
+    .prog-meta { font-size: 11px; color: var(--mu); margin-top: 2px; }
+    .prog-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+    .trl-badge {
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 6px;
+      background: #eaf4fd; color: var(--p);
+    }
+
+    /* ── TASK LIST ── */
+    .task-list { list-style: none; }
+    .task-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 9px 0; border-bottom: 1px solid var(--bd);
+    }
+    .task-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .task-check {
+      width: 16px; height: 16px; border-radius: 4px;
+      border: 2px solid var(--bd); flex-shrink: 0; margin-top: 1px;
+    }
+    .task-body { flex: 1; font-size: 12px; }
+    .task-name { font-weight: 600; }
+    .task-detail { color: var(--mu); margin-top: 2px; }
+    .task-due { font-size: 10px; font-weight: 700; }
+    .task-due.today { color: var(--er); }
+    .task-due.soon  { color: var(--wa); }
+    .task-due.later { color: var(--mu); }
+
+    /* ── ACTIVITY LOG ITEM ── */
+    .activity-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 9px 0; border-bottom: 1px solid var(--bd);
+      font-size: 12px;
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-icon {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: #eaf4fd; display: grid; place-items: center;
+      font-size: 13px; flex-shrink: 0;
+    }
+    .activity-body { flex: 1; }
+    .activity-name { font-weight: 600; }
+    .activity-detail { color: var(--mu); margin-top: 2px; }
+    .activity-time { font-size: 10px; color: var(--mu); margin-top: 2px; }
+
+    /* ── QUICK LOG FORM ── */
+    .quick-form { display: flex; flex-direction: column; gap: 8px; }
+    .form-row { display: flex; gap: 8px; }
+    .form-select, .form-input {
+      flex: 1; padding: 7px 10px;
+      border: 1px solid var(--bd); border-radius: 8px;
+      font-size: 12px; color: var(--tx);
+      background: #f8fbff;
+    }
+    .form-btn {
+      padding: 7px 16px; border-radius: 8px;
+      background: var(--a); border: none;
+      font-size: 12px; font-weight: 700; color: #fff;
+      cursor: pointer; white-space: nowrap;
+    }
+
+    /* ── INSIGHT CARD ── */
+    .insight-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 12px; border-radius: 10px; margin-bottom: 7px;
+      border: 1px solid var(--bd); background: #fafcff;
+      font-size: 12px;
+    }
+    .insight-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .insight-body { flex: 1; }
+    .insight-title { font-weight: 600; }
+    .insight-action { color: var(--a); margin-top: 3px; font-size: 11px; cursor: pointer; }
+
+    /* ── TRL/MRL MINI MATRIX ── */
+    .rl-cells { display: flex; gap: 3px; margin-top: 4px; }
+    .rl-mini {
+      width: 22px; height: 22px; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700;
+    }
+    .rl-mini.done { background: #3498db; color: #fff; }
+    .rl-mini.curr { background: #e67e22; color: #fff; }
+    .rl-mini.next { background: #e4eef8; color: var(--mu); }
+
+    @media (max-width: 1100px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .s3,.s4,.s5,.s6,.s7,.s8 { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ═══════════ SIDEBAR ═══════════ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./callisto/logo-full-color.svg" alt="Callisto" />
+      <div>
+        <div class="brand-name">Callisto Portfolio</div>
+        <div class="brand-tag">R&amp;D FRAMEWORK</div>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Workspace</div>
+      <a class="nav-item active"><span class="nav-icon">🏠</span> Home</a>
+      <a class="nav-item"><span class="nav-icon">📁</span> My Programs <span class="nav-badge info">12</span></a>
+      <a class="nav-item"><span class="nav-icon">✅</span> My Tasks <span class="nav-badge">5</span></a>
+      <a class="nav-item"><span class="nav-icon">⚠️</span> KPI Breaches <span class="nav-badge">4</span></a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">KPI Data Entry</div>
+      <a class="nav-item"><span class="nav-icon">🔬</span> Log TRL Assessment</a>
+      <a class="nav-item"><span class="nav-icon">🏭</span> Log MRL Assessment</a>
+      <a class="nav-item"><span class="nav-icon">📋</span> Technical Exams</a>
+      <a class="nav-item"><span class="nav-icon">🤝</span> User/Partner Engagement</a>
+      <a class="nav-item"><span class="nav-icon">💡</span> Log Evidence</a>
+      <a class="nav-item"><span class="nav-icon">🔄</span> Project Transitions</a>
+      <a class="nav-item"><span class="nav-icon">📊</span> Experiment Log</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Analytics</div>
+      <a class="nav-item"><span class="nav-icon">📈</span> Executive KPIs</a>
+      <a class="nav-item"><span class="nav-icon">📸</span> KPI Snapshots</a>
+      <a class="nav-item"><span class="nav-icon">📑</span> Reports</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Admin</div>
+      <a class="nav-item"><span class="nav-icon">🔍</span> Data Quality</a>
+      <a class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="avatar">JS</div>
+        <div>
+          <div class="user-name">doppiomacchiatto</div>
+          <div class="user-role">Portfolio Manager</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════ MAIN CONTENT ═══════════ -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <h1>Portfolio Management Portal — Saturn Series</h1>
+        <p>Program operations, KPI visibility, and day-to-day execution · FY26 Q2 · Jun 19, 2026</p>
+      </div>
+      <div class="topbar-right">
+        <button class="quick-btn">+ Log Engagement</button>
+        <button class="quick-btn">+ Log Evidence</button>
+        <button class="quick-btn primary">+ New Program</button>
+        <div class="topbar-avatar">JS</div>
+      </div>
+    </div>
+
+    <!-- ═══ ALL 14 KPI SCORECARD ═══ -->
+    <div class="section-label">Portfolio KPI Scorecard — All 14 Indicators</div>
+    <div class="row c4" style="margin-bottom:14px">
+
+      <!-- Row 1: Investment -->
+      <div class="card kpi-mini">
+        <div class="km-lbl">Mission Aligned Investment Rate</div>
+        <div class="km-val">86<span class="km-unit">%</span></div>
+        <span class="badge ok">On Target</span>
+      </div>
+      <div class="card kpi-mini s2">
+        <div class="km-lbl">Transformational Portfolio Balance</div>
+        <div class="km-val" style="font-size:16px;margin-top:6px">Near Term 29% · Defense Unique 29% · Disruptive 29% · Commercial 14%</div>
+        <span class="badge warn">Mission Pull at 0% — below 15% target</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">Time: Mission Need → Funded Start</div>
+        <div class="km-val">191<span class="km-unit"> days</span></div>
+        <span class="badge warn">Watch</span>
+      </div>
+
+      <!-- Row 2: Speed -->
+      <div class="card kpi-mini">
+        <div class="km-lbl">Time: Award → First Prototype</div>
+        <div class="km-val">19.4<span class="km-unit"> mo</span></div>
+        <span class="badge warn">Watch</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">Experiment Cadence</div>
+        <div class="km-val">7.4<span class="km-unit">/qtr</span></div>
+        <span class="badge warn">Watch</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">Technical Maturity Gain (TRL)</div>
+        <div class="km-val">+2.1<span class="km-unit">/yr</span></div>
+        <span class="badge ok">On Target</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">Mfg. Producibility Gain (MRL)</div>
+        <div class="km-val">+1.4<span class="km-unit">/yr</span></div>
+        <span class="badge warn">Watch</span>
+      </div>
+
+      <!-- Row 3: Quality -->
+      <div class="card kpi-mini">
+        <div class="km-lbl">Technical Exam Pass Rate</div>
+        <div class="km-val">91<span class="km-unit">%</span></div>
+        <span class="badge ok">On Target</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">Evidence-based Pivot Rate</div>
+        <div class="km-val">30<span class="km-unit">%</span></div>
+        <span class="badge ok">Healthy</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">User / Partner Engagement</div>
+        <div class="km-val">2.5<span class="km-unit">/qtr</span></div>
+        <span class="badge warn">Watch</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">Transition Commitment Rate</div>
+        <div class="km-val">67<span class="km-unit">%</span></div>
+        <span class="badge warn">Watch</span>
+      </div>
+
+      <!-- Row 4: Transition + Ops -->
+      <div class="card kpi-mini">
+        <div class="km-lbl">Prototype → Transition Rate</div>
+        <div class="km-val">100<span class="km-unit">%</span></div>
+        <span class="badge ok">On Target</span>
+      </div>
+      <div class="card kpi-mini">
+        <div class="km-lbl">Time: Demo → Mission Use</div>
+        <div class="km-val">19.0<span class="km-unit"> mo</span></div>
+        <span class="badge warn">Watch</span>
+      </div>
+      <div class="card kpi-mini s2">
+        <div class="km-lbl">Operational Index — TITAN</div>
+        <div class="km-val">94<span class="km-unit"> / 100</span></div>
+        <span class="badge ok">Nuclear Fusion Thruster · Fielded Jun 2025</span>
+      </div>
+
+    </div>
+
+    <!-- ═══ PROGRAMS + TASKS ═══ -->
+    <div class="section-label">My Programs &amp; Active Work</div>
+    <div class="row c12" style="margin-bottom:14px">
+
+      <div class="card s7">
+        <div class="card-hd">My Active Programs <span class="card-hd-link">View All 7 →</span></div>
+        <ul class="prog-list">
+          <li class="prog-row-item">
+            <div class="prog-status-dot" style="background:var(--wa)"></div>
+            <div class="prog-info">
+              <div class="prog-name">MIMAS · Gravitational Wave Navigation System</div>
+              <div class="prog-meta">Ideation · Pulsar timing interferometry · No award date yet</div>
+            </div>
+            <div class="prog-right">
+              <span class="trl-badge" style="background:var(--wa-bg);color:var(--wa)">TRL 2</span>
+              <span class="trl-badge">MRL —</span>
+            </div>
+            <span class="badge bad">UPE Breach</span>
+          </li>
+          <li class="prog-row-item">
+            <div class="prog-status-dot" style="background:var(--a)"></div>
+            <div class="prog-info">
+              <div class="prog-name">ENCELADUS · Zero-Point Energy Extraction Module</div>
+              <div class="prog-meta">Funded · Casimir nano-cavity arrays · Funded Sep 2025</div>
+            </div>
+            <div class="prog-right">
+              <span class="trl-badge" style="background:var(--wa-bg);color:var(--wa)">TRL 3</span>
+              <span class="trl-badge">MRL 2</span>
+            </div>
+            <span class="badge warn">Pivot Active</span>
+          </li>
+          <li class="prog-row-item">
+            <div class="prog-status-dot" style="background:var(--ok)"></div>
+            <div class="prog-info">
+              <div class="prog-name">DIONE · Cryogenic Suspended Animation Pod</div>
+              <div class="prog-meta">Prototype · Award May 2023 · First Proto Aug 2025</div>
+            </div>
+            <div class="prog-right">
+              <span class="trl-badge">TRL 6</span>
+              <span class="trl-badge" style="background:#fff4e6;color:var(--wa)">MRL 5</span>
+            </div>
+            <span class="badge warn">Proto Late</span>
+          </li>
+          <li class="prog-row-item">
+            <div class="prog-status-dot" style="background:var(--a)"></div>
+            <div class="prog-info">
+              <div class="prog-name">RHEA · Quantum Entanglement Communication Array</div>
+              <div class="prog-meta">Transitioning · Demo Feb 2025 · Program of Record path</div>
+            </div>
+            <div class="prog-right">
+              <span class="trl-badge" style="background:var(--ok-bg);color:var(--ok)">TRL 8</span>
+              <span class="trl-badge" style="background:var(--ok-bg);color:var(--ok)">MRL 7</span>
+            </div>
+            <span class="badge warn">Integration Plan Pending</span>
+          </li>
+          <li class="prog-row-item">
+            <div class="prog-status-dot" style="background:#c0c0c0"></div>
+            <div class="prog-info">
+              <div class="prog-name">TITAN · Nuclear Fusion Micro-Thruster Array</div>
+              <div class="prog-meta">Operational · Program of Record · Mission use: Jun 2025</div>
+            </div>
+            <div class="prog-right">
+              <span class="trl-badge" style="background:var(--ok-bg);color:var(--ok)">TRL 9</span>
+              <span class="trl-badge" style="background:var(--ok-bg);color:var(--ok)">MRL 9</span>
+            </div>
+            <span class="badge ok">Transitioned</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card s5">
+        <div class="card-hd">My Priority Tasks <span class="card-hd-link">View All 5 →</span></div>
+        <ul class="task-list">
+          <li class="task-item">
+            <div class="task-check"></div>
+            <div class="task-body">
+              <div class="task-name">Log Q2 User Engagements — MIMAS</div>
+              <div class="task-detail">0.3/qtr · 1 engagement total · Target ≥ 4/qtr · KPI #10 breach</div>
+              <div class="task-due today">Due Today</div>
+            </div>
+            <span class="badge bad">High</span>
+          </li>
+          <li class="task-item">
+            <div class="task-check"></div>
+            <div class="task-body">
+              <div class="task-name">Complete Integration Plan — RHEA Transition Record</div>
+              <div class="task-detail">Signed + Funded Receiver confirmed · Integration plan outstanding</div>
+              <div class="task-due today">Due Today</div>
+            </div>
+            <span class="badge bad">High</span>
+          </li>
+          <li class="task-item">
+            <div class="task-check"></div>
+            <div class="task-body">
+              <div class="task-name">Submit DIONE Midterm Corrective Action</div>
+              <div class="task-detail">81% pass rate (13/16) · Below 85% target · Cryo protocol review needed</div>
+              <div class="task-due soon">Due Tomorrow</div>
+            </div>
+            <span class="badge warn">Med</span>
+          </li>
+          <li class="task-item">
+            <div class="task-check"></div>
+            <div class="task-body">
+              <div class="task-name">Open Transition Record — ENCELADUS</div>
+              <div class="task-detail">No transition record started · No transition owner named</div>
+              <div class="task-due soon">Due Fri Jun 20</div>
+            </div>
+            <span class="badge warn">Med</span>
+          </li>
+          <li class="task-item">
+            <div class="task-check"></div>
+            <div class="task-body">
+              <div class="task-name">Publish Q2 KPI Snapshot — Saturn Portfolio</div>
+              <div class="task-detail">Scheduled monthly snapshot · Executive review Tue · 2 data gaps flagged</div>
+              <div class="task-due later">Due Jun 23</div>
+            </div>
+            <span class="badge neu">Ops</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ═══ RELATED OBJECTS PANELS ═══ -->
+    <div class="section-label">Related Object Activity</div>
+    <div class="row c3" style="margin-bottom:14px">
+
+      <!-- TRL Assessments -->
+      <div class="card">
+        <div class="card-hd">Recent TRL Assessments <span class="card-hd-link">+ New</span></div>
+        <div class="activity-item">
+          <div class="activity-icon">🔬</div>
+          <div class="activity-body">
+            <div class="activity-name">ENCELADUS · TRL 2 → 3</div>
+            <div class="activity-detail">Casimir nano-cavity power cell — proof of concept validated analytically. Stacked cavity geometry pivot underway.</div>
+            <div class="activity-time">Apr 1, 2026 · Assessed by Quantum Physics Lab</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">🔬</div>
+          <div class="activity-body">
+            <div class="activity-name">TETHYS · TRL 4 → 5</div>
+            <div class="activity-detail">Nanobot swarm validated in lunar regolith simulant at 1/100 scale. Full-scale prototype authorized.</div>
+            <div class="activity-time">Jan 1, 2026 · Assessed by ISRU Lab</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">🔬</div>
+          <div class="activity-body">
+            <div class="activity-name">MIMAS · TRL 1 → 2</div>
+            <div class="activity-detail">Pulsar timing interferometry concept formulated and application to deep-space nav defined.</div>
+            <div class="activity-time">Feb 1, 2026 · Assessed by Astrodynamics Team</div>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <div class="prog-row">
+            <div class="prog-lbl"><span>TRL 1–3 (MIMAS, ENCELADUS)</span><span>2 programs</span></div>
+            <div class="prog-track"><div class="prog-fill bad" style="width:29%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-lbl"><span>TRL 4–6 (TETHYS, DIONE, IAPETUS)</span><span>3 programs</span></div>
+            <div class="prog-track"><div class="prog-fill warn" style="width:43%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-lbl"><span>TRL 7–9 (RHEA, TITAN)</span><span>2 programs</span></div>
+            <div class="prog-track"><div class="prog-fill ok" style="width:29%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Exams -->
+      <div class="card">
+        <div class="card-hd">Technical Exams <span class="card-hd-link">+ Schedule</span></div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--wa-bg)">⚠️</div>
+          <div class="activity-body">
+            <div class="activity-name">DIONE · Midterm Exam</div>
+            <div class="activity-detail">13/16 passed (81%) — below 85% target. Xenon protocol corrective action required.</div>
+            <div class="activity-time">Oct 1, 2025 · Administered by Biomedical Review Board</div>
+          </div>
+          <span class="badge warn">Watch</span>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--ok-bg)">✅</div>
+          <div class="activity-body">
+            <div class="activity-name">TITAN · Final Exam</div>
+            <div class="activity-detail">27/28 passed (96%) — all criteria met. Transition to Program of Record approved.</div>
+            <div class="activity-time">Jun 1, 2023 · Administered by Propulsion Tech Board</div>
+          </div>
+          <span class="badge ok">Pass</span>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:#fef9c3">📋</div>
+          <div class="activity-body">
+            <div class="activity-name">IAPETUS · Gate Review #2</div>
+            <div class="activity-detail">Scheduled Sep 2025 — CNT sail thermal criteria defined. 14 seats allocated.</div>
+            <div class="activity-time">Upcoming · Mojave Laser Array Test Range</div>
+          </div>
+          <span class="badge neu">Scheduled</span>
+        </div>
+        <div style="margin-top:12px;padding:10px;background:#f8fbff;border-radius:10px;border:1px solid var(--bd)">
+          <div style="display:flex;justify-content:space-between;font-size:12px">
+            <span style="color:var(--mu)">Saturn Portfolio Exam Pass Rate</span>
+            <span style="font-weight:700;color:var(--ok)">91%</span>
+          </div>
+          <div class="prog-track" style="margin-top:6px;height:8px">
+            <div class="prog-fill ok" style="width:91%"></div>
+          </div>
+          <div style="font-size:10px;color:var(--mu);margin-top:5px">125 passed · 13 below threshold · Target ≥ 85%</div>
+        </div>
+      </div>
+
+      <!-- Evidence Log -->
+      <div class="card">
+        <div class="card-hd">Evidence Log <span class="card-hd-link">+ Log Evidence</span></div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--er-bg)">📉</div>
+          <div class="activity-body">
+            <div class="activity-name">ENCELADUS · Energy Output Below Threshold</div>
+            <div class="activity-detail">Single-cavity prototype: 11W vs. 500W target. Pivot to stacked 10,000-cavity array geometry.</div>
+            <div class="activity-time">Feb 18, 2026 · Decision: Pivot · 17-day cycle</div>
+          </div>
+          <span class="badge bad">Pivot</span>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--ok-bg)">🔄</div>
+          <div class="activity-body">
+            <div class="activity-name">DIONE · Phase-I Xenon Protocol Revised</div>
+            <div class="activity-detail">Revised protein-lock protocol: zero neurological impact, 94% metabolic suppression. Continue to human-rated prototype.</div>
+            <div class="activity-time">May 14, 2025 · Decision: Continue · 13-day cycle</div>
+          </div>
+          <span class="badge ok">Continue</span>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--ok-bg)">🏁</div>
+          <div class="activity-body">
+            <div class="activity-name">TITAN · Post-Fielding Assessment</div>
+            <div class="activity-detail">61% transit time reduction vs. chemical baseline. 44% crew radiation exposure reduction. Full fielding sustained.</div>
+            <div class="activity-time">Oct 8, 2024 · Decision: Continue · 7-day cycle</div>
+          </div>
+          <span class="badge ok">Resolved</span>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--mu);padding:8px 10px;background:#f8fbff;border-radius:8px;border:1px solid var(--bd)">
+          <strong style="color:var(--p)">30% pivot rate</strong> — 3 pivoted · 7 continue · 0 terminated<br/>Median time to decision: <strong style="color:var(--ok)">16 days</strong>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ UPE + TRANSITIONS + MRL ═══ -->
+    <div class="row c3" style="margin-bottom:14px">
+
+      <!-- User Partner Engagement -->
+      <div class="card">
+        <div class="card-hd">User/Partner Engagement Log <span class="card-hd-link">+ Log</span></div>
+        <div class="quick-form" style="margin-bottom:12px">
+          <div class="form-row">
+            <select class="form-select">
+              <option>Select Program…</option>
+              <option>MIMAS · Gravitational Wave Nav</option>
+              <option>ENCELADUS · Zero-Point Energy</option>
+              <option>TETHYS · Nanofabrication Swarm</option>
+              <option>DIONE · Cryo-Hibernation Pod</option>
+              <option>IAPETUS · Light Sail Accelerator</option>
+              <option>RHEA · Quantum Comms Array</option>
+              <option>TITAN · Fusion Thruster</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <select class="form-select">
+              <option>Engagement Type…</option>
+              <option>User / Operator</option>
+              <option>Acquirer / Program Office</option>
+              <option>Maintainer / Sustainment</option>
+              <option>Cyber / Mission Partner</option>
+            </select>
+            <button class="form-btn">Log</button>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">🤝</div>
+          <div class="activity-body">
+            <div class="activity-name">RHEA · Deep Space Operator Workshop</div>
+            <div class="activity-detail">25 Space Force Delta 8 and NASA DSN operators · Comms CONOPS validated</div>
+            <div class="activity-time">Jul 1, 2024</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">🤝</div>
+          <div class="activity-body">
+            <div class="activity-name">TITAN · Post-Fielding Operational Assessment</div>
+            <div class="activity-detail">48 crew members · Mission range and survivability outcomes documented</div>
+            <div class="activity-time">Sep 1, 2025</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--er-bg)">⚠️</div>
+          <div class="activity-body">
+            <div class="activity-name">MIMAS · Engagement Deficit</div>
+            <div class="activity-detail">1 total engagement (0.3/qtr) · KPI #10 breach · No Q2 contacts scheduled</div>
+            <div class="activity-time">Action required</div>
+          </div>
+          <span class="badge bad">Breach</span>
+        </div>
+      </div>
+
+      <!-- Project Transitions -->
+      <div class="card">
+        <div class="card-hd">Project Transitions <span class="card-hd-link">+ New Transition</span></div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--ok-bg)">🚀</div>
+          <div class="activity-body">
+            <div class="activity-name">TITAN · Program of Record</div>
+            <div class="activity-detail">Transition owner: Adm. S. Okafor · All agreements signed · Integration plan complete · Stennis Space Center</div>
+            <div class="activity-time">Mission use: Jun 2025</div>
+          </div>
+          <span class="badge ok">Complete</span>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:#eaf4fd">📝</div>
+          <div class="activity-body">
+            <div class="activity-name">RHEA · Program of Record</div>
+            <div class="activity-detail">Owner: Maj. Gen. P. Nkosi · Signed + Funded Receiver confirmed · Integration plan outstanding · Goldstone DSC</div>
+            <div class="activity-time">Integration plan due Q3 FY26</div>
+          </div>
+          <span class="badge warn">In Progress</span>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon" style="background:var(--wa-bg)">⏳</div>
+          <div class="activity-body">
+            <div class="activity-name">IAPETUS · Operational Experiment</div>
+            <div class="activity-detail">Owner: Dr. K. Osei · No agreements signed · No funded receiver · Mojave Laser Array</div>
+            <div class="activity-time">Transition commitment not yet started</div>
+          </div>
+          <span class="badge bad">Not Committed</span>
+        </div>
+        <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px">
+          <div style="padding:8px;background:#f8fbff;border-radius:8px;border:1px solid var(--bd);text-align:center">
+            <div style="font-size:20px;font-weight:800;color:var(--wa)">67%</div>
+            <div style="color:var(--mu);margin-top:2px">Commitment Rate</div>
+          </div>
+          <div style="padding:8px;background:#f8fbff;border-radius:8px;border:1px solid var(--bd);text-align:center">
+            <div style="font-size:20px;font-weight:800;color:var(--ok)">100%</div>
+            <div style="color:var(--mu);margin-top:2px">Conversion Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insights Feed -->
+      <div class="card">
+        <div class="card-hd">Insights &amp; Recommended Actions</div>
+
+        <div class="insight-item">
+          <div class="insight-icon">🔴</div>
+          <div class="insight-body">
+            <div class="insight-title">MIMAS has only 1 total user engagement</div>
+            <div style="font-size:11px;color:var(--mu);margin-top:3px">KPI #10 breach — 0.3/qtr vs. ≥ 4/qtr target · JPL and Space Force contacts needed</div>
+            <div class="insight-action">→ Schedule engagement now</div>
+          </div>
+        </div>
+
+        <div class="insight-item" style="background:#fffaf5;border-color:#fde68a">
+          <div class="insight-icon">🟡</div>
+          <div class="insight-body">
+            <div class="insight-title">RHEA integration plan outstanding — blocks Transition Commitment</div>
+            <div style="font-size:11px;color:var(--mu);margin-top:3px">Signed + funded receiver confirmed · Integration plan is the only remaining item</div>
+            <div class="insight-action">→ Open RHEA Project Transition record</div>
+          </div>
+        </div>
+
+        <div class="insight-item" style="background:#f0fdf4;border-color:#bbf7d0">
+          <div class="insight-icon">🟢</div>
+          <div class="insight-body">
+            <div class="insight-title">RHEA cleared TRL 8 — auto-set to Transitioning</div>
+            <div style="font-size:11px;color:var(--mu);margin-top:3px">Update_Program_Status_from_TRL flow fired automatically on TRL record save</div>
+            <div class="insight-action">→ Schedule executive transition review</div>
+          </div>
+        </div>
+
+        <div class="insight-item">
+          <div class="insight-icon">📊</div>
+          <div class="insight-body">
+            <div class="insight-title">Q2 KPI snapshot due in 4 days</div>
+            <div style="font-size:11px;color:var(--mu);margin-top:3px">Executive review Jun 23 · MIMAS and ENCELADUS have data gaps</div>
+            <div class="insight-action">→ Run data quality check</div>
+          </div>
+        </div>
+
+        <div class="insight-item">
+          <div class="insight-icon">⚡</div>
+          <div class="insight-body">
+            <div class="insight-title">ENCELADUS and TETHYS MRL lagging — High supply chain risk</div>
+            <div style="font-size:11px;color:var(--mu);margin-top:3px">No domestic manufacturing base for nano-cavity wafer or nanobot swarm production at scale</div>
+            <div class="insight-action">→ Log MRL assessment and flag supply risk</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <p style="font-size:11px;color:var(--mu);text-align:center;margin-top:4px">
+      Portfolio Manager · Callisto R&amp;D Framework · Saturn Series · 7 Programs · <code>docs/employee-experience-prototype.html</code>
+    </p>
+
+  </main>
+</div>
+</body>
+</html>

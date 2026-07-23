@@ -1,0 +1,400 @@
+<template>
+  <div class="exec-page">
+    <template if:true={error}>
+      <div class="err-banner">{error}</div>
+    </template>
+
+    <!-- ══ HERO ══ -->
+    <section class="hero" style={heroStyle}>
+      <div class="hero-inner slds-size_1-of-1">
+        <div class="hero-left">
+          <h1>{heroTitle}</h1>
+          <p class="hero-sub">{heroSubtitle}</p>
+          <div class="hero-meta">
+            <span class="chip active">FY26 Q2</span>
+            <button type="button" class={allProgramsChipClass} data-filter-type="scope" data-filter-value="ALL" onclick={handleFilterAction} aria-label="Filter: All Programs">All Programs</button>
+            <button type="button" class={activeProgramsChipClass} data-filter-type="scope" data-filter-value="ACTIVE" onclick={handleFilterAction} aria-label="Filter: Active Programs">{activeProgramCount} Active Programs</button>
+            <button type="button" class={transitionProgramsChipClass} data-filter-type="scope" data-filter-value="TRANSITION" onclick={handleFilterAction} aria-label="Filter: Transition Focus">Transition Focus</button>
+            <button type="button" class="chip" onclick={handleResetFilters} aria-label="Reset filters">Reset Filters</button>
+          </div>
+          <div class="hero-stats">
+            <button class={activeProgramsStatClass} data-filter-type="scope" data-filter-value="ACTIVE" onclick={handleFilterAction} aria-label="Filter by Active Programs">
+              <div class="hero-stat-val slds-line-height_reset">{activeProgramCount}</div>
+              <div class="hero-stat-lbl">Active Programs</div>
+            </button>
+            <div class="hero-stat">
+              <div class="hero-stat-val slds-line-height_reset">{totalEngagements}</div>
+              <div class="hero-stat-lbl">Tracked Engagements</div>
+            </div>
+            <button class={transitionedProgramsStatClass} data-filter-type="scope" data-filter-value="TRANSITION" onclick={handleFilterAction} aria-label="Filter by Transition Programs">
+              <div class="hero-stat-val slds-line-height_reset">{scopedProgramsTransitioned}</div>
+              <div class="hero-stat-lbl">Programs Transitioned</div>
+            </button>
+            <div class="hero-stat">
+              <div class="hero-stat-val slds-line-height_reset">{scopedTransitionsCommitted}</div>
+              <div class="hero-stat-lbl">Commitments Met</div>
+            </div>
+          </div>
+          <template if:true={hasDrill}>
+            <div class="hero-drill">
+              <span class="chip active">Drill: {drillLabel}</span>
+              <button class="chip" onclick={clearDrill}>Clear Drill</button>
+            </div>
+          </template>
+        </div>
+        <img class="hero-logo slds-shrink-none" src={resolvedLogoUrl} alt="Callisto" />
+      </div>
+    </section>
+
+    <main class="wrap">
+
+      <!-- ══ PHASE STRIP ══ -->
+      <div class="phase-strip">
+        <template for:each={scopedPipeline} for:item="phase">
+          <button key={phase.label} class="phase-item" data-filter-type="phase" data-filter-value={phase.label} onclick={handleFilterAction} aria-label={phase.label}>
+            <div class="phase-count slds-line-height_reset">{phase.count}</div>
+            <div class="phase-name">{phase.label}</div>
+          </button>
+        </template>
+      </div>
+
+      <template if:true={deepDive}>
+        <aside class="deep-dive">
+          <div class="card-hd">
+            <span>{deepDive.title}</span>
+            <span class={deepDive.severityClass}>Priority</span>
+            <button class="card-link-btn" onclick={closeDeepDive}>Close</button>
+          </div>
+          <ul class="deep-list">
+            <template for:each={deepDive.rows} for:item="row">
+              <li key={row.key} class="deep-item">
+                <div class="deep-item-top">
+                  <span class="deep-name">{row.name}</span>
+                  <span class="status-pill slds-shrink-none">{row.status}</span>
+                </div>
+                <div class="deep-context">{row.contextLabel}</div>
+                <div class="deep-detail">{row.detailText}</div>
+                <template if:true={row.hasRecordUrl}>
+                  <button class="card-link-btn" data-record-id={row.programId} onclick={handleGoToProgram}>Go to Program</button>
+                </template>
+              </li>
+            </template>
+          </ul>
+        </aside>
+      </template>
+
+      <!-- ══ PROGRAMS AT A GLANCE ══ -->
+      <div class="section-label">Programs at a Glance</div>
+      <div class="row c2">
+
+        <div class="card">
+          <div class="card-hd">Recent Programs</div>
+          <template if:true={hasPrograms}>
+            <ul class="prog-list">
+              <template for:each={programRows} for:item="prog">
+                <li key={prog.id}>
+                  <div>
+                    <div class="prog-name">{prog.name}</div>
+                    <div class="prog-detail">{prog.status}</div>
+                  </div>
+                  <span class={prog.pillClass}>{prog.status}</span>
+                </li>
+              </template>
+            </ul>
+          </template>
+          <template if:false={hasPrograms}>
+            <div class="empty-state">No programs match the current filters.</div>
+          </template>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">Portfolio Mix</div>
+          <div class="kpi-lbl" style="margin-bottom:6px">Fund Allocation</div>
+          <div class="stack-bar">
+            <template for:each={fundAllocationItems} for:item="seg">
+              <div key={seg.label} class="stack-seg" style={seg.segStyle}>{seg.pct}%</div>
+            </template>
+          </div>
+          <div class="stack-legend" style="margin-bottom:16px">
+            <template for:each={fundAllocationItems} for:item="seg">
+              <div key={seg.label} class="stack-leg-item">
+                <div class="swatch slds-shrink-none" style={seg.dotStyle}></div>
+                {seg.label} ({seg.count})
+              </div>
+            </template>
+          </div>
+          <div class="kpi-lbl" style="margin-bottom:6px">Portfolio Balance</div>
+          <div class="stack-bar">
+            <template for:each={balanceItems} for:item="seg">
+              <div key={seg.label} class="stack-seg" style={seg.segStyle}>{seg.pct}%</div>
+            </template>
+          </div>
+          <div class="stack-legend">
+            <template for:each={balanceItems} for:item="seg">
+              <div key={seg.label} class="stack-leg-item">
+                <div class="swatch slds-shrink-none" style={seg.dotStyle}></div>
+                {seg.label} ({seg.count})
+              </div>
+            </template>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ══ SPEED & ACCELERATION ══ -->
+      <div class="section-label">Speed &amp; Acceleration</div>
+      <div class="toolbar-row">
+        <button class={currentTrendClass} data-filter-type="trendWindow" data-filter-value="CURRENT" onclick={handleFilterAction}>Current Window</button>
+        <button class={baselineTrendClass} data-filter-type="trendWindow" data-filter-value="BASELINE" onclick={handleFilterAction}>Baseline Window</button>
+        <button class={compareModeClass} data-filter-type="compareMode" data-filter-value="YOY" onclick={handleFilterAction}>Compare Mode</button>
+      </div>
+      <div class="row c3">
+
+        <div class="card">
+          <div class="card-hd"><span>Speed KPI</span><button class="card-link-btn" data-drill="speed" data-title="Speed & Acceleration" onclick={openKpiDrill} aria-label="Drill into Speed &amp; Acceleration">Drill</button></div>
+          <div class="kpi-lbl">Mission Need → Funded Start</div>
+          <div class="kpi-val slds-line-height_reset">{kpi3}<span class="kpi-unit"> days</span></div>
+          <div class="kpi-trend">{trendWindowLabel} — target &lt; 180 days</div>
+          <template if:true={kpi3Badge}>
+            <span class={kpi3Badge.cls}>{kpi3Badge.text}</span>
+          </template>
+        </div>
+
+        <div class="card">
+          <div class="kpi-lbl">Award → First Prototype</div>
+          <div class="kpi-val slds-line-height_reset">{kpi4}<span class="kpi-unit"> mo</span></div>
+          <div class="kpi-trend">Avg across programs with prototype data — target ≤ 12 months</div>
+          <template if:true={kpi4Badge}>
+            <span class={kpi4Badge.cls}>{kpi4Badge.text}</span>
+          </template>
+        </div>
+
+        <div class="card">
+          <div class="kpi-lbl">Demo → Mission Use</div>
+          <div class="kpi-val slds-line-height_reset">{kpi5}<span class="kpi-unit"> mo</span></div>
+          <div class="kpi-trend">Avg across programs with complete cycles — target ≤ 12 months</div>
+          <template if:true={kpi5Badge}>
+            <span class={kpi5Badge.cls}>{kpi5Badge.text}</span>
+          </template>
+        </div>
+
+      </div>
+
+      <!-- ══ TECHNICAL MATURITY ══ -->
+      <div class="section-label">Technical &amp; Manufacturing Maturity</div>
+      <div class="row c3">
+
+        <div class="card">
+          <div class="kpi-lbl">TRL Gain per Assessment</div>
+          <div class="kpi-val slds-line-height_reset">+{kpi6}<span class="kpi-unit"> TRL</span></div>
+          <div class="kpi-trend">Avg TRL gain across all assessments</div>
+          <template if:true={kpi6Badge}>
+            <span class={kpi6Badge.cls}>{kpi6Badge.text}</span>
+          </template>
+          <div style="margin-top:14px">
+            <template for:each={trlBands} for:item="band">
+              <div key={band.key} class="prog-row">
+                <div class="prog-lbl">
+                  <span>{band.label}</span>
+                  <span>{band.count} programs</span>
+                </div>
+                <div class="prog-track"><div class="prog-fill" style={band.barStyle}></div></div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="kpi-lbl">MRL Gain per Assessment</div>
+          <div class="kpi-val slds-line-height_reset">+{kpi7}<span class="kpi-unit"> MRL</span></div>
+          <div class="kpi-trend">Avg MRL gain across all assessments</div>
+          <template if:true={kpi7Badge}>
+            <span class={kpi7Badge.cls}>{kpi7Badge.text}</span>
+          </template>
+          <table class="rl-table slds-size_1-of-1" style="margin-top:14px">
+            <thead>
+              <tr><th>Program</th><th>TRL</th><th>MRL</th></tr>
+            </thead>
+            <tbody>
+              <template for:each={readinessRows} for:item="row">
+                <tr key={row.programId}>
+                  <td>{row.name}</td>
+                  <td class={row.trlClass}>{row.trlDisplay}</td>
+                  <td class={row.mrlClass}>{row.mrlDisplay}</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="kpi-lbl">Technical Exam Pass Rate</div>
+          <div class="kpi-val slds-line-height_reset">{kpi8}<span class="kpi-unit">%</span></div>
+          <div class="kpi-trend">Avg pass rate across all technical exams — target ≥ 85%</div>
+          <template if:true={kpi8Badge}>
+            <span class={kpi8Badge.cls}>{kpi8Badge.text}</span>
+          </template>
+          <svg viewBox="0 0 180 90" style="width:100%;display:block;margin-top:14px" role="img" aria-label="Technical exam pass rate gauge">
+            <path d="M 20 80 A 70 70 0 0 1 160 80" fill="none" stroke="#e4eef8" stroke-width="14" stroke-linecap="round"/>
+            <path d={kpi8GaugePath} fill="none" stroke="#16a34a" stroke-width="14" stroke-linecap="round"/>
+            <text x="90" y="76" text-anchor="middle" font-size="22" font-weight="800" fill="#1a2745">{kpi8}%</text>
+            <text x="90" y="90" text-anchor="middle" font-size="10" fill="#5a6e92">Pass Rate</text>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- ══ PORTFOLIO HEALTH ══ -->
+      <div class="section-label">Portfolio Health &amp; Stakeholder Engagement</div>
+      <div class="row c2">
+
+        <div class="card">
+          <div class="kpi-lbl">Evidence-based Pivot or Continue Rate</div>
+          <div class="kpi-val slds-line-height_reset">{evidenceTotal}<span class="kpi-unit"> decisions</span></div>
+          <div class="kpi-trend">Avg {evidenceAvgDays} days from evidence to decision</div>
+          <span class="badge ok">Healthy — evidence-driven decisions</span>
+          <div class="ev-grid" style="margin-top:14px">
+            <div class="ev-box ev-continue">
+              <div class="ev-count">{evidenceContinue}</div>
+              <div class="ev-label">Continue</div>
+              <div class="ev-pct">{evidenceContinuePct}%</div>
+            </div>
+            <div class="ev-box ev-pivot">
+              <div class="ev-count">{evidencePivot}</div>
+              <div class="ev-label">Pivot</div>
+              <div class="ev-pct">{evidencePivotPct}%</div>
+            </div>
+          </div>
+          <div class="ev-note">Median time to decision: <strong>{evidenceAvgDays} days</strong></div>
+        </div>
+
+        <div class="card">
+          <div class="kpi-lbl">User &amp; Partner Engagements</div>
+          <div class="kpi-val slds-line-height_reset">{totalEngagements}<span class="kpi-unit"> total</span></div>
+          <div class="kpi-trend">Engagement events across all active programs</div>
+          <div style="margin-top:14px">
+            <template for:each={upeRows} for:item="upe">
+              <div key={upe.engagementType} class="upe-row">
+                <div class="upe-type">{upe.engagementType}</div>
+                <div class="upe-bar slds-shrink-none"><div class="upe-fill" style={upe.barStyle}></div></div>
+                <div class="upe-count">{upe.count} · {upe.participants} pax</div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ══ TRANSITION PIPELINE ══ -->
+      <div class="section-label">Transition Pipeline</div>
+      <div class="row c3">
+
+        <div class="card">
+          <div class="card-hd"><span>Transition KPI</span><button class="card-link-btn" data-drill="transition" data-title="Transition Pipeline" onclick={openKpiDrill} aria-label="Drill into Transition Pipeline">Drill</button></div>
+          <div class="kpi-lbl">Transition Commitment Rate</div>
+          <div class="kpi-val slds-line-height_reset">{kpi11Rate}<span class="kpi-unit">%</span></div>
+          <div class="kpi-trend">{scopedTransitionsCommitted} of {kpi11Total} transitions fully committed</div>
+          <template if:true={kpi11Badge}>
+            <span class={kpi11Badge.cls}>{kpi11Badge.text}</span>
+          </template>
+          <table class="tr-table slds-size_1-of-1" style="margin-top:14px">
+            <thead>
+              <tr><th>Program</th><th>Type</th><th>Signed</th><th>Committed</th></tr>
+            </thead>
+            <tbody>
+              <template for:each={transitionRows} for:item="tr">
+                <tr key={tr.programName}>
+                  <td>{tr.programName}</td>
+                  <td class="tr-type">{tr.transitionType}</td>
+                  <td><span class={tr.signedCls}>{tr.signedIcon}</span></td>
+                  <td><span class={tr.committedCls}>{tr.committedIcon}</span></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="kpi-lbl">Prototype → Transition Conversion</div>
+          <div class="kpi-val slds-line-height_reset">{kpi12Rate}<span class="kpi-unit">%</span></div>
+          <div class="kpi-trend">{programsTransitioned} programs successfully transitioned — target ≥ 70%</div>
+          <template if:true={kpi12Badge}>
+            <span class={kpi12Badge.cls}>{kpi12Badge.text}</span>
+          </template>
+          <div style="margin-top:14px">
+            <template for:each={transitionTypeSummary} for:item="tt">
+              <div key={tt.label} class="prog-row">
+                <div class="prog-lbl">
+                  <span>{tt.label}</span>
+                  <span>{tt.count} programs</span>
+                </div>
+                <div class="prog-track"><div class="prog-fill" style={tt.barStyle}></div></div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="kpi-lbl">Time Demo → Mission Use</div>
+          <div class="kpi-val slds-line-height_reset">{kpi5}<span class="kpi-unit"> mo</span></div>
+          <div class="kpi-trend">Avg across programs with complete demo-to-mission cycles — target ≤ 12 months</div>
+          <template if:true={kpi5Badge}>
+            <span class={kpi5Badge.cls}>{kpi5Badge.text}</span>
+          </template>
+        </div>
+
+      </div>
+
+      <!-- ══ OPERATIONAL OUTCOMES ══ -->
+      <div class="section-label">Operational Outcomes</div>
+      <div class="row c2">
+
+        <div class="card">
+          <div class="kpi-lbl">Operational Index</div>
+          <div class="gauge-wrap">
+            <svg viewBox="0 0 180 100" style="width:100%;max-width:220px;display:block;margin:0 auto" role="img" aria-label="Operational index gauge">
+              <path d="M 20 80 A 70 70 0 0 1 160 80" fill="none" stroke="#e4eef8" stroke-width="16" stroke-linecap="round"/>
+              <path d={kpi14GaugePath} fill="none" stroke="#16a34a" stroke-width="16" stroke-linecap="round"/>
+              <text x="90" y="80" text-anchor="middle" font-size="28" font-weight="800" fill="#1a2745">{kpi14}</text>
+              <text x="90" y="96" text-anchor="middle" font-size="10" fill="#5a6e92">avg · {programsTransitioned} programs</text>
+            </svg>
+          </div>
+          <span class="badge ok" style="display:block;text-align:center;margin-top:10px">
+            {programsTransitioned} programs at full operational
+          </span>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            Open KPI Watches
+            <span class="card-hd-link">{openWatchCount} items</span>
+          </div>
+          <div class="toolbar-row">
+            <button class={watchAllClass} data-filter-type="watchSeverity" data-filter-value="ALL" onclick={handleFilterAction}>All</button>
+            <button class={watchHighClass} data-filter-type="watchSeverity" data-filter-value="High" onclick={handleFilterAction}>High</button>
+            <button class={watchMedClass} data-filter-type="watchSeverity" data-filter-value="Med" onclick={handleFilterAction}>Med</button>
+            <button class={watchLowClass} data-filter-type="watchSeverity" data-filter-value="Low" onclick={handleFilterAction}>Low</button>
+          </div>
+          <template if:true={hasOpenWatches}>
+            <template for:each={openWatches} for:item="watch">
+              <div key={watch.key} class="breach-row">
+                <div>
+                  <div class="breach-kpi">{watch.kpiLabel}</div>
+                  <div class="breach-name">{watch.name}</div>
+                  <div class="breach-detail">{watch.detail}</div>
+                </div>
+                <button class="card-link-btn" data-watch-key={watch.key} onclick={openWatchDrill} aria-label="View programs impacted by this watch">Impacted</button>
+                <span class={watch.badgeCls}>{watch.badge}</span>
+              </div>
+            </template>
+          </template>
+          <template if:false={hasOpenWatches}>
+            <div class="all-ok">All KPIs on target ✓</div>
+          </template>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</template>

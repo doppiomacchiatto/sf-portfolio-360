@@ -1,0 +1,81 @@
+<template>
+    <lightning-card title="Portfolio Lead Workbench" icon-name="standard:dashboard">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <p class="slds-text-body_small slds-text-color_weak">
+                Program-centric command center for active programs, open tasks, and risk cases. (stacked layout)
+            </p>
+        </div>
+    </lightning-card>
+
+    <div class="slds-grid slds-wrap slds-gutters slds-m-top_medium">
+        <div class="slds-col slds-size_1-of-1">
+            <lightning-card title="My Active Programs" icon-name="standard:account_plan">
+                <div class="slds-p-horizontal_small slds-p-bottom_small">
+                    <lightning-datatable
+                        key-field="id"
+                        data={programs}
+                        columns={programColumns}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+            </lightning-card>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1">
+            <lightning-card title="Open Risk Cases" icon-name="standard:case">
+                <div class="slds-p-horizontal_small slds-p-bottom_small">
+                    <lightning-datatable
+                        key-field="id"
+                        data={risks}
+                        columns={riskColumns}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+            </lightning-card>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1">
+            <lightning-card title="My Open Tasks" icon-name="standard:task2">
+                <div class="slds-p-horizontal_small slds-p-top_small">
+                    <lightning-button
+                        variant={allOpenFilterVariant}
+                        label="All Open"
+                        data-filter="ALL_OPEN"
+                        onclick={handleTaskFilterChange}
+                        class="slds-m-right_x-small">
+                    </lightning-button>
+                    <lightning-button
+                        variant={overdueFilterVariant}
+                        label="Overdue"
+                        data-filter="OVERDUE"
+                        onclick={handleTaskFilterChange}
+                        class="slds-m-right_x-small">
+                    </lightning-button>
+                    <lightning-button
+                        variant={highPriorityFilterVariant}
+                        label="High Priority"
+                        data-filter="HIGH_PRIORITY"
+                        onclick={handleTaskFilterChange}
+                        class="slds-m-right_small">
+                    </lightning-button>
+                    <lightning-button
+                        variant="brand"
+                        label="New Task"
+                        onclick={handleNewTask}>
+                    </lightning-button>
+                </div>
+                <div class="slds-p-horizontal_small slds-p-bottom_small">
+                    <lightning-datatable
+                        key-field="id"
+                        data={filteredTasks}
+                        columns={taskColumns}
+                        draft-values={draftValues}
+                        onsave={handleTaskSave}
+                        onrowaction={handleTaskRowAction}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </div>
+            </lightning-card>
+        </div>
+    </div>
+</template>

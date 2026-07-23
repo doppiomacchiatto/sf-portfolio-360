@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Operational_Outcomes__c</fullName>
+    <description>KPI #14: Mission-specific operational improvements delivered by this program. Multi-select — choose all that apply.</description>
+    <label>Operational Outcomes</label>
+    <required>false</required>
+    <type>MultiselectPicklist</type>
+    <visibleLines>4</visibleLines>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Improvement Against Baseline</fullName><default>false</default><label>Improvement Against Baseline</label></value>
+            <value><fullName>Reduced Latency</fullName><default>false</default><label>Reduced Latency</label></value>
+            <value><fullName>Improved Detection</fullName><default>false</default><label>Improved Detection</label></value>
+            <value><fullName>Increased Autonomy and Resilience</fullName><default>false</default><label>Increased Autonomy and Resilience</label></value>
+            <value><fullName>Lower Cost Per Outcome</fullName><default>false</default><label>Lower Cost Per Outcome</label></value>
+            <value><fullName>Better Coverage</fullName><default>false</default><label>Better Coverage</label></value>
+            <value><fullName>Reduced Manpower</fullName><default>false</default><label>Reduced Manpower</label></value>
+            <value><fullName>Increased Survivability</fullName><default>false</default><label>Increased Survivability</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

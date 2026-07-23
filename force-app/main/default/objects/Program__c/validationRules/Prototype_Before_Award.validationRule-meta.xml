@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prototype_Before_Award</fullName>
+    <active>true</active>
+    <description>First Prototype Date cannot be earlier than Award Date.</description>
+    <errorConditionFormula>AND(NOT(ISBLANK(First_Prototype_Date__c)), NOT(ISBLANK(Award_Date__c)), First_Prototype_Date__c &lt; Award_Date__c)</errorConditionFormula>
+    <errorDisplayField>First_Prototype_Date__c</errorDisplayField>
+    <errorMessage>First Prototype Date cannot be before Award Date.</errorMessage>
+</ValidationRule>

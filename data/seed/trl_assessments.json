@@ -1,0 +1,116 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_SIGMA_1" },
+      "Program__c": "@PRef_SIGMA",
+      "Assessment_Date__c": "2026-01-15",
+      "Current_TRL__c": 2,
+      "Previous_TRL__c": 1,
+      "Technology_Element__c": "Edge inferencing kernel"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_NEXUS_1" },
+      "Program__c": "@PRef_NEXUS",
+      "Assessment_Date__c": "2025-03-01",
+      "Current_TRL__c": 3,
+      "Previous_TRL__c": 2,
+      "Technology_Element__c": "Post-quantum key exchange"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_NEXUS_2" },
+      "Program__c": "@PRef_NEXUS",
+      "Assessment_Date__c": "2025-11-01",
+      "Current_TRL__c": 4,
+      "Previous_TRL__c": 3,
+      "Technology_Element__c": "Post-quantum key exchange"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_SHIELD_1" },
+      "Program__c": "@PRef_SHIELD",
+      "Assessment_Date__c": "2025-01-15",
+      "Current_TRL__c": 4,
+      "Previous_TRL__c": 3,
+      "Technology_Element__c": "Autonomous cyber response agent"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_SHIELD_2" },
+      "Program__c": "@PRef_SHIELD",
+      "Assessment_Date__c": "2025-11-01",
+      "Current_TRL__c": 5,
+      "Previous_TRL__c": 4,
+      "Technology_Element__c": "Autonomous cyber response agent"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_FORGE_1" },
+      "Program__c": "@PRef_FORGE",
+      "Assessment_Date__c": "2024-04-01",
+      "Current_TRL__c": 5,
+      "Previous_TRL__c": 4,
+      "Technology_Element__c": "Contested mesh protocol stack"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_FORGE_2" },
+      "Program__c": "@PRef_FORGE",
+      "Assessment_Date__c": "2025-01-15",
+      "Current_TRL__c": 6,
+      "Previous_TRL__c": 5,
+      "Technology_Element__c": "Contested mesh protocol stack"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_APEX_1" },
+      "Program__c": "@PRef_APEX",
+      "Assessment_Date__c": "2024-03-01",
+      "Current_TRL__c": 5,
+      "Previous_TRL__c": 4,
+      "Technology_Element__c": "Multi-domain sensor fusion algorithm"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_APEX_2" },
+      "Program__c": "@PRef_APEX",
+      "Assessment_Date__c": "2025-03-01",
+      "Current_TRL__c": 6,
+      "Previous_TRL__c": 5,
+      "Technology_Element__c": "Multi-domain sensor fusion algorithm"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_CLARITY_1" },
+      "Program__c": "@PRef_CLARITY",
+      "Assessment_Date__c": "2023-06-01",
+      "Current_TRL__c": 6,
+      "Previous_TRL__c": 5,
+      "Technology_Element__c": "Supply chain risk ML model"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_CLARITY_2" },
+      "Program__c": "@PRef_CLARITY",
+      "Assessment_Date__c": "2024-03-01",
+      "Current_TRL__c": 7,
+      "Previous_TRL__c": 6,
+      "Technology_Element__c": "Supply chain risk ML model"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_CLARITY_3" },
+      "Program__c": "@PRef_CLARITY",
+      "Assessment_Date__c": "2024-10-01",
+      "Current_TRL__c": 8,
+      "Previous_TRL__c": 7,
+      "Technology_Element__c": "Supply chain risk ML model"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_VECTOR_1" },
+      "Program__c": "@PRef_VECTOR",
+      "Assessment_Date__c": "2022-06-01",
+      "Current_TRL__c": 8,
+      "Previous_TRL__c": 7,
+      "Technology_Element__c": "Predictive maintenance sensor suite"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "TRef_VECTOR_2" },
+      "Program__c": "@PRef_VECTOR",
+      "Assessment_Date__c": "2023-02-01",
+      "Current_TRL__c": 9,
+      "Previous_TRL__c": 8,
+      "Technology_Element__c": "Predictive maintenance sensor suite"
+    }
+  ]
+}

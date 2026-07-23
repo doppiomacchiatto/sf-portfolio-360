@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_Award_to_Prototype_Months__c</fullName>
+    <description>KPI #4: Months from award to first relevant prototype/demo.</description>
+    <formula>IF(AND(NOT(ISBLANK(First_Prototype_Date__c)), NOT(ISBLANK(Award_Date__c))), (First_Prototype_Date__c - Award_Date__c) / 30, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
+    <label>Time Award to Prototype (Months)</label>
+    <precision>8</precision>
+    <scale>1</scale>
+    <type>Number</type>
+</CustomField>

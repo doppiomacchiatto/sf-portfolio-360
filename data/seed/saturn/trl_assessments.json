@@ -1,0 +1,108 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_MIMAS_1" },
+      "Program__c": "@PRef_MIMAS",
+      "Assessment_Date__c": "2026-02-01",
+      "Current_TRL__c": 2,
+      "Previous_TRL__c": 1,
+      "Technology_Element__c": "Pulsar timing interferometry array"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_ENCELADUS_1" },
+      "Program__c": "@PRef_ENCELADUS",
+      "Assessment_Date__c": "2025-11-01",
+      "Current_TRL__c": 2,
+      "Previous_TRL__c": 1,
+      "Technology_Element__c": "Casimir nano-cavity power cell"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_ENCELADUS_2" },
+      "Program__c": "@PRef_ENCELADUS",
+      "Assessment_Date__c": "2026-04-01",
+      "Current_TRL__c": 3,
+      "Previous_TRL__c": 2,
+      "Technology_Element__c": "Casimir nano-cavity power cell"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_TETHYS_1" },
+      "Program__c": "@PRef_TETHYS",
+      "Assessment_Date__c": "2025-06-01",
+      "Current_TRL__c": 4,
+      "Previous_TRL__c": 3,
+      "Technology_Element__c": "Autonomous regolith-to-metal nanobot swarm"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_TETHYS_2" },
+      "Program__c": "@PRef_TETHYS",
+      "Assessment_Date__c": "2026-01-01",
+      "Current_TRL__c": 5,
+      "Previous_TRL__c": 4,
+      "Technology_Element__c": "Autonomous regolith-to-metal nanobot swarm"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_DIONE_1" },
+      "Program__c": "@PRef_DIONE",
+      "Assessment_Date__c": "2024-09-01",
+      "Current_TRL__c": 5,
+      "Previous_TRL__c": 4,
+      "Technology_Element__c": "Xenon-protein metabolic suspension system"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_DIONE_2" },
+      "Program__c": "@PRef_DIONE",
+      "Assessment_Date__c": "2025-07-01",
+      "Current_TRL__c": 6,
+      "Previous_TRL__c": 5,
+      "Technology_Element__c": "Xenon-protein metabolic suspension system"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_IAPETUS_1" },
+      "Program__c": "@PRef_IAPETUS",
+      "Assessment_Date__c": "2024-06-01",
+      "Current_TRL__c": 5,
+      "Previous_TRL__c": 4,
+      "Technology_Element__c": "Graphene metamaterial light sail"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_IAPETUS_2" },
+      "Program__c": "@PRef_IAPETUS",
+      "Assessment_Date__c": "2025-05-01",
+      "Current_TRL__c": 6,
+      "Previous_TRL__c": 5,
+      "Technology_Element__c": "Graphene metamaterial light sail"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_RHEA_1" },
+      "Program__c": "@PRef_RHEA",
+      "Assessment_Date__c": "2024-09-01",
+      "Current_TRL__c": 7,
+      "Previous_TRL__c": 6,
+      "Technology_Element__c": "Entangled photon relay station"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_RHEA_2" },
+      "Program__c": "@PRef_RHEA",
+      "Assessment_Date__c": "2025-06-01",
+      "Current_TRL__c": 8,
+      "Previous_TRL__c": 7,
+      "Technology_Element__c": "Entangled photon relay station"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_TITAN_1" },
+      "Program__c": "@PRef_TITAN",
+      "Assessment_Date__c": "2023-04-01",
+      "Current_TRL__c": 8,
+      "Previous_TRL__c": 7,
+      "Technology_Element__c": "Helium-3 inertial confinement thruster module"
+    },
+    {
+      "attributes": { "type": "TRL__c", "referenceId": "STRef_TITAN_2" },
+      "Program__c": "@PRef_TITAN",
+      "Assessment_Date__c": "2024-01-01",
+      "Current_TRL__c": 9,
+      "Previous_TRL__c": 8,
+      "Technology_Element__c": "Helium-3 inertial confinement thruster module"
+    }
+  ]
+}

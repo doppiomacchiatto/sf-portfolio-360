@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exams_Pass_Cannot_Be_Negative</fullName>
+    <active>true</active>
+    <description>Exams passed cannot be a negative number.</description>
+    <errorConditionFormula>AND(NOT(ISBLANK(Exams_Pass__c)), Exams_Pass__c &lt; 0)</errorConditionFormula>
+    <errorDisplayField>Exams_Pass__c</errorDisplayField>
+    <errorMessage>Exams Passed cannot be negative.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<template>
+    <div class="tile">
+        <p class="kpi-value slds-line-height_reset">
+            <template if:true={hasValue}>{value}{suffix}</template>
+            <template if:false={hasValue}>—</template>
+        </p>
+        <p class="kpi-label">{label}</p>
+    </div>
+</template>

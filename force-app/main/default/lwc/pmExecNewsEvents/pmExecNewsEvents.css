@@ -1,0 +1,54 @@
+.events-card {
+    border: var(--slds-g-sizing-border-width-thin, 1px) solid var(--slds-c-events-card-border-color, #d6e3f1);
+    border-radius: var(--slds-c-events-card-border-radius, 0.75rem);
+    padding: var(--slds-g-spacing-medium, 1rem);
+    background: var(--slds-g-color-background-alt, #ffffff);
+}
+
+.events-header {
+    color: var(--slds-c-events-header-color, #5a6e92);
+    font-size: var(--slds-c-events-header-font-size, 0.78rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--slds-c-events-header-margin-bottom, 0.65rem);
+}
+
+.event-item {
+    border: var(--slds-g-sizing-border-width-thin, 1px) solid var(--slds-c-event-item-border-color, #e6eef8);
+    border-radius: var(--slds-c-event-item-border-radius, 0.625rem);
+    padding: var(--slds-c-event-item-padding, 0.9rem);
+    background: var(--slds-c-event-item-background, #f9fcff);
+}
+
+.event-title {
+    margin: var(--slds-g-spacing-none, 0);
+    color: var(--slds-c-event-title-color, #0f1f3d);
+    font-size: var(--slds-c-event-title-font-size, 1rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+}
+
+.event-description {
+    margin-top: var(--slds-c-event-description-margin-top, 0.45rem);
+    margin-right: var(--slds-g-spacing-none, 0);
+    margin-bottom: var(--slds-c-event-description-margin-bottom, 0.8rem);
+    margin-left: var(--slds-g-spacing-none, 0);
+    color: var(--slds-c-event-description-color, #41597e);
+    font-size: var(--slds-c-event-description-font-size, 0.9rem);
+    line-height: 1.4;
+}
+
+.event-button {
+    display: var(--slds-c-event-button-display, inline-block);
+    text-decoration: none;
+    border-radius: var(--slds-c-event-button-border-radius, 999px);
+    padding: var(--slds-c-event-button-padding, 0.45rem 0.9rem);
+    background: var(--slds-c-event-button-background, #0f1f3d);
+    color: var(--slds-g-color-text-inverse, #ffffff);
+    font-size: var(--slds-c-event-button-font-size, 0.82rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+}
+
+.event-button:hover {
+    background: var(--slds-c-event-button-hover-background, #102a54);
+}

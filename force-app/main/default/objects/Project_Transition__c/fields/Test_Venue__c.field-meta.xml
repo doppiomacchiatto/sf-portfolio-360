@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Test_Venue__c</fullName>
+    <description>KPI #11: Name of the test facility or environment designated for transition validation (e.g., JITC, range, operational unit).</description>
+    <label>Test Venue</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

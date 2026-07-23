@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Experiment_Cadence__c</fullName>
+    <description>KPI #5: Number of meaningful experiments, demos, tests, or digital/physical prototypes per quarter for this program.</description>
+    <label>Experiment Cadence (per Quarter)</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+</CustomField>

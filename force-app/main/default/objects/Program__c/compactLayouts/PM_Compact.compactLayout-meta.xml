@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PM_Compact</fullName>
+    <fields>Name</fields>
+    <fields>Program_Status__c</fields>
+    <fields>Fund_Allocation__c</fields>
+    <fields>Program_Balance__c</fields>
+    <fields>Award_Date__c</fields>
+    <label>PM Compact</label>
+</CompactLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <description>Auto-updates Program_Status__c to Transitioning when a TRL assessment reaches 7 or above.</description>
+    <label>Update Program Status from TRL</label>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>176</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Current_TRL__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </filters>
+        <object>TRL__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+        <connector>
+            <targetReference>Update_Program_Status</targetReference>
+        </connector>
+    </start>
+    <recordUpdates>
+        <name>Update_Program_Status</name>
+        <label>Update Program Status</label>
+        <locationX>176</locationX>
+        <locationY>168</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Program__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Program_Status__c</field>
+            <value>
+                <stringValue>Transitioning</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Program__c</object>
+    </recordUpdates>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program_Status__c</fullName>
+    <description>Lifecycle stage for the program.</description>
+    <label>Program Status</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Ideation</fullName><default>false</default><label>Ideation</label></value>
+            <value><fullName>Validated Need</fullName><default>false</default><label>Validated Need</label></value>
+            <value><fullName>Funded</fullName><default>false</default><label>Funded</label></value>
+            <value><fullName>Awarded</fullName><default>false</default><label>Awarded</label></value>
+            <value><fullName>Prototype</fullName><default>false</default><label>Prototype</label></value>
+            <value><fullName>Demo Complete</fullName><default>false</default><label>Demo Complete</label></value>
+            <value><fullName>Transitioning</fullName><default>false</default><label>Transitioning</label></value>
+            <value><fullName>Operational</fullName><default>false</default><label>Operational</label></value>
+            <value><fullName>Closed</fullName><default>false</default><label>Closed</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

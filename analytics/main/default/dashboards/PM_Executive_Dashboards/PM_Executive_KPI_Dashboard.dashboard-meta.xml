@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>LoggedInUser</dashboardType>
+    <description>PM Executive KPI Dashboard — portfolio health, speed, readiness, and transition metrics.</description>
+    <leftSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Pie</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>KPI #1</footer>
+            <header>Portfolio by Fund Allocation</header>
+            <report>PM_KPI_Reports/Portfolio_by_Fund_Allocation</report>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Fund Allocation</title>
+        </components>
+        <components>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Pie</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>KPI #2</footer>
+            <header>Portfolio Balance Mix</header>
+            <report>PM_KPI_Reports/Portfolio_Balance_Mix</report>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Program Balance</title>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>KPIs #3-5</footer>
+            <header>Program Speed Metrics</header>
+            <report>PM_KPI_Reports/Program_Speed_Metrics</report>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Award to Demo Cycle Time</title>
+        </components>
+        <components>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>KPI #6</footer>
+            <header>TRL Trajectory</header>
+            <report>PM_KPI_Reports/TRL_Assessments_by_Program</report>
+            <sortBy>RowValueDescending</sortBy>
+            <title>TRL Gain by Program</title>
+        </components>
+        <components>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>KPI #8</footer>
+            <header>Technical Exam Pass Rate</header>
+            <report>PM_KPI_Reports/Technical_Exam_Results</report>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Exam Results by Program</title>
+        </components>
+    </middleSection>
+    <rightSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Pie</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>KPI #9</footer>
+            <header>Evidence-Based Decisions</header>
+            <report>PM_KPI_Reports/Evidence_Decisions</report>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Pivot / Kill / Continue</title>
+        </components>
+        <components>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <footer>KPIs #11-13</footer>
+            <header>Transition Pipeline</header>
+            <report>PM_KPI_Reports/Transition_Pipeline</report>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Prototype Transition Type</title>
+        </components>
+    </rightSection>
+    <textColor>#000000</textColor>
+    <title>PM Executive KPI Dashboard</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

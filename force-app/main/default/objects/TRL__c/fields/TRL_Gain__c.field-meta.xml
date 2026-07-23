@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TRL_Gain__c</fullName>
+    <description>KPI #6: Change in TRL level (Current minus Previous). Positive values indicate maturity advancement.</description>
+    <formula>IF(AND(NOT(ISBLANK(Current_TRL__c)), NOT(ISBLANK(Previous_TRL__c))), Current_TRL__c - Previous_TRL__c, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
+    <label>TRL Gain</label>
+    <precision>2</precision>
+    <scale>0</scale>
+    <type>Number</type>
+</CustomField>

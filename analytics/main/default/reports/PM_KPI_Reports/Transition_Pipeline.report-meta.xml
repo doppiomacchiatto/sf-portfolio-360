@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>KPIs #11-13 — Transition commitment, prototype type, and mission use; shows program graduation health.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>Program__c.Project_Transitions__r$Prototype_Transition__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Transition_Pipeline</name>
+    <reportType>Programs_with_Transitions__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+</Report>

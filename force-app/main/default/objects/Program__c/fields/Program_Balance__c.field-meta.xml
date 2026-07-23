@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program_Balance__c</fullName>
+    <description>KPI #2: Classifies the program's portfolio investment type for Transformational Portfolio Balance reporting.</description>
+    <label>Program Balance</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Near Term</fullName><default>false</default><label>Near Term</label></value>
+            <value><fullName>Mission Pull</fullName><default>false</default><label>Mission Pull</label></value>
+            <value><fullName>Disruptive/High Risk Bets</fullName><default>false</default><label>Disruptive/High Risk Bets</label></value>
+            <value><fullName>Commercial Adoption</fullName><default>false</default><label>Commercial Adoption</label></value>
+            <value><fullName>Defense Unique Technology</fullName><default>false</default><label>Defense Unique Technology</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

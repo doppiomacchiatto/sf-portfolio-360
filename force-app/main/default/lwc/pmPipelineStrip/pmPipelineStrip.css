@@ -1,0 +1,50 @@
+.pipeline-strip {
+    display: var(--slds-c-pm-pipeline-strip-display, flex);
+    align-items: var(--slds-c-pm-pipeline-strip-align-items, stretch);
+    gap: var(--slds-g-spacing-none, 0);
+    margin-top: var(--slds-g-spacing-small, 0.75rem);
+    overflow-x: var(--slds-c-pm-pipeline-strip-overflow-x, auto);
+}
+
+.phase-block {
+    flex: 1;
+    min-width: var(--slds-c-pm-phase-block-min-width, 100px);
+    position: var(--slds-c-pm-phase-block-position, relative);
+    background: var(--slds-c-pm-phase-block-background, #f3f7ff);
+    border: var(--slds-g-sizing-border-width-thin, 1px) solid var(--slds-c-pm-phase-block-border-color, #d8dde6);
+    border-right: none;
+    padding: var(--slds-g-spacing-medium, 1rem) var(--slds-g-spacing-large, 1.5rem) var(--slds-g-spacing-small, 0.75rem) var(--slds-g-spacing-medium, 1rem);
+    text-align: var(--slds-c-pm-phase-block-text-align, center);
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%);
+}
+
+.phase-block:first-child {
+    border-top-left-radius: var(--slds-g-radius-border-small, 0.25rem);
+    border-bottom-left-radius: var(--slds-g-radius-border-small, 0.25rem);
+    border-top-right-radius: var(--slds-g-spacing-none, 0);
+    border-bottom-right-radius: var(--slds-g-spacing-none, 0);
+}
+
+.phase-block:last-child {
+    clip-path: none;
+    border-right: var(--slds-g-sizing-border-width-thin, 1px) solid var(--slds-c-pm-phase-block-border-color, #d8dde6);
+    border-top-left-radius: var(--slds-g-spacing-none, 0);
+    border-bottom-left-radius: var(--slds-g-spacing-none, 0);
+    border-top-right-radius: var(--slds-g-radius-border-small, 0.25rem);
+    border-bottom-right-radius: var(--slds-g-radius-border-small, 0.25rem);
+}
+
+.phase-count {
+    font-size: var(--slds-g-font-size-10, 2rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-c-pm-phase-count-color, #032d60);
+    margin-bottom: var(--slds-g-spacing-xx-small, 0.35rem);
+}
+
+.phase-label {
+    font-size: var(--slds-g-font-size-1, 0.7rem);
+    font-weight: var(--slds-g-font-weight-bold, 600);
+    color: var(--slds-c-pm-phase-label-color, #3e3e3c);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}

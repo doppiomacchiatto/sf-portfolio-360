@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exams_Administered_Must_Be_Positive</fullName>
+    <active>true</active>
+    <description>Exams administered must be greater than zero.</description>
+    <errorConditionFormula>Exams_Administered__c &lt;= 0</errorConditionFormula>
+    <errorDisplayField>Exams_Administered__c</errorDisplayField>
+    <errorMessage>Exams Administered must be greater than zero.</errorMessage>
+</ValidationRule>

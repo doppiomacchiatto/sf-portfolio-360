@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>KPIs #11 and #12: Captures transition commitment details per program — named transition owner, signed agreements, funded receiver path, integration plan, and test venue. One program can have multiple transition types.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <compactLayoutAssignment>Transition_Compact</compactLayoutAssignment>
+    <label>Project Transition</label>
+    <nameField>
+        <label>Project Transition Name</label>
+        <type>AutoNumber</type>
+        <displayFormat>TRN-{0000}</displayFormat>
+    </nameField>
+    <pluralLabel>Project Transitions</pluralLabel>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

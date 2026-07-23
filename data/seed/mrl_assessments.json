@@ -1,0 +1,103 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_NEXUS_1" },
+      "Program__c": "@PRef_NEXUS",
+      "Assessment_Date__c": "2025-06-01",
+      "Current_MRL__c": 2,
+      "Previous_MRL__c": 1,
+      "Manufacturing_Capability__c": "Small-batch crypto hardware modules",
+      "Supply_Chain_Risk__c": "Medium"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_SHIELD_1" },
+      "Program__c": "@PRef_SHIELD",
+      "Assessment_Date__c": "2025-04-01",
+      "Current_MRL__c": 3,
+      "Previous_MRL__c": 2,
+      "Manufacturing_Capability__c": "Software-defined AI inference stack",
+      "Supply_Chain_Risk__c": "Low"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_SHIELD_2" },
+      "Program__c": "@PRef_SHIELD",
+      "Assessment_Date__c": "2025-12-01",
+      "Current_MRL__c": 4,
+      "Previous_MRL__c": 3,
+      "Manufacturing_Capability__c": "Software-defined AI inference stack",
+      "Supply_Chain_Risk__c": "Low"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_FORGE_1" },
+      "Program__c": "@PRef_FORGE",
+      "Assessment_Date__c": "2024-07-01",
+      "Current_MRL__c": 4,
+      "Previous_MRL__c": 3,
+      "Manufacturing_Capability__c": "Ruggedized radio hardware",
+      "Supply_Chain_Risk__c": "High"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_FORGE_2" },
+      "Program__c": "@PRef_FORGE",
+      "Assessment_Date__c": "2025-02-01",
+      "Current_MRL__c": 5,
+      "Previous_MRL__c": 4,
+      "Manufacturing_Capability__c": "Ruggedized radio hardware",
+      "Supply_Chain_Risk__c": "Medium"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_APEX_1" },
+      "Program__c": "@PRef_APEX",
+      "Assessment_Date__c": "2024-07-01",
+      "Current_MRL__c": 5,
+      "Previous_MRL__c": 4,
+      "Manufacturing_Capability__c": "Custom FPGA processing boards",
+      "Supply_Chain_Risk__c": "High"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_APEX_2" },
+      "Program__c": "@PRef_APEX",
+      "Assessment_Date__c": "2025-06-01",
+      "Current_MRL__c": 6,
+      "Previous_MRL__c": 5,
+      "Manufacturing_Capability__c": "Custom FPGA processing boards",
+      "Supply_Chain_Risk__c": "Medium"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_CLARITY_1" },
+      "Program__c": "@PRef_CLARITY",
+      "Assessment_Date__c": "2024-02-01",
+      "Current_MRL__c": 6,
+      "Previous_MRL__c": 5,
+      "Manufacturing_Capability__c": "Commercial cloud SaaS integration",
+      "Supply_Chain_Risk__c": "Low"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_CLARITY_2" },
+      "Program__c": "@PRef_CLARITY",
+      "Assessment_Date__c": "2024-09-01",
+      "Current_MRL__c": 7,
+      "Previous_MRL__c": 6,
+      "Manufacturing_Capability__c": "Commercial cloud SaaS integration",
+      "Supply_Chain_Risk__c": "Low"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_VECTOR_1" },
+      "Program__c": "@PRef_VECTOR",
+      "Assessment_Date__c": "2023-01-01",
+      "Current_MRL__c": 8,
+      "Previous_MRL__c": 7,
+      "Manufacturing_Capability__c": "COTS sensor integration and depot support",
+      "Supply_Chain_Risk__c": "Low"
+    },
+    {
+      "attributes": { "type": "MRL__c", "referenceId": "MRef_VECTOR_2" },
+      "Program__c": "@PRef_VECTOR",
+      "Assessment_Date__c": "2023-09-01",
+      "Current_MRL__c": 9,
+      "Previous_MRL__c": 8,
+      "Manufacturing_Capability__c": "COTS sensor integration and depot support",
+      "Supply_Chain_Risk__c": "Low"
+    }
+  ]
+}

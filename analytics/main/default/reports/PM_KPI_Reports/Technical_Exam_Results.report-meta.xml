@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>KPI #8 — Technical exam results by exam type; shows pass/fail distribution by assessment category.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>Program__c.Technical_Exams__r$Exam_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Technical_Exam_Results</name>
+    <reportType>Programs_with_Technical_Exams__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+</Report>

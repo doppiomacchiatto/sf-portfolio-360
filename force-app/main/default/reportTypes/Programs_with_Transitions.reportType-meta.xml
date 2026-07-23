@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Program__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Programs with Project Transitions — supports KPIs #11-13 transition commitment, prototype type, and mission use.</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>Project_Transitions__r</relationship>
+    </join>
+    <label>Programs with Project Transitions</label>
+    <sections>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Program_Status__c</field>
+            <table>Program__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Transition_Outcome__c</field>
+            <table>Program__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Is_Transitioned__c</field>
+            <table>Program__c</table>
+        </columns>
+        <masterLabel>Program Fields</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Transition_Owner__c</field>
+            <table>Program__c.Project_Transitions__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Prototype_Transition__c</field>
+            <table>Program__c.Project_Transitions__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Transition_Commitment_Complete__c</field>
+            <table>Program__c.Project_Transitions__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Mission_Use_Date__c</field>
+            <table>Program__c.Project_Transitions__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Signed_Transition_Agreement__c</field>
+            <table>Program__c.Project_Transitions__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Funded_Receiver_Path__c</field>
+            <table>Program__c.Project_Transitions__r</table>
+        </columns>
+        <masterLabel>Transition Fields</masterLabel>
+    </sections>
+</ReportType>

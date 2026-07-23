@@ -1,0 +1,90 @@
+<template>
+    <lightning-card title={title} icon-name="standard:metrics">
+        <template if:true={isLoading}>
+            <div class="slds-align_absolute-center slds-var-p-around_large">
+                <lightning-spinner alternative-text="Loading KPIs" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={hasError}>
+            <div class="slds-notify slds-notify_alert slds-theme_error slds-var-m-around_medium" role="alert">
+                <span>{error}</span>
+            </div>
+        </template>
+
+        <template if:true={kpi}>
+            <div class="slds-grid slds-wrap slds-var-p-horizontal_medium slds-var-p-bottom_medium">
+
+                <!-- Group: Investment -->
+                <div class="slds-col slds-size_1-of-1 slds-var-m-top_small">
+                    <p class="slds-text-title_caps slds-text-color_weak group-label">Investment</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Active Programs" value={kpi.totalPrograms} kpi-num="1"></c-pm-kpi-tile>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Total Engagements" value={kpi.totalEngagements} kpi-num="10"></c-pm-kpi-tile>
+                </div>
+
+                <!-- Group: Speed -->
+                <div class="slds-col slds-size_1-of-1 slds-var-m-top_small">
+                    <p class="slds-text-title_caps slds-text-color_weak group-label">Speed</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Avg Mission→Funded" value={kpi.avgMissionToFundedDays} suffix=" days" kpi-num="3"></c-pm-kpi-tile>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Avg Award→Prototype" value={kpi.avgAwardToPrototypeMonths} suffix=" mo" kpi-num="4"></c-pm-kpi-tile>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Avg Demo→Mission Use" value={kpi.avgDemoToMissionUseMonths} suffix=" mo" kpi-num="5"></c-pm-kpi-tile>
+                </div>
+
+                <!-- Group: Technical Maturity -->
+                <div class="slds-col slds-size_1-of-1 slds-var-m-top_small">
+                    <p class="slds-text-title_caps slds-text-color_weak group-label">Technical Maturity</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Avg TRL Gain" value={kpi.avgTrlGain} kpi-num="6"></c-pm-kpi-tile>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Avg MRL Gain" value={kpi.avgMrlGain} kpi-num="7"></c-pm-kpi-tile>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Avg Exam Pass Rate" value={kpi.avgExamPassRate} suffix="%" kpi-num="8"></c-pm-kpi-tile>
+                </div>
+
+                <!-- Group: Portfolio Health -->
+                <div class="slds-col slds-size_1-of-1 slds-var-m-top_small">
+                    <p class="slds-text-title_caps slds-text-color_weak group-label">Portfolio Health</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Evidence Decisions" value={kpi.totalDecisions} kpi-num="9"></c-pm-kpi-tile>
+                </div>
+
+                <!-- Group: Transition -->
+                <div class="slds-col slds-size_1-of-1 slds-var-m-top_small">
+                    <p class="slds-text-title_caps slds-text-color_weak group-label">Transition</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Commitments Complete" value={kpi.transitionsCommitted} kpi-num="11"></c-pm-kpi-tile>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Total Transitions" value={kpi.transitionsTotal} kpi-num="12"></c-pm-kpi-tile>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Programs Transitioned" value={kpi.programsTransitioned} kpi-num="13"></c-pm-kpi-tile>
+                </div>
+
+                <!-- Group: Operational -->
+                <div class="slds-col slds-size_1-of-1 slds-var-m-top_small">
+                    <p class="slds-text-title_caps slds-text-color_weak group-label">Operational</p>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-large-size_1-of-4">
+                    <c-pm-kpi-tile label="Avg Operational Index" value={kpi.avgOperationalIndex} kpi-num="14"></c-pm-kpi-tile>
+                </div>
+
+            </div>
+        </template>
+    </lightning-card>
+</template>

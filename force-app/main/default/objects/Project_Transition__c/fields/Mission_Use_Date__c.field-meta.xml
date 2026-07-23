@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mission_Use_Date__c</fullName>
+    <description>KPI #13: Date this technology was accepted into operational experiment, acquisition insertion, fielded use, or mission partner use.</description>
+    <label>Mission Use Date</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

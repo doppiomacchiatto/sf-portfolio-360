@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fund_Allocation__c</fullName>
+    <description>KPI #1: Categorizes portfolio funds by mission alignment. Used to compute Mission Aligned Investment Rate.</description>
+    <label>Fund Allocation</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Validated</fullName><default>false</default><label>Validated</label></value>
+            <value><fullName>Security-Gap</fullName><default>false</default><label>Security-Gap</label></value>
+            <value><fullName>Threat-Informed</fullName><default>false</default><label>Threat-Informed</label></value>
+            <value><fullName>Approved Critical Tech Area</fullName><default>false</default><label>Approved Critical Tech Area</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

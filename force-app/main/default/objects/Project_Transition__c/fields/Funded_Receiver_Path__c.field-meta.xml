@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Funded_Receiver_Path__c</fullName>
+    <description>KPI #11: Indicates a funded receiver (program of record, operational unit, or buyer) is confirmed for this transition.</description>
+    <defaultValue>false</defaultValue>
+    <label>Funded Receiver Path</label>
+    <type>Checkbox</type>
+</CustomField>

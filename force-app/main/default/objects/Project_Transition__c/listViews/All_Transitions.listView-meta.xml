@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Transitions</fullName>
+    <filterScope>Everything</filterScope>
+    <label>All Transitions</label>
+    <columns>NAME</columns>
+    <columns>Program__c</columns>
+    <columns>Transition_Owner__c</columns>
+    <columns>Prototype_Transition__c</columns>
+    <columns>Transition_Commitment_Complete__c</columns>
+    <columns>Mission_Use_Date__c</columns>
+</ListView>

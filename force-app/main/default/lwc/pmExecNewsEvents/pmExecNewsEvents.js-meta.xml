@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PM Exec News Events</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="sectionTitle" type="String" label="Section Title" default="Portfolio Events"/>
+            <property name="eventTitle" type="String" label="Event Title" default="Sign up for Beta Testing for Titan"/>
+            <property name="eventDescription" type="String" label="Event Description"/>
+            <property name="buttonLabel" type="String" label="Button Label" default="Sign Up"/>
+            <property name="signupUrl" type="String" label="Signup URL"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

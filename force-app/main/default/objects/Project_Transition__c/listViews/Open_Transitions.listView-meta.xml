@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Transitions</fullName>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Transition_Commitment_Complete__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Open Transitions</label>
+    <columns>NAME</columns>
+    <columns>Program__c</columns>
+    <columns>Transition_Owner__c</columns>
+    <columns>Prototype_Transition__c</columns>
+    <columns>Mission_Use_Date__c</columns>
+</ListView>

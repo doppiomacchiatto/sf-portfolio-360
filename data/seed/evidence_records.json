@@ -1,0 +1,68 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_NEXUS_1" },
+      "Program__c": "@PRef_NEXUS",
+      "Evidence_Provided_Date__c": "2025-08-01",
+      "Decision_Date__c": "2025-08-20",
+      "Decision__c": "Pivot",
+      "Evidence_Description__c": "Initial QRNG throughput below threshold; pivoting to hybrid PQC approach."
+    },
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_SHIELD_1" },
+      "Program__c": "@PRef_SHIELD",
+      "Evidence_Provided_Date__c": "2025-09-15",
+      "Decision_Date__c": "2025-10-01",
+      "Decision__c": "Continue",
+      "Evidence_Description__c": "Agent achieved 94% autonomous containment in red team exercise. Proceeding to prototype."
+    },
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_FORGE_1" },
+      "Program__c": "@PRef_FORGE",
+      "Evidence_Provided_Date__c": "2024-09-01",
+      "Decision_Date__c": "2024-09-18",
+      "Decision__c": "Continue",
+      "Evidence_Description__c": "Mesh maintained connectivity at 92% node loss. Continue to full prototype build."
+    },
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_APEX_1" },
+      "Program__c": "@PRef_APEX",
+      "Evidence_Provided_Date__c": "2024-01-10",
+      "Decision_Date__c": "2024-01-25",
+      "Decision__c": "Pivot",
+      "Evidence_Description__c": "SAR integration latency too high for real-time fusion; pivoting to LIDAR-first architecture."
+    },
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_APEX_2" },
+      "Program__c": "@PRef_APEX",
+      "Evidence_Provided_Date__c": "2025-04-01",
+      "Decision_Date__c": "2025-04-14",
+      "Decision__c": "Continue",
+      "Evidence_Description__c": "LIDAR-first fusion passed all gate criteria. Green light for demo."
+    },
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_CLARITY_1" },
+      "Program__c": "@PRef_CLARITY",
+      "Evidence_Provided_Date__c": "2024-01-15",
+      "Decision_Date__c": "2024-02-01",
+      "Decision__c": "Continue",
+      "Evidence_Description__c": "Risk model precision at 89% on live supplier data. Continue to final exam."
+    },
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_CLARITY_2" },
+      "Program__c": "@PRef_CLARITY",
+      "Evidence_Provided_Date__c": "2024-07-01",
+      "Decision_Date__c": "2024-07-10",
+      "Decision__c": "Continue",
+      "Evidence_Description__c": "Final exam passed. Demo scheduled. Transition authority notified."
+    },
+    {
+      "attributes": { "type": "Evidence__c", "referenceId": "EVRef_VECTOR_1" },
+      "Program__c": "@PRef_VECTOR",
+      "Evidence_Provided_Date__c": "2023-04-01",
+      "Decision_Date__c": "2023-04-12",
+      "Decision__c": "Continue",
+      "Evidence_Description__c": "Sensor suite reduced unplanned downtime by 34%. Full fielding approved."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<svg width="680" height="520" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Satellite orbiting a cratered moon</title>
+<desc>A circular emblem showing a small satellite with solar panel wings on an elliptical orbit path around a gray, cratered moon resembling Phobos, set against a dark navy circular background with stars.</desc>
+
+<defs>
+<clipPath id="circleClip">
+<circle cx="340" cy="260" r="220"/>
+</clipPath>
+</defs>
+
+<circle fill="#aed6f1" cx="340" cy="260" r="240"/>
+<circle fill="#0f1f3d" cx="340" cy="260" r="222"/>
+
+<g clip-path="url(#circleClip)">
+<circle fill="#0f1f3d" cx="340" cy="260" r="220"/>
+
+<circle fill="#ffffff" cx="160" cy="120" r="2"/>
+<circle fill="#ffffff" cx="220" cy="380" r="1.6"/>
+<circle fill="#ffffff" cx="480" cy="100" r="1.8"/>
+<circle fill="#ffffff" cx="520" cy="340" r="2.2"/>
+<circle fill="#ffffff" cx="120" cy="300" r="1.5"/>
+<circle fill="#ffffff" cx="400" cy="430" r="1.6"/>
+<circle fill="#ffffff" cx="260" cy="80" r="1.4"/>
+<circle fill="#ffffff" cx="540" cy="200" r="1.7"/>
+<circle fill="#ffffff" cx="100" cy="200" r="1.3"/>
+
+<g transform="translate(290,310)">
+<circle fill="#9aa3ae" cx="0" cy="0" r="105"/>
+<path fill="#7d8794" d="M -90 30 A 105 105 0 0 0 70 90 A 105 105 0 0 1 -90 30 Z"/>
+<circle fill="#6b7480" cx="-35" cy="-50" r="22"/>
+<circle fill="#aab2bc" cx="-40" cy="-56" r="8"/>
+<circle fill="#6b7480" cx="40" cy="-20" r="14"/>
+<circle fill="#aab2bc" cx="36" cy="-25" r="5"/>
+<circle fill="#6b7480" cx="-10" cy="40" r="30"/>
+<circle fill="#aab2bc" cx="-16" cy="32" r="10"/>
+<circle fill="#6b7480" cx="55" cy="50" r="16"/>
+<circle fill="#aab2bc" cx="51" cy="45" r="6"/>
+<circle fill="#6b7480" cx="-65" cy="-10" r="12"/>
+</g>
+
+<ellipse fill="none" stroke="#5dade2" stroke-width="3" cx="340" cy="220" rx="230" ry="80" transform="rotate(-12 340 220)"/>
+
+<g transform="translate(478,150) rotate(35)">
+<rect fill="#3498db" stroke="#cfe2f3" stroke-width="1.5" x="-70" y="-14" width="44" height="28" rx="2"/>
+<rect fill="#3498db" stroke="#cfe2f3" stroke-width="1.5" x="26" y="-14" width="44" height="28" rx="2"/>
+<rect fill="#34495e" stroke="#cfe2f3" stroke-width="1.5" x="-22" y="-20" width="44" height="40" rx="4"/>
+<line x1="-26" y1="0" x2="-70" y2="0" stroke="#cfe2f3" stroke-width="2"/>
+<line x1="26" y1="0" x2="70" y2="0" stroke="#cfe2f3" stroke-width="2"/>
+</g>
+
+</g>
+
+<circle cx="340" cy="260" r="220" fill="none" stroke="#34495e" stroke-width="3"/>
+</svg>

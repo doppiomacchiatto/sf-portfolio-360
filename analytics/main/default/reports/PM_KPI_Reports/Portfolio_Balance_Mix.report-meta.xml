@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>KPI #2 — Portfolio balance mix by program type</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>Program__c$Program_Balance__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Portfolio_Balance_Mix</name>
+    <reportType>Programs__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+</Report>

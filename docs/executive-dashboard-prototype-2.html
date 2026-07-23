@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio Manager – Executive Dashboard (Seed Data)</title>
+  <style>
+    :root {
+      --p: #0f1f3d;
+      --pd: #060d1a;
+      --a: #3498db;
+      --as: #5dade2;
+      --al: #aed6f1;
+      --bg: #edf4fb;
+      --sf: #ffffff;
+      --tx: #1a2745;
+      --mu: #5a6e92;
+      --bd: #d6e3f1;
+      --sh: 0 8px 22px rgba(24,34,61,.08);
+      --r: 14px;
+      --ok: #16a34a;
+      --wa: #d97706;
+      --er: #dc2626;
+      --ok-bg: #e9f9ef;
+      --wa-bg: #fff4e6;
+      --er-bg: #feecec;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(160deg, #f7fbff 0%, var(--bg) 42%, #e9f2fb 100%);
+      color: var(--tx);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 270px;
+      background: var(--pd) url("./callisto/hero-banner.svg") center/cover no-repeat;
+      color: #fff;
+      display: flex;
+      align-items: flex-start;
+      padding: 32px 36px 56px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(6,13,26,.85) 0%, rgba(6,13,26,.48) 55%, rgba(6,13,26,.2) 100%);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1320px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .hero h1 { font-size: 26px; font-weight: 800; letter-spacing: -.01em; }
+    .hero-sub { margin-top: 6px; color: #bdd4f0; font-size: 13px; max-width: 560px; line-height: 1.5; }
+    .hero-meta { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(174,214,241,.35);
+      font-size: 11px;
+      font-weight: 600;
+      color: #c4daf4;
+      letter-spacing: .02em;
+    }
+    .chip.active { background: rgba(52,152,219,.32); border-color: var(--as); color: #fff; }
+    .hero-logo { height: 44px; width: auto; flex-shrink: 0; align-self: center; }
+    .hero-stats { display: flex; gap: 28px; color: #fff; margin-top: 18px; }
+    .hero-stat-val { font-size: 28px; font-weight: 800; }
+    .hero-stat-lbl { font-size: 11px; color: #8fb8e0; margin-top: 2px; }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 1320px;
+      margin: -36px auto 32px;
+      padding: 0 24px 24px;
+      position: relative;
+      z-index: 2;
+    }
+    .row { display: grid; gap: 14px; margin-bottom: 14px; }
+    .c12 { grid-template-columns: repeat(12, 1fr); }
+    .c2  { grid-template-columns: 1fr 1fr; }
+    .c3  { grid-template-columns: repeat(3, 1fr); }
+    .c4  { grid-template-columns: repeat(4, 1fr); }
+    .s3  { grid-column: span 3; }
+    .s4  { grid-column: span 4; }
+    .s5  { grid-column: span 5; }
+    .s6  { grid-column: span 6; }
+    .s7  { grid-column: span 7; }
+    .s8  { grid-column: span 8; }
+    .s12 { grid-column: span 12; }
+
+    .card {
+      background: var(--sf);
+      border: 1px solid var(--bd);
+      border-radius: var(--r);
+      box-shadow: var(--sh);
+      padding: 18px;
+    }
+    .card-hd {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--mu);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-hd-link { font-size: 11px; font-weight: 600; color: var(--a); text-transform: none; letter-spacing: 0; }
+
+    /* ── PHASE STRIP ── */
+    .phase-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--bd);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .phase-item { background: var(--sf); padding: 12px 8px; text-align: center; }
+    .phase-item.dim { background: #f8fafd; }
+    .phase-icon { font-size: 15px; margin-bottom: 3px; }
+    .phase-count { font-size: 26px; font-weight: 800; color: var(--p); line-height: 1; }
+    .phase-item.dim .phase-count { color: #c5d3e8; }
+    .phase-name { font-size: 10px; font-weight: 600; color: var(--mu); text-transform: uppercase; letter-spacing: .04em; margin-top: 4px; line-height: 1.3; }
+    .phase-item.dim .phase-name { color: #c5d3e8; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--mu);
+      margin: 6px 0 10px;
+      padding-left: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::after { content: ""; flex: 1; height: 1px; background: var(--bd); }
+
+    /* ── KPI CARDS ── */
+    .kpi-val { font-size: 30px; font-weight: 800; color: var(--p); margin-top: 8px; line-height: 1; }
+    .kpi-unit { font-size: 14px; font-weight: 500; color: var(--mu); }
+    .kpi-lbl { font-size: 12px; font-weight: 600; color: var(--mu); line-height: 1.35; }
+    .kpi-trend { font-size: 11px; color: var(--mu); margin-top: 3px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 8px; padding: 3px 9px; border-radius: 999px;
+      font-size: 11px; font-weight: 700;
+    }
+    .badge::before { content: "●"; font-size: 7px; }
+    .badge.ok   { background: var(--ok-bg); color: var(--ok); }
+    .badge.warn { background: var(--wa-bg); color: var(--wa); }
+    .badge.bad  { background: var(--er-bg); color: var(--er); }
+    .badge.neu  { background: #eaf4fd; color: var(--p); }
+
+    /* ── SPARKLINE ── */
+    .spark { display: block; width: 100%; height: 32px; margin-top: 8px; }
+
+    /* ── PROGRESS BAR ── */
+    .prog-row { margin-bottom: 11px; }
+    .prog-lbl { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; color: var(--tx); font-weight: 500; }
+    .prog-lbl span:last-child { color: var(--mu); font-weight: 400; }
+    .prog-track { height: 8px; background: #e4eef8; border-radius: 999px; overflow: hidden; }
+    .prog-fill  { height: 100%; border-radius: 999px; background: var(--a); }
+    .prog-fill.ok   { background: var(--ok); }
+    .prog-fill.warn { background: var(--wa); }
+    .prog-fill.bad  { background: var(--er); }
+
+    /* ── STACKED BAR ── */
+    .stack-bar { display: flex; height: 26px; border-radius: 8px; overflow: hidden; margin: 10px 0 4px; }
+    .stack-seg {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: rgba(255,255,255,.92);
+      white-space: nowrap; overflow: hidden;
+    }
+    .stack-legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 8px; }
+    .stack-leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--tx); }
+    .swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+
+    /* ── READINESS TABLE ── */
+    .rl-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .rl-table th { font-size: 10px; font-weight: 700; color: var(--mu); text-transform: uppercase; letter-spacing: .05em; padding: 4px 8px; text-align: center; }
+    .rl-table th:first-child { text-align: left; }
+    .rl-table td { padding: 5px 8px; border-top: 1px solid var(--bd); text-align: center; font-weight: 700; }
+    .rl-table td:first-child { text-align: left; font-weight: 600; color: var(--tx); }
+    .rl-c1 { background: #fee2e2; color: #b91c1c; border-radius: 6px; }
+    .rl-c2 { background: #ffedd5; color: #c2410c; border-radius: 6px; }
+    .rl-c3 { background: #fef9c3; color: #854d0e; border-radius: 6px; }
+    .rl-c4 { background: #dcfce7; color: #15803d; border-radius: 6px; }
+    .rl-c5 { background: #bbf7d0; color: #15803d; border-radius: 6px; }
+    .rl-c6 { background: #a7f3d0; color: #065f46; border-radius: 6px; }
+    .rl-none { background: #f1f5f9; color: #94a3b8; border-radius: 6px; font-weight: 400; }
+
+    /* ── UPE LIST ── */
+    .upe-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .upe-type { flex: 1; font-size: 12px; font-weight: 500; }
+    .upe-bar { width: 100px; height: 8px; background: #e4eef8; border-radius: 999px; overflow: hidden; }
+    .upe-fill { height: 100%; border-radius: 999px; background: var(--a); }
+    .upe-count { width: 50px; text-align: right; font-size: 12px; font-weight: 700; color: var(--p); }
+
+    /* ── PROGRAM LIST ── */
+    .prog-list { list-style: none; }
+    .prog-list li {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--bd); font-size: 13px;
+    }
+    .prog-list li:last-child { border-bottom: none; }
+    .prog-name { font-weight: 700; font-size: 12px; font-family: monospace; letter-spacing: .02em; }
+    .prog-detail { color: var(--mu); font-size: 11px; margin-top: 2px; }
+    .status-pill {
+      font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .sp-ideation      { background: #f0f4ff; color: #3b4fd8; }
+    .sp-funded        { background: #fef9c3; color: #854d0e; }
+    .sp-awarded       { background: #ffedd5; color: #c2410c; }
+    .sp-prototype     { background: #e0f2fe; color: #0369a1; }
+    .sp-demo          { background: #f3e8ff; color: #7e22ce; }
+    .sp-transitioning { background: var(--wa-bg); color: var(--wa); }
+    .sp-operational   { background: var(--ok-bg); color: var(--ok); }
+
+    /* ── TRANSITION TABLE ── */
+    .tr-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+    .tr-table th { font-size: 10px; font-weight: 700; color: var(--mu); text-transform: uppercase; letter-spacing: .05em; padding: 4px 6px; text-align: center; border-bottom: 1px solid var(--bd); }
+    .tr-table th:first-child { text-align: left; }
+    .tr-table td { padding: 7px 6px; border-bottom: 1px solid #f1f5f9; text-align: center; }
+    .tr-table td:first-child { text-align: left; font-weight: 700; font-family: monospace; font-size: 12px; }
+    .tr-yes { color: var(--ok); font-size: 14px; }
+    .tr-no  { color: #cbd5e1; font-size: 14px; }
+
+    /* ── BREACH ROW ── */
+    .breach-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 10px; margin-bottom: 7px;
+      border: 1px solid var(--bd);
+    }
+    .breach-kpi { font-size: 10px; font-weight: 700; color: var(--mu); white-space: nowrap; }
+    .breach-name { flex: 1; font-size: 12px; font-weight: 600; }
+    .breach-detail { font-size: 11px; color: var(--mu); }
+
+    /* ── OUTCOME BARS ── */
+    .outcome-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+    .outcome-icon { width: 28px; height: 28px; border-radius: 8px; background: #eaf4fd; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .outcome-label { flex: 1; font-size: 12px; font-weight: 500; }
+    .outcome-bar { width: 100px; height: 8px; background: #e4eef8; border-radius: 999px; overflow: hidden; }
+    .outcome-fill { height: 100%; border-radius: 999px; background: var(--a); }
+    .outcome-val { width: 36px; text-align: right; font-size: 12px; font-weight: 700; color: var(--p); }
+    .outcome-na { font-size: 11px; color: #c5d3e8; font-style: italic; }
+
+    @media (max-width: 1100px) {
+      .s3,.s4,.s5,.s6,.s7,.s8 { grid-column: span 12; }
+      .c3,.c4 { grid-template-columns: 1fr 1fr; }
+      .phase-strip { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .c2,.c3,.c4 { grid-template-columns: 1fr; }
+      .phase-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── CLASSIFICATION BANNER ── */
+    .class-banner {
+      background: #1a7a1a;
+      color: #fff;
+      text-align: center;
+      padding: 10px 24px 8px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .class-banner-label {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      line-height: 1.1;
+    }
+    .class-banner-sub {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      opacity: .9;
+      margin-top: 3px;
+    }
+    .class-banner-footer {
+      position: static;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ CLASSIFICATION BANNER (TOP) ═══════════ -->
+<div class="class-banner">
+  <div class="class-banner-label">UNCLASSIFIED</div>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>R&amp;D Portfolio Executive Dashboard — Combined View</h1>
+      <p class="hero-sub">All 14 active programs — original 7 defense R&amp;D programs (SIGMA-1 through VECTOR) plus 7 Saturn-series space exploration programs (MIMAS through TITAN).</p>
+      <div class="hero-meta">
+        <span class="chip active">FY26 Q2</span>
+        <span class="chip">All Programs</span>
+        <span class="chip">14 Programs</span>
+        <span class="chip">Snapshot: Jun 19, 2026</span>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val">14</div>
+          <div class="hero-stat-lbl">Active Programs</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">27</div>
+          <div class="hero-stat-lbl">Tracked Engagements</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">2</div>
+          <div class="hero-stat-lbl">Programs Transitioned</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">3</div>
+          <div class="hero-stat-lbl">Commitments Met</div>
+        </div>
+      </div>
+    </div>
+    <img class="hero-logo" src="./callisto/logo-white.svg" alt="Callisto" />
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ═══════════ PROGRAM PIPELINE STRIP ═══════════ -->
+  <!-- Ideation=SIGMA-1+MIMAS; Funded/Awarded=NEXUS-4+SHIELD-X+ENCELADUS+TETHYS; Prototype/Demo=FORGE+APEX-7+DIONE+IAPETUS; Transitioning=CLARITY+RHEA; Operational=VECTOR+TITAN -->
+  <div class="phase-strip">
+    <div class="phase-item">
+      <div class="phase-icon">💡</div>
+      <div class="phase-count">2</div>
+      <div class="phase-name">Ideation</div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-icon">💰</div>
+      <div class="phase-count">4</div>
+      <div class="phase-name">Funded / Awarded</div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-icon">🔬</div>
+      <div class="phase-count">4</div>
+      <div class="phase-name">Prototype / Demo</div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-icon">🚀</div>
+      <div class="phase-count">2</div>
+      <div class="phase-name">Transitioning</div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-icon">✅</div>
+      <div class="phase-count">2</div>
+      <div class="phase-name">Operational</div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PROGRAMS AT A GLANCE ═══════════ -->
+  <div class="section-label">Programs at a Glance</div>
+  <div class="row c3" style="margin-bottom:14px">
+
+    <div class="card">
+      <div class="card-hd">Defense R&amp;D Programs (7)</div>
+      <ul class="prog-list">
+        <li>
+          <div>
+            <div class="prog-name">SIGMA-1</div>
+            <div class="prog-detail">Validated · Disruptive/High Risk Bets · TRL 2</div>
+          </div>
+          <span class="status-pill sp-ideation">Ideation</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">NEXUS-4</div>
+            <div class="prog-detail">Approved Critical Tech · Mission Pull · TRL 4 · MRL 2</div>
+          </div>
+          <span class="status-pill sp-funded">Funded</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">SHIELD-X</div>
+            <div class="prog-detail">Security-Gap · Near Term · TRL 5 · MRL 4</div>
+          </div>
+          <span class="status-pill sp-awarded">Awarded</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">FORGE</div>
+            <div class="prog-detail">Threat-Informed · Defense Unique · TRL 6 · MRL 5</div>
+          </div>
+          <span class="status-pill sp-prototype">Prototype</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">APEX-7</div>
+            <div class="prog-detail">Threat-Informed · Near Term · TRL 7 · MRL 6</div>
+          </div>
+          <span class="status-pill sp-demo">Demo Complete</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">CLARITY</div>
+            <div class="prog-detail">Security-Gap · Commercial Adoption · TRL 8 · MRL 7</div>
+          </div>
+          <span class="status-pill sp-transitioning">Transitioning</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">VECTOR</div>
+            <div class="prog-detail">Validated · Near Term · TRL 9 · MRL 9 · OI 91</div>
+          </div>
+          <span class="status-pill sp-operational">Operational</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">Saturn Space Exploration Programs (7)</div>
+      <ul class="prog-list">
+        <li>
+          <div>
+            <div class="prog-name">MIMAS</div>
+            <div class="prog-detail">Validated · Disruptive/High Risk Bets · TRL 2</div>
+          </div>
+          <span class="status-pill sp-ideation">Ideation</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">ENCELADUS</div>
+            <div class="prog-detail">Approved Critical Tech · Disruptive/High Risk · TRL 3 · MRL 2</div>
+          </div>
+          <span class="status-pill sp-funded">Funded</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">TETHYS</div>
+            <div class="prog-detail">Threat-Informed · Defense Unique · TRL 5 · MRL 4</div>
+          </div>
+          <span class="status-pill sp-awarded">Awarded</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">DIONE</div>
+            <div class="prog-detail">Security-Gap · Commercial Adoption · TRL 6 · MRL 5</div>
+          </div>
+          <span class="status-pill sp-prototype">Prototype</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">IAPETUS</div>
+            <div class="prog-detail">Threat-Informed · Defense Unique · TRL 6 · MRL 6</div>
+          </div>
+          <span class="status-pill sp-demo">Demo Complete</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">RHEA</div>
+            <div class="prog-detail">Approved Critical Tech · Near Term · TRL 8 · MRL 7</div>
+          </div>
+          <span class="status-pill sp-transitioning">Transitioning</span>
+        </li>
+        <li>
+          <div>
+            <div class="prog-name">TITAN</div>
+            <div class="prog-detail">Validated · Near Term · TRL 9 · MRL 9 · OI 94</div>
+          </div>
+          <span class="status-pill sp-operational">Operational</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">Portfolio Mix</div>
+      <!-- Fund Allocation -->
+      <div class="kpi-lbl" style="margin-bottom:6px">Fund Allocation (KPI #1)</div>
+      <div class="stack-bar">
+        <div class="stack-seg" style="flex:29;background:#3498db">29%</div>
+        <div class="stack-seg" style="flex:29;background:#e67e22">29%</div>
+        <div class="stack-seg" style="flex:21;background:#e74c3c">21%</div>
+        <div class="stack-seg" style="flex:21;background:#27ae60">21%</div>
+      </div>
+      <div class="stack-legend" style="margin-bottom:16px">
+        <div class="stack-leg-item"><div class="swatch" style="background:#3498db"></div>Validated (4)</div>
+        <div class="stack-leg-item"><div class="swatch" style="background:#e67e22"></div>Threat-Informed (4)</div>
+        <div class="stack-leg-item"><div class="swatch" style="background:#e74c3c"></div>Security-Gap (3)</div>
+        <div class="stack-leg-item"><div class="swatch" style="background:#27ae60"></div>Approved Critical Tech (3)</div>
+      </div>
+      <!-- Portfolio Balance -->
+      <div class="kpi-lbl" style="margin-bottom:6px">Portfolio Balance (KPI #2)</div>
+      <div class="stack-bar">
+        <div class="stack-seg" style="flex:36;background:#3498db">36%</div>
+        <div class="stack-seg" style="flex:21;background:#e67e22">21%</div>
+        <div class="stack-seg" style="flex:21;background:#2c3e50">21%</div>
+        <div class="stack-seg" style="flex:14;background:#27ae60">14%</div>
+        <div class="stack-seg" style="flex:7;background:#5dade2">7%</div>
+      </div>
+      <div class="stack-legend">
+        <div class="stack-leg-item"><div class="swatch" style="background:#3498db"></div>Near Term (5)</div>
+        <div class="stack-leg-item"><div class="swatch" style="background:#e67e22"></div>Defense Unique (3)</div>
+        <div class="stack-leg-item"><div class="swatch" style="background:#2c3e50"></div>Disruptive/High Risk (3)</div>
+        <div class="stack-leg-item"><div class="swatch" style="background:#27ae60"></div>Commercial Adoption (2)</div>
+        <div class="stack-leg-item"><div class="swatch" style="background:#5dade2"></div>Mission Pull (1)</div>
+      </div>
+      <span class="badge warn" style="margin-top:12px">Watch — Near Term at 36%, target ≤ 30%</span>
+    </div>
+
+  </div>
+
+  <!-- ═══════════ KPI GROUP: SPEED ═══════════ -->
+  <div class="section-label">Speed &amp; Acceleration</div>
+  <div class="row c3" style="margin-bottom:14px">
+
+    <div class="card">
+      <div class="kpi-lbl">Mission Need → Funded Start (KPI #3)</div>
+      <div class="kpi-val">150<span class="kpi-unit"> days</span></div>
+      <div class="kpi-trend">Avg across 4 programs with funding dates — target &lt; 180 days</div>
+      <span class="badge ok">On Target</span>
+      <div style="margin-top:14px">
+        <div class="prog-row">
+          <div class="prog-lbl"><span>SHIELD-X</span><span>82 days</span></div>
+          <div class="prog-track"><div class="prog-fill ok" style="width:46%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>NEXUS-4</span><span>136 days</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:76%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TETHYS</span><span>153 days</span></div>
+          <div class="prog-track"><div class="prog-fill warn" style="width:85%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>ENCELADUS</span><span>228 days</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="kpi-lbl">Award → First Prototype (KPI #4)</div>
+      <div class="kpi-val">18.4<span class="kpi-unit"> mo</span></div>
+      <div class="kpi-trend">Avg across 8 programs with prototype data — all above 12-mo target</div>
+      <span class="badge warn">Watch — target ≤ 12 months</span>
+      <div style="margin-top:14px">
+        <div class="prog-row">
+          <div class="prog-lbl"><span>APEX-7</span><span>14.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill warn" style="width:70%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>CLARITY</span><span>15.5 mo</span></div>
+          <div class="prog-track"><div class="prog-fill warn" style="width:78%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>FORGE</span><span>16.5 mo</span></div>
+          <div class="prog-track"><div class="prog-fill warn" style="width:82%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>IAPETUS</span><span>17.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:85%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>VECTOR</span><span>17.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:85%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>RHEA</span><span>20.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:100%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TITAN</span><span>20.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:100%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>DIONE</span><span>27.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="kpi-lbl">Demo → Mission Use (KPI #5)</div>
+      <div class="kpi-val">13.1<span class="kpi-unit"> mo</span></div>
+      <div class="kpi-trend">Avg of VECTOR (7.1 mo) and TITAN (19.0 mo) — 2 programs with complete cycles</div>
+      <span class="badge warn">Watch — target ≤ 12 months</span>
+      <div style="margin-top:14px">
+        <div class="prog-row">
+          <div class="prog-lbl"><span>VECTOR (complete)</span><span>7.1 mo ✓</span></div>
+          <div class="prog-track"><div class="prog-fill ok" style="width:59%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TITAN (complete)</span><span>19.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:100%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>CLARITY (in progress)</span><span>pending</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:8%;background:#e4eef8"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>RHEA (in progress)</span><span>pending</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:4%;background:#e4eef8"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════ KPI GROUP: TECHNICAL MATURITY ═══════════ -->
+  <div class="section-label">Technical &amp; Manufacturing Maturity</div>
+  <div class="row c3" style="margin-bottom:14px">
+
+    <div class="card">
+      <div class="kpi-lbl">TRL Gain per Assessment (KPI #6)</div>
+      <div class="kpi-val">+1.5<span class="kpi-unit"> TRL</span></div>
+      <div class="kpi-trend">Avg across 27 assessments · avg current TRL: 5.7 across 14 programs</div>
+      <span class="badge ok">On Target</span>
+      <div style="margin-top:14px">
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TRL 1–3 (Early)</span><span>3 programs</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:21%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TRL 4–5 (Lab)</span><span>3 programs</span></div>
+          <div class="prog-track"><div class="prog-fill warn" style="width:21%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TRL 6–7 (Demo)</span><span>4 programs</span></div>
+          <div class="prog-track"><div class="prog-fill ok" style="width:29%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TRL 8–9 (Operational)</span><span>4 programs</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:29%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="kpi-lbl">MRL Gain per Assessment (KPI #7)</div>
+      <div class="kpi-val">+1.2<span class="kpi-unit"> MRL</span></div>
+      <div class="kpi-trend">Avg across 22 assessments · SIGMA-1 and MIMAS not yet assessed</div>
+      <span class="badge ok">On Target</span>
+      <!-- TRL vs MRL per program table — all 14 programs -->
+      <table class="rl-table" style="margin-top:14px">
+        <thead>
+          <tr><th>Program</th><th>TRL</th><th>MRL</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SIGMA-1</td>  <td class="rl-c1">2</td><td class="rl-none">—</td></tr>
+          <tr><td>NEXUS-4</td>  <td class="rl-c2">4</td><td class="rl-c1">2</td></tr>
+          <tr><td>SHIELD-X</td> <td class="rl-c3">5</td><td class="rl-c2">4</td></tr>
+          <tr><td>FORGE</td>    <td class="rl-c3">6</td><td class="rl-c3">5</td></tr>
+          <tr><td>APEX-7</td>   <td class="rl-c4">7</td><td class="rl-c3">6</td></tr>
+          <tr><td>CLARITY</td>  <td class="rl-c5">8</td><td class="rl-c4">7</td></tr>
+          <tr><td>VECTOR</td>   <td class="rl-c6">9</td><td class="rl-c6">9</td></tr>
+          <tr><td>MIMAS</td>    <td class="rl-c1">2</td><td class="rl-none">—</td></tr>
+          <tr><td>ENCELADUS</td><td class="rl-c1">3</td><td class="rl-c1">2</td></tr>
+          <tr><td>TETHYS</td>   <td class="rl-c3">5</td><td class="rl-c2">4</td></tr>
+          <tr><td>DIONE</td>    <td class="rl-c3">6</td><td class="rl-c3">5</td></tr>
+          <tr><td>IAPETUS</td>  <td class="rl-c3">6</td><td class="rl-c3">6</td></tr>
+          <tr><td>RHEA</td>     <td class="rl-c5">8</td><td class="rl-c4">7</td></tr>
+          <tr><td>TITAN</td>    <td class="rl-c6">9</td><td class="rl-c6">9</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="kpi-lbl">Technical Exam Pass Rate (KPI #8)</div>
+      <div class="kpi-val">91<span class="kpi-unit">%</span></div>
+      <div class="kpi-trend">252 passed of 276 administered across 14 exams (both datasets)</div>
+      <span class="badge ok">On Target — target ≥ 85%</span>
+      <div style="margin-top:16px">
+        <svg viewBox="0 0 180 90" style="width:100%;display:block">
+          <path d="M 20 80 A 70 70 0 0 1 160 80" fill="none" stroke="#e4eef8" stroke-width="14" stroke-linecap="round"/>
+          <!-- 91% of 180° arc -->
+          <path d="M 20 80 A 70 70 0 1 1 156 73" fill="none" stroke="#16a34a" stroke-width="14" stroke-linecap="round"/>
+          <text x="90" y="76" text-anchor="middle" font-size="22" font-weight="800" fill="#1a2745">91%</text>
+          <text x="90" y="90" text-anchor="middle" font-size="10" fill="#5a6e92">Pass Rate</text>
+          <text x="20" y="94" text-anchor="middle" font-size="9" fill="#5a6e92">0%</text>
+          <text x="160" y="94" text-anchor="middle" font-size="9" fill="#5a6e92">100%</text>
+        </svg>
+        <div style="margin-top:10px">
+          <div class="prog-row">
+            <div class="prog-lbl"><span>Midterm (5 exams)</span><span>86% · 83/96</span></div>
+            <div class="prog-track"><div class="prog-fill warn" style="width:86%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-lbl"><span>Gate Review (5 exams)</span><span>92% · 80/87</span></div>
+            <div class="prog-track"><div class="prog-fill ok" style="width:92%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-lbl"><span>Final (4 exams)</span><span>96% · 89/93</span></div>
+            <div class="prog-track"><div class="prog-fill ok" style="width:96%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════ KPI GROUP: PORTFOLIO HEALTH ═══════════ -->
+  <div class="section-label">Portfolio Health &amp; Stakeholder Engagement</div>
+  <div class="row c2" style="margin-bottom:14px">
+
+    <div class="card">
+      <div class="kpi-lbl">Evidence-based Pivot or Continue Rate (KPI #9)</div>
+      <div class="kpi-val" style="display:flex;align-items:baseline;gap:10px">
+        18<span class="kpi-unit"> decisions</span>
+      </div>
+      <div class="kpi-trend">Avg 13.5 days from evidence to decision · 8 original + 10 Saturn records</div>
+      <span class="badge ok">Healthy — evidence-driven decisions</span>
+      <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:center">
+        <div style="background:var(--ok-bg);border-radius:10px;padding:12px">
+          <div style="font-size:26px;font-weight:800;color:var(--ok)">13</div>
+          <div style="font-size:10px;color:var(--mu);margin-top:3px">Continue</div>
+          <div style="font-size:10px;color:var(--mu)">72%</div>
+        </div>
+        <div style="background:var(--wa-bg);border-radius:10px;padding:12px">
+          <div style="font-size:26px;font-weight:800;color:var(--wa)">5</div>
+          <div style="font-size:10px;color:var(--mu);margin-top:3px">Pivot</div>
+          <div style="font-size:10px;color:var(--mu)">28%</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--mu)">Median time to decision: <strong style="color:var(--ok)">13.5 days</strong></div>
+      <div style="margin-top:8px;font-size:11px;color:var(--mu)">Pivots — CLARITY, FORGE (original) · ENCELADUS, DIONE, IAPETUS (Saturn)</div>
+    </div>
+
+    <div class="card">
+      <div class="kpi-lbl">User &amp; Partner Engagements (KPI #10)</div>
+      <div class="kpi-val">27<span class="kpi-unit"> total</span></div>
+      <div class="kpi-trend">455 total participants · 12 original + 15 Saturn engagements</div>
+      <span class="badge warn">Watch — SIGMA-1 and MIMAS each have only 1 engagement (target 2+/qtr)</span>
+      <div style="margin-top:14px">
+        <div class="upe-row">
+          <div class="upe-type">User / Operator</div>
+          <div class="upe-bar"><div class="upe-fill ok" style="width:100%"></div></div>
+          <div class="upe-count">11 · 226 pax</div>
+        </div>
+        <div class="upe-row">
+          <div class="upe-type">Acquirer / Program Office</div>
+          <div class="upe-bar"><div class="upe-fill" style="width:82%"></div></div>
+          <div class="upe-count">9 · 117 pax</div>
+        </div>
+        <div class="upe-row">
+          <div class="upe-type">Maintainer / Sustainment</div>
+          <div class="upe-bar"><div class="upe-fill warn" style="width:45%"></div></div>
+          <div class="upe-count">5 · 96 pax</div>
+        </div>
+        <div class="upe-row">
+          <div class="upe-type">Cyber / Mission Partner</div>
+          <div class="upe-bar"><div class="upe-fill bad" style="width:18%"></div></div>
+          <div class="upe-count">2 · 16 pax</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════ KPI GROUP: TRANSITION ═══════════ -->
+  <div class="section-label">Transition Pipeline</div>
+  <div class="row c12" style="margin-bottom:14px">
+
+    <div class="card s4">
+      <div class="kpi-lbl">Transition Commitment Rate (KPI #11)</div>
+      <div class="kpi-val">50<span class="kpi-unit">%</span></div>
+      <div class="kpi-trend">3 of 6 transitions fully committed — VECTOR, CLARITY, TITAN</div>
+      <span class="badge warn">Watch — target ≥ 75%</span>
+      <table class="tr-table" style="margin-top:14px">
+        <thead>
+          <tr><th>Program</th><th>Type</th><th>Signed</th><th>Committed</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>VECTOR</td>
+            <td style="font-size:11px;color:var(--mu)">Program of Record</td>
+            <td><span class="tr-yes">✓</span></td>
+            <td><span class="tr-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>CLARITY</td>
+            <td style="font-size:11px;color:var(--mu)">Program of Record</td>
+            <td><span class="tr-yes">✓</span></td>
+            <td><span class="tr-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>TITAN</td>
+            <td style="font-size:11px;color:var(--mu)">Program of Record</td>
+            <td><span class="tr-yes">✓</span></td>
+            <td><span class="tr-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>RHEA</td>
+            <td style="font-size:11px;color:var(--mu)">Program of Record</td>
+            <td><span class="tr-yes">✓</span></td>
+            <td><span class="tr-no">○</span></td>
+          </tr>
+          <tr>
+            <td>APEX-7</td>
+            <td style="font-size:11px;color:var(--mu)">Fielded Prototype</td>
+            <td><span class="tr-no">○</span></td>
+            <td><span class="tr-no">○</span></td>
+          </tr>
+          <tr>
+            <td>IAPETUS</td>
+            <td style="font-size:11px;color:var(--mu)">Operational Experiment</td>
+            <td><span class="tr-no">○</span></td>
+            <td><span class="tr-no">○</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card s4">
+      <div class="kpi-lbl">Prototype → Transition Conversion (KPI #12)</div>
+      <div class="kpi-val">75<span class="kpi-unit">%</span></div>
+      <div class="kpi-trend">6 of 8 programs that reached prototype have an active transition · FORGE and DIONE without</div>
+      <span class="badge ok">On Target — target ≥ 70%</span>
+      <div style="margin-top:14px">
+        <div class="prog-row">
+          <div class="prog-lbl"><span>Program of Record</span><span>4 programs</span></div>
+          <div class="prog-track"><div class="prog-fill ok" style="width:67%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>Operational Experiment</span><span>1 program</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:17%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>Fielded Prototype</span><span>1 program</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:17%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>No transition (FORGE, DIONE)</span><span>2 programs</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card s4">
+      <div class="kpi-lbl">Time Demo → Mission Use (KPI #13)</div>
+      <div class="kpi-val">13.1<span class="kpi-unit"> mo</span></div>
+      <div class="kpi-trend">Avg of VECTOR (7.1 mo) and TITAN (19.0 mo) — 2 programs with complete cycles</div>
+      <span class="badge warn">Watch — target ≤ 12 months</span>
+      <div style="margin-top:14px">
+        <div class="prog-row">
+          <div class="prog-lbl"><span>VECTOR (complete)</span><span>7.1 mo ✓</span></div>
+          <div class="prog-track"><div class="prog-fill ok" style="width:59%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>TITAN (complete)</span><span>19.0 mo</span></div>
+          <div class="prog-track"><div class="prog-fill bad" style="width:100%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>CLARITY (in progress)</span><span>pending</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:8%;background:#e4eef8"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-lbl"><span>RHEA (in progress)</span><span>pending</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:4%;background:#e4eef8"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════ KPI GROUP: OPERATIONAL ═══════════ -->
+  <div class="section-label">Operational Outcomes</div>
+  <div class="row c12" style="margin-bottom:14px">
+
+    <div class="card s3">
+      <div class="kpi-lbl">Operational Index (KPI #14)</div>
+      <div style="text-align:center;padding:10px 0">
+        <svg viewBox="0 0 160 100" style="width:100%;max-width:200px;display:block;margin:0 auto">
+          <path d="M 10 90 A 70 70 0 0 1 150 90" fill="none" stroke="#e4eef8" stroke-width="16" stroke-linecap="round"/>
+          <!-- avg 92.5/100 of 180° arc -->
+          <path d="M 10 90 A 70 70 0 1 1 148 70" fill="none" stroke="#16a34a" stroke-width="16" stroke-linecap="round"/>
+          <text x="80" y="80" text-anchor="middle" font-size="28" font-weight="800" fill="#1a2745">92.5</text>
+          <text x="80" y="96" text-anchor="middle" font-size="10" fill="#5a6e92">avg · 2 programs</text>
+        </svg>
+      </div>
+      <div style="margin-top:8px;font-size:12px;text-align:center;color:var(--mu)">VECTOR: <strong style="color:var(--tx)">91</strong> &nbsp;·&nbsp; TITAN: <strong style="color:var(--tx)">94</strong></div>
+      <div class="badge ok" style="display:block;text-align:center;margin-top:10px">2 programs at full operational</div>
+    </div>
+
+    <div class="card s5">
+      <div class="card-hd">Operational Outcomes — Both Programs</div>
+      <div style="font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">VECTOR (OI 91)</div>
+      <div class="outcome-row">
+        <div class="outcome-icon">📈</div>
+        <div class="outcome-label">Improvement Against Baseline</div>
+        <div class="outcome-bar"><div class="outcome-fill ok" style="width:91%"></div></div>
+        <div class="outcome-val">91</div>
+      </div>
+      <div class="outcome-row">
+        <div class="outcome-icon">👥</div>
+        <div class="outcome-label">Reduced Manpower</div>
+        <div class="outcome-bar"><div class="outcome-fill ok" style="width:91%"></div></div>
+        <div class="outcome-val">91</div>
+      </div>
+      <div class="outcome-row">
+        <div class="outcome-icon">🛡</div>
+        <div class="outcome-label">Increased Survivability</div>
+        <div class="outcome-bar"><div class="outcome-fill ok" style="width:91%"></div></div>
+        <div class="outcome-val">91</div>
+      </div>
+      <div style="border-top:1px solid var(--bd);margin:10px 0 6px;"></div>
+      <div style="font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">TITAN (OI 94)</div>
+      <div class="outcome-row">
+        <div class="outcome-icon">📈</div>
+        <div class="outcome-label">Improvement Against Baseline</div>
+        <div class="outcome-bar"><div class="outcome-fill ok" style="width:94%"></div></div>
+        <div class="outcome-val">94</div>
+      </div>
+      <div class="outcome-row">
+        <div class="outcome-icon">🤖</div>
+        <div class="outcome-label">Increased Autonomy and Resilience</div>
+        <div class="outcome-bar"><div class="outcome-fill ok" style="width:94%"></div></div>
+        <div class="outcome-val">94</div>
+      </div>
+      <div class="outcome-row">
+        <div class="outcome-icon">👥</div>
+        <div class="outcome-label">Reduced Manpower</div>
+        <div class="outcome-bar"><div class="outcome-fill ok" style="width:94%"></div></div>
+        <div class="outcome-val">94</div>
+      </div>
+    </div>
+
+    <div class="card s4">
+      <div class="card-hd">Open KPI Watches <span class="card-hd-link">4 items</span></div>
+      <div class="breach-row" style="border-color:var(--wa-bg);background:#fffaf5">
+        <div>
+          <div class="breach-kpi">KPI #4 — Award → Prototype</div>
+          <div class="breach-name">Portfolio avg 18.4 months</div>
+          <div class="breach-detail">All 8 programs above 12-mo target · DIONE highest at 27 mo</div>
+        </div>
+        <span class="badge warn">High</span>
+      </div>
+      <div class="breach-row" style="border-color:var(--wa-bg);background:#fffaf5">
+        <div>
+          <div class="breach-kpi">KPI #2 — Portfolio Balance</div>
+          <div class="breach-name">Near Term Concentration</div>
+          <div class="breach-detail">36% of programs (5/14) are Near Term — target ≤ 30%</div>
+        </div>
+        <span class="badge warn">Med</span>
+      </div>
+      <div class="breach-row" style="border-color:var(--wa-bg);background:#fffaf5">
+        <div>
+          <div class="breach-kpi">KPI #5 / #13 — Demo → Mission Use</div>
+          <div class="breach-name">Combined avg 13.1 months</div>
+          <div class="breach-detail">TITAN drove avg up at 19.0 mo — target ≤ 12 months</div>
+        </div>
+        <span class="badge warn">Med</span>
+      </div>
+      <div class="breach-row">
+        <div>
+          <div class="breach-kpi">KPI #10 — UPE Engagement</div>
+          <div class="breach-name">SIGMA-1 + MIMAS — 1 engagement each</div>
+          <div class="breach-detail">Both early-stage programs lack acquirer and partner contact</div>
+        </div>
+        <span class="badge warn">Low</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:11px;color:var(--mu);text-align:center;margin-top:8px">
+    Portfolio Manager · Callisto R&amp;D Framework · 14-Program Combined Dataset (Defense R&amp;D + Saturn Series) · Snapshot: FY26 Q2 · <code>docs/executive-dashboard-prototype-2.html</code>
+  </p>
+
+</main>
+
+<!-- ═══════════ CLASSIFICATION BANNER (BOTTOM) ═══════════ -->
+<div class="class-banner class-banner-footer">
+  <div class="class-banner-label">UNCLASSIFIED</div>
+</div>
+
+</body>
+</html>
