@@ -2,6 +2,31 @@
 
 Salesforce DX project for the R&D Portfolio Manager application, tracking all 14 KPIs across investment, speed, technical maturity, portfolio health, transition, and operational outcomes.
 
+## Deployment Checklist
+
+Use this order for sandbox/demo deployments:
+
+1. Create/install unmanaged package metadata (`force-app`) and assign permission sets.
+2. Deploy Experience site metadata (`experiences/`).
+3. Load demo data using scripts.
+4. Publish the Experience site in Experience Builder.
+
+### Quick Commands
+
+```bash
+# 1) Package + permission sets
+./scripts/deploy-package-and-permsets.sh -o <alias> -u <exec-user> -p PM_Executive,PM_Admin
+
+# 2) Experience metadata
+./scripts/deploy-experience.sh <alias>
+
+# 3) Data load
+./scripts/load-seed-data.sh <alias>
+./scripts/load-saturn-data.sh <alias>
+```
+
+> Important: after deploying Experience metadata, open Experience Builder and click Publish before validating site behavior.
+
 ## Build Tasks
 
 ### Foundation
