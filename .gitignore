@@ -4,5 +4,5 @@
 ./venv
 
 ./vscode
-.sf/
-.sfdx/
+.sf/**
+.sfdx/**
