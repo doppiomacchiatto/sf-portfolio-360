@@ -1,10 +1,11 @@
-**./tsx-pull
+**./tsx-pull/
 
 # Also ignore repository-root tsx-pull variant
-**./venv
+**./venv/
 
 ./vscode
 **/.sf/
 **/.sfdx/
 
-**/.vscode/**
+**/.vscode/
+**/.claude/
