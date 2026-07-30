@@ -71,6 +71,23 @@ All six child objects (`TRL__c`, `MRL__c`, `Technical_Exam__c`, `Evidence__c`, `
 
 If Experience Cloud members see an error page when navigating to a Program record, verify `externalSharingModel` is set on `Program__c` and the change has been deployed.
 
+#### Experience Cloud — Internal User Login (Builder Access)
+
+By default, Experience Cloud sites redirect **all** users — including System Administrators — to the site's login page when they navigate directly to the site URL. This means internal Salesforce users get blocked at a login screen even when accessing the site to build or test it.
+
+The fix is the `allowInternalUserLogin` flag in the Network metadata:
+
+```xml
+<!-- experiences/main/default/networks/titanx.network-meta.xml -->
+<allowInternalUserLogin>true</allowInternalUserLogin>
+```
+
+Setting this to `true` allows internal org users (System Administrators and other internal profiles) to bypass the site login page and access the experience directly using their existing Salesforce session.
+
+**Without this setting:** Internal users navigating to the site URL are redirected to the Experience Cloud login page instead of the site home — including when opening the site from Experience Builder's Preview button.
+
+**Deploy note:** This setting lives in `experiences/main/default/networks/titanx.network-meta.xml` and is applied when you deploy the `experiences/` directory. If you recreate the site from scratch, you must redeploy this metadata or manually enable it in Experience Builder → Administration → Login & Registration → Allow internal users to log in.
+
 #### Data Load — FLS Note
 
 The data load scripts (`load-seed-data.sh`, `load-saturn-data.sh`) require the running user to have `PM_Admin` assigned in addition to `PM_Executive`. `PM_Admin` grants write access to all fields including `Fund_Allocation__c`, which is not writable via `PM_Executive` alone.
