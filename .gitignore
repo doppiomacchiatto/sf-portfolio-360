@@ -5,6 +5,7 @@
 
 ./vscode
 .sf/**
-.sfdx/**
+.sfdx/
 
 .vscode/**
+.sfdx/tools/260/apex.db
