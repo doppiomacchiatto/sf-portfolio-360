@@ -19,6 +19,8 @@
   "sourceApiVersion": "66.0",
   "packageAliases": {
     "Portfolio 360": "0HoKY000000PPDF0A4",
-    "Portfolio 360@1.0.0-9": "04tKY000000ZTFjYAO"
+    "Portfolio 360@1.0.0-9": "04tKY000000ZTFjYAO",
+    "Portfolio 360@1.0.0-10": "04tKY000000ZTFoYAO",
+    "Portfolio 360@1.0.0-11": "04tKY000000ZTSHYA4"
   }
 }
