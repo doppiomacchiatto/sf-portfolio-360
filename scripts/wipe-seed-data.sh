@@ -12,7 +12,7 @@ ORG="${1:-tsx}"
 
 echo ""
 echo "========================================"
-echo "  PM Portfolio Manager — Wipe Seed Data"
+echo "  PM Portfolio 360 — Wipe Seed Data"
 echo "  Target org : $ORG"
 echo "========================================"
 echo ""

@@ -18,12 +18,12 @@
 
 set -euo pipefail
 
-ORG="${1:-tsx}"
+ORG="${1:-pm-scratch}"
 PLAN_DIR="$(cd "$(dirname "$0")/../data/seed" && pwd)"
 
 echo ""
 echo "========================================"
-echo "  PM Portfolio Manager — Seed Data Load"
+echo "  PM Portfolio 360 — Seed Data Load"
 echo "  Target org : $ORG"
 echo "  Plan dir   : $PLAN_DIR"
 echo "========================================"

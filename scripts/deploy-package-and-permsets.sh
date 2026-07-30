@@ -12,7 +12,7 @@
 #
 # Defaults:
 #   org alias:      tsx
-#   package alias:  Portfolio Manager
+#   package alias:  Portfolio 360
 #   target user:    brian.smith@demo.vrm
 #   permsets:       PM_Executive
 #   wait minutes:   20
@@ -25,7 +25,7 @@
 set -euo pipefail
 
 ORG_ALIAS=""
-PACKAGE_ALIAS="Portfolio Manager"
+PACKAGE_ALIAS="Portfolio 360"
 PACKAGE_VERSION_ID=""
 TARGET_USER="brian.smith@demo.vrm"
 PERMSETS_CSV="PM_Executive"
@@ -39,7 +39,7 @@ Install package + assign permission sets.
 
 Options:
   -o, --org <alias>            Target org alias (default: tsx)
-  -a, --package-alias <name>   Package alias/name (default: Portfolio Manager)
+  -a, --package-alias <name>   Package alias/name (default: Portfolio 360)
   -v, --version-id <04t...>    Subscriber package version id (optional)
   -u, --user <username>        Username to assign permsets to (default: brian.smith@demo.vrm)
   -p, --permsets <csv>         Comma-separated permsets (default: PM_Executive)
@@ -81,7 +81,7 @@ cd "$ROOT_DIR"
 
 echo ""
 echo "========================================"
-echo " PM Portfolio Manager — Deploy + Access"
+echo " PM Portfolio 360 — Deploy + Access"
 echo " Target org       : $ORG_ALIAS"
 echo " Target user      : $TARGET_USER"
 echo " Package alias    : $PACKAGE_ALIAS"

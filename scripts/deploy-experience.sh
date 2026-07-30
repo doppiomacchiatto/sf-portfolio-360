@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-ORG="${1:-tsx}"
+ORG="${1:-pm-scratch}"
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 SRC_DIR="$ROOT_DIR/experiences"
 SRC_DEFAULT_DIR="$SRC_DIR/main/default"
@@ -17,7 +17,7 @@ fi
 
 echo ""
 echo "========================================"
-echo "  PM Portfolio Manager — Experience Deploy"
+echo "  PM Portfolio 360 — Experience Deploy"
 echo "  Target org : $ORG"
 echo "  Source dir : $SRC_DIR"
 echo "  Deploy mode: Metadata API package"
@@ -40,9 +40,6 @@ fi
 if [[ -d "$SRC_DEFAULT_DIR/digitalExperienceConfigs" ]]; then
   cp -R "$SRC_DEFAULT_DIR/digitalExperienceConfigs" "$MDAPI_DIR/"
 fi
-if [[ -d "$SRC_DEFAULT_DIR/networks" ]]; then
-  cp -R "$SRC_DEFAULT_DIR/networks" "$MDAPI_DIR/"
-fi
 
 shopt -s nullglob
 bundle_members=()
@@ -61,18 +58,9 @@ for f in "$SRC_DEFAULT_DIR"/digitalExperienceConfigs/*.digitalExperienceConfig-m
   config_members+=("$(basename "$f" .digitalExperienceConfig-meta.xml)")
 done
 
-network_members=()
-for f in "$SRC_DEFAULT_DIR"/networks/*.network; do
-  [[ -f "$f" ]] || continue
-  network_members+=("$(basename "$f" .network)")
-done
-for f in "$SRC_DEFAULT_DIR"/networks/*.network-meta.xml; do
-  [[ -f "$f" ]] || continue
-  network_members+=("$(basename "$f" .network-meta.xml)")
-done
 shopt -u nullglob
 
-if [[ ${#bundle_members[@]} -eq 0 && ${#config_members[@]} -eq 0 && ${#network_members[@]} -eq 0 ]]; then
+if [[ ${#bundle_members[@]} -eq 0 && ${#config_members[@]} -eq 0 ]]; then
   echo "Error: No Experience metadata found under $SRC_DEFAULT_DIR." >&2
   exit 1
 fi
@@ -96,15 +84,6 @@ fi
       echo "        <members>$m</members>"
     done
     echo '        <name>DigitalExperienceConfig</name>'
-    echo '    </types>'
-  fi
-
-  if [[ ${#network_members[@]} -gt 0 ]]; then
-    echo '    <types>'
-    for m in "${network_members[@]}"; do
-      echo "        <members>$m</members>"
-    done
-    echo '        <name>Network</name>'
     echo '    </types>'
   fi
 
