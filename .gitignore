@@ -9,3 +9,4 @@
 
 .vscode/**
 .sfdx/tools/260/apex.db
+.sfdx/sfdx-config.json
