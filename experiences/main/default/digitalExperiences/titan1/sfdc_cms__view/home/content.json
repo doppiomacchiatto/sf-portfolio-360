@@ -1,0 +1,81 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "Home",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"f68ed769-c255-4104-9164-3909fb19a97a\",\"columns\":[{\"UUID\":\"6dd8b6a4-b870-4406-80a3-9e243a74e829\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : {
+                "heroSubtitle" : "All active programs — KPI-driven executive view across investment, speed, technical maturity, portfolio health, transition, and operational outcomes.",
+                "heroTitle" : "Executive Portfolio Command Center"
+              },
+              "definition" : "c:pmExecutiveExperienceHome",
+              "id" : "b990cd58-b560-4f4d-8c06-bcb8a74fb52e",
+              "type" : "component"
+            }, {
+              "attributes" : {
+                "buttonLabel" : "Sign Up",
+                "eventDescription" : "Join the Titan beta cohort to validate usability, mission relevance, and operational readiness with early access.",
+                "eventTitle" : "Sign up for Beta Testing for Titan",
+                "sectionTitle" : "Portfolio Events",
+                "signupUrl" : "/titanx/s/"
+              },
+              "definition" : "c:pmExecNewsEvents",
+              "id" : "16a03dfc-66b1-414f-ab57-584943f1a82f",
+              "type" : "component"
+            } ],
+            "id" : "6dd8b6a4-b870-4406-80a3-9e243a74e829",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "f68ed769-c255-4104-9164-3909fb19a97a",
+          "type" : "component"
+        } ],
+        "id" : "d7867a0a-05fa-4748-9a72-1df9a132a198",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "pageTitle" : "Home",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "45c1b3e9-fef9-4999-a08f-e658a01185fe",
+          "type" : "component"
+        } ],
+        "id" : "8884c973-d421-4bf1-a17b-e89806e7df79",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "b0a7836a-beda-45aa-a136-120b9cd69441",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "home"
+  },
+  "urlName" : "home"
+}
