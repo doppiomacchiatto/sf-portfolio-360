@@ -1,12 +1,10 @@
-./tsx-pull
+**./tsx-pull
 
 # Also ignore repository-root tsx-pull variant
-./venv
+**./venv
 
 ./vscode
-.sf/**
-.sfdx/
+**/.sf/
+**/.sfdx/
 
-.vscode/**
-.sfdx/tools/260/apex.db
-.sfdx/sfdx-config.json
+**/.vscode/**
