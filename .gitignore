@@ -6,3 +6,5 @@
 ./vscode
 .sf/**
 .sfdx/**
+
+.vscode/**
