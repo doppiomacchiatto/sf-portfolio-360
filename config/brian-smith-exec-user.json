@@ -8,5 +8,6 @@
   "LocaleSidKey": "en_US",
   "EmailEncodingKey": "UTF-8",
   "LanguageLocaleKey": "en_US",
-  "ProfileName": "Standard User"
+  "ProfileName": "Standard User",
+  "permsets": ["PM_Executive"]
 }

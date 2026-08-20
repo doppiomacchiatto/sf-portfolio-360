@@ -1,0 +1,13 @@
+{
+  "FirstName": "Taylor",
+  "LastName": "Sanders",
+  "Alias": "tsanders",
+  "Email": "taylor.sanders.analyst@example.com",
+  "Username": "taylor.sanders.analyst@example.com",
+  "TimeZoneSidKey": "America/New_York",
+  "LocaleSidKey": "en_US",
+  "EmailEncodingKey": "UTF-8",
+  "LanguageLocaleKey": "en_US",
+  "ProfileName": "Standard Platform User",
+  "permsets": ["PM_Analyst"]
+}

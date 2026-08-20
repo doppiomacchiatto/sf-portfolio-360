@@ -13,3 +13,10 @@ package.xml
 # Other
 **/scripts/
 **/node_modules/
+
+# Full org profiles — tracked for reference but excluded from unlocked package
+force-app/main/default/profiles/VRM Administrator.profile-meta.xml
+
+# VRM org-specific path assistants — not part of Portfolio 360 package
+force-app/main/default/pathAssistants/VRM_Case_Path.pathAssistant-meta.xml
+force-app/main/default/pathAssistants/VRM_Entity_Path.pathAssistant-meta.xml

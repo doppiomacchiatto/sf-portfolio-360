@@ -71,22 +71,25 @@ All six child objects (`TRL__c`, `MRL__c`, `Technical_Exam__c`, `Evidence__c`, `
 
 If Experience Cloud members see an error page when navigating to a Program record, verify `externalSharingModel` is set on `Program__c` and the change has been deployed.
 
-#### Experience Cloud — Internal User Login (Builder Access)
+#### Experience Cloud — Internal User Access (No Login Redirect)
 
-By default, Experience Cloud sites redirect **all** users — including System Administrators — to the site's login page when they navigate directly to the site URL. This means internal Salesforce users get blocked at a login screen even when accessing the site to build or test it.
+Internal Salesforce users are redirected to the site's login page if their profile or permission set is not listed in `networkMemberGroups`. This applies even to System Administrators and VRM Administrators — if the Network metadata doesn't include their profile, they hit a login wall.
 
-The fix is the `allowInternalUserLogin` flag in the Network metadata:
+The required `networkMemberGroups` in `experiences/main/default/networks/titanx.network-meta.xml`:
 
 ```xml
-<!-- experiences/main/default/networks/titanx.network-meta.xml -->
-<allowInternalUserLogin>true</allowInternalUserLogin>
+<networkMemberGroups>
+    <permissionSet>PM_Executive</permissionSet>
+    <permissionSet>PM_Analyst</permissionSet>
+    <permissionSet>PM_Admin</permissionSet>
+    <profile>admin</profile>
+    <profile>vrm administrator</profile>
+</networkMemberGroups>
 ```
 
-Setting this to `true` allows internal org users (System Administrators and other internal profiles) to bypass the site login page and access the experience directly using their existing Salesforce session.
+`profile: admin` = System Administrator. `profile: vrm administrator` = VRM Administrator (the org's custom admin profile). Both must be present or those users get redirected to login.
 
-**Without this setting:** Internal users navigating to the site URL are redirected to the Experience Cloud login page instead of the site home — including when opening the site from Experience Builder's Preview button.
-
-**Deploy note:** This setting lives in `experiences/main/default/networks/titanx.network-meta.xml` and is applied when you deploy the `experiences/` directory. If you recreate the site from scratch, you must redeploy this metadata or manually enable it in Experience Builder → Administration → Login & Registration → Allow internal users to log in.
+**Deploy note:** Redeploy `experiences/` after any change to `networkMemberGroups`. Changes do not take effect until deployed and the site is published.
 
 #### Data Load — FLS Note
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_Transitioned__c</fullName>
+    <deprecated>false</deprecated>
     <description>KPI #12 boolean marker for transitioned programs.</description>
-    <formula>CASE(TEXT(Transition_Outcome__c), "Program of Record", 1, "Operational Experiment", 1, "Fielded Prototype", 1, "Commercial Adoption", 1, "Sustained Use", 1, 0) = 1</formula>
-    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
+    <formula>CASE(TEXT(Transition_Outcome__c), &quot;Program of Record&quot;, 1, &quot;Operational Experiment&quot;, 1, &quot;Fielded Prototype&quot;, 1, &quot;Commercial Adoption&quot;, 1, &quot;Sustained Use&quot;, 1, 0) = 1</formula>
     <label>Is Transitioned</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

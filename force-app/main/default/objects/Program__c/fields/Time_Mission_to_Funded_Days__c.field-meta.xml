@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Time_Mission_to_Funded_Days__c</fullName>
+    <deprecated>false</deprecated>
     <description>KPI #3: Days from mission need validation to funded start.</description>
+    <externalId>false</externalId>
     <formula>IF(AND(NOT(ISBLANK(Funding_Start_Date__c)), NOT(ISBLANK(Mission_Need_Validated_Date__c))), Funding_Start_Date__c - Mission_Need_Validated_Date__c, NULL)</formula>
-    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
     <label>Time Mission to Funded (Days)</label>
-    <precision>8</precision>
+    <precision>18</precision>
+    <required>false</required>
     <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Number</type>
+    <unique>false</unique>
 </CustomField>

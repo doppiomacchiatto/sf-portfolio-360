@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Engagement_Count__c</fullName>
+    <deprecated>false</deprecated>
     <description>KPI #10: Count of User and Partner Engagement records linked to this program — measures external collaboration breadth.</description>
     <label>Engagement Count</label>
     <summaryForeignKey>User_Partner_Engagement__c.Program__c</summaryForeignKey>
-    <summaryOperation>Count</summaryOperation>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Summary</type>
 </CustomField>

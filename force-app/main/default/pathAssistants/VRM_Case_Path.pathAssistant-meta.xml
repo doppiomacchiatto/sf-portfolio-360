@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Case</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>VRM Case Path</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Reason</fieldNames>
+        <fieldNames>IsEscalated</fieldNames>
+        <info>&lt;p&gt;Evaluate Case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Request Additional Documentation?&lt;/li&gt;&lt;li&gt;Do we have all the data?&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Assessment</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Close the Case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;When a decision has been made.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Closed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Priority</fieldNames>
+        <info>&lt;p&gt;Team Members are working the case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Review Priority for timely completeness&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>In Progress</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Origin</fieldNames>
+        <fieldNames>Priority</fieldNames>
+        <info>&lt;p&gt;New Case:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Review Case for Completeness&lt;/li&gt;&lt;li&gt;Status: set or update&lt;/li&gt;&lt;li&gt;Validate Required Fields&lt;/li&gt;&lt;/ol&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>
