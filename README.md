@@ -91,6 +91,38 @@ The required `networkMemberGroups` in `experiences/main/default/networks/titanx.
 
 **Deploy note:** Redeploy `experiences/` after any change to `networkMemberGroups`. Changes do not take effect until deployed and the site is published.
 
+#### Experience Cloud — Cross-Domain Re-Login (Workspaces / Setup)
+
+Even with `networkMemberGroups` configured correctly, internal users can still be forced to log in again when they navigate from the site domain (`*.my.site.com`) to an internal Salesforce domain — for example, clicking through to Digital Experience Workspaces (Builder/Administration) from the live site. This is a separate, org-wide setting, not a Network/site setting.
+
+The cause is `lockSessionsToDomain` in Security Settings (Setup → Session Settings → **Lock sessions to the domain in which they were first used**):
+
+```xml
+<!-- force-app/main/default/settings/Security.settings-meta.xml -->
+<sessionSettings>
+    <lockSessionsToDomain>true</lockSessionsToDomain>
+</sessionSettings>
+```
+
+With this enabled, a session issued on the site domain isn't honored on the internal Lightning/Setup domain (and vice versa), so crossing domains forces a fresh login even for an already-authenticated admin.
+
+**Fix:** set `lockSessionsToDomain` to `false` and redeploy `Settings:Security`.
+
+> **Trade-off:** this setting is org-wide — it relaxes cross-domain session locking for the entire org, not just the `titanx` site. It's a standard mitigation for session hijacking; disabling it is a common but deliberate trade-off for Experience Cloud/internal-user UX.
+
+#### Experience Cloud — Workspaces Identity Verification (Browser/Device Trust)
+
+The first time you access Digital Experience Workspaces (Administration/Builder) from a **browser or device Salesforce hasn't seen before**, you may be forced through a full identity verification challenge — username/password plus MFA — even though you're already an authenticated internal admin with `networkMemberGroups` and `lockSessionsToDomain` configured correctly. This is **not** a site or Network configuration issue. It's this org's mandatory MFA policy applying a one-time step-up check to a new browser/device.
+
+What we observed while diagnosing this on `titanx`:
+
+- The redirect (`/titanx/login?ec=302&...`) leads to a real Salesforce login form, then an MFA "Verify Your Identity" challenge.
+- WebAuthn credentials (security keys, passkeys, platform "Built-In Authenticator") are scoped to the **domain they were registered on**. A key registered via Setup on the internal org domain (`*.my.salesforce.com`) will not satisfy a challenge on the site domain (`*.my.site.com`), and vice versa — expect a "security key not registered with this site" error if you cross domains.
+- Some browsers (e.g. Vivaldi) have gaps in WebAuthn platform-authenticator support (Windows Hello/Touch ID) even though they're Chromium-based; a listed "Built-In Authenticator" may be unresponsive there. Prefer Chrome/Edge, or use a hardware security key (YubiKey, etc.) — hardware keys use standard USB/CTAP2 and work consistently across browsers.
+- Once **any** verification method succeeds in a given browser, that browser is remembered/trusted going forward — subsequent access (including to other, unrelated sites/networks in the same org) no longer triggers the challenge. This is why the issue can appear to "fix itself" or seem inconsistent between two sites in the same org.
+
+**If you get stuck with no working verification method:** fall back to an Email or SMS verification code (Setup → Advanced User Details), or register a new Security Key while already authenticated, then retry.
+
 #### Data Load — FLS Note
 
 The data load scripts (`load-seed-data.sh`, `load-saturn-data.sh`) require the running user to have `PM_Admin` assigned in addition to `PM_Executive`. `PM_Admin` grants write access to all fields including `Fund_Allocation__c`, which is not writable via `PM_Executive` alone.
