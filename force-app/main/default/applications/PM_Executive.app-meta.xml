@@ -17,6 +17,6 @@
     <tabs>PM_Executive_Home</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-report</tabs>
-    <tabs>Program__c</tabs>
+    <tabs>pm_Program__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

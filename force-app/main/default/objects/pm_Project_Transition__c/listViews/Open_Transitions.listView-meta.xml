@@ -9,7 +9,7 @@
     </filters>
     <label>Open Transitions</label>
     <columns>NAME</columns>
-    <columns>Program__c</columns>
+    <columns>pm_Program__c</columns>
     <columns>Transition_Owner__c</columns>
     <columns>Prototype_Transition__c</columns>
     <columns>Mission_Use_Date__c</columns>

@@ -37,18 +37,18 @@ sf data import tree \
 echo ""
 
 # ── Step 2: Re-assert VECTOR status ──────────────────────────────────────────
-# The TRL flow (triggered on TRL__c create) sets Program_Status__c = Transitioning
+# The TRL flow (triggered on pm_TRL__c create) sets Program_Status__c = Transitioning
 # whenever Current_TRL__c >= 7. CLARITY (TRL 8) should stay Transitioning — that's
 # correct. VECTOR (TRL 9) needs to be Operational since it completed the full cycle.
 echo "[2/3] Re-asserting VECTOR status to Operational (overrides TRL flow)..."
 VECTOR_ID=$(sf data query \
-  --query "SELECT Id FROM Program__c WHERE Name = 'VECTOR' LIMIT 1" \
+  --query "SELECT Id FROM pm_Program__c WHERE Name = 'VECTOR' LIMIT 1" \
   --target-org "$ORG" \
   --json \
   | python3 -c "import json,sys; print(json.load(sys.stdin)['result']['records'][0]['Id'])")
 
 sf data update record \
-  --sobject Program__c \
+  --sobject pm_Program__c \
   --record-id "$VECTOR_ID" \
   --values "Program_Status__c='Operational'" \
   --target-org "$ORG"
@@ -58,27 +58,27 @@ echo ""
 # ── Step 3: Print summary ─────────────────────────────────────────────────────
 echo "[3/3] Verifying record counts..."
 sf data query \
-  --query "SELECT Program_Status__c status, COUNT(Id) cnt FROM Program__c GROUP BY Program_Status__c ORDER BY COUNT(Id) DESC" \
+  --query "SELECT Program_Status__c status, COUNT(Id) cnt FROM pm_Program__c GROUP BY Program_Status__c ORDER BY COUNT(Id) DESC" \
   --target-org "$ORG"
 
 echo ""
 sf data query \
-  --query "SELECT COUNT(Id) trl FROM TRL__c" \
+  --query "SELECT COUNT(Id) trl FROM pm_TRL__c" \
   --target-org "$ORG"
 sf data query \
-  --query "SELECT COUNT(Id) mrl FROM MRL__c" \
+  --query "SELECT COUNT(Id) mrl FROM pm_MRL__c" \
   --target-org "$ORG"
 sf data query \
-  --query "SELECT COUNT(Id) exams FROM Technical_Exam__c" \
+  --query "SELECT COUNT(Id) exams FROM pm_Technical_Exam__c" \
   --target-org "$ORG"
 sf data query \
-  --query "SELECT COUNT(Id) evidence FROM Evidence__c" \
+  --query "SELECT COUNT(Id) evidence FROM pm_Evidence__c" \
   --target-org "$ORG"
 sf data query \
-  --query "SELECT COUNT(Id) upe FROM User_Partner_Engagement__c" \
+  --query "SELECT COUNT(Id) upe FROM pm_User_Partner_Engagement__c" \
   --target-org "$ORG"
 sf data query \
-  --query "SELECT COUNT(Id) transitions FROM Project_Transition__c" \
+  --query "SELECT COUNT(Id) transitions FROM pm_Project_Transition__c" \
   --target-org "$ORG"
 
 echo ""

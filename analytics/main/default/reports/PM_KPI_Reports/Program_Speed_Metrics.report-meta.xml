@@ -4,7 +4,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>FiscalYear</dateGranularity>
-        <field>Program__c$Program_Status__c</field>
+        <field>pm_Program__c$Program_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Program_Speed_Metrics</name>

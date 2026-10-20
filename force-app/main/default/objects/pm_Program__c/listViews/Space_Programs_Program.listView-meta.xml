@@ -3,7 +3,7 @@
     <fullName>Space_Programs_Program</fullName>
     <filterScope>Queue</filterScope>
     <label>Space_Programs</label>
-    <queue>Space_Programs</queue>
+    <queue>pm_Space_Programs</queue>
     <sharedTo>
         <allInternalUsers></allInternalUsers>
     </sharedTo>

@@ -3,7 +3,7 @@
     <fullName>Saturn_Programs_Program</fullName>
     <filterScope>Queue</filterScope>
     <label>Saturn_Programs</label>
-    <queue>Saturn_Programs</queue>
+    <queue>pm_Saturn_Programs</queue>
     <sharedTo>
         <allInternalUsers></allInternalUsers>
     </sharedTo>

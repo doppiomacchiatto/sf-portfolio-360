@@ -7,51 +7,51 @@ public with sharing class PmDashboardController {
         // KPI #1 & #2 — portfolio mix counts
         for (AggregateResult ar : [
             SELECT Fund_Allocation__c fund, Program_Balance__c balance, COUNT(Id) cnt
-            FROM Program__c
+            FROM pm_Program__c
             WHERE Program_Status__c NOT IN ('Closed')
             GROUP BY Fund_Allocation__c, Program_Balance__c
         ]) {
             kpi.totalPrograms += (Integer)ar.get('cnt');
         }
-        kpi.totalPrograms = [SELECT COUNT() FROM Program__c WHERE Program_Status__c != 'Closed'];
+        kpi.totalPrograms = [SELECT COUNT() FROM pm_Program__c WHERE Program_Status__c != 'Closed'];
 
         // KPI #3-5 — speed averages (months/days)
         AggregateResult speed = [
             SELECT AVG(Time_Award_to_Prototype_Months__c) avgProto,
                    AVG(Time_Demo_to_MissionUse_Months__c) avgDemo,
                    AVG(Time_Mission_to_Funded_Days__c) avgFunded
-            FROM Program__c
+            FROM pm_Program__c
         ];
         kpi.avgAwardToPrototypeMonths = speed.get('avgProto') != null ? ((Decimal)speed.get('avgProto')).setScale(1) : null;
         kpi.avgDemoToMissionUseMonths = speed.get('avgDemo') != null ? ((Decimal)speed.get('avgDemo')).setScale(1) : null;
         kpi.avgMissionToFundedDays    = speed.get('avgFunded') != null ? ((Decimal)speed.get('avgFunded')).setScale(0) : null;
 
         // KPI #6 — avg TRL gain
-        AggregateResult trl = [SELECT AVG(TRL_Gain__c) avgGain FROM TRL__c];
+        AggregateResult trl = [SELECT AVG(TRL_Gain__c) avgGain FROM pm_TRL__c];
         kpi.avgTrlGain = trl.get('avgGain') != null ? ((Decimal)trl.get('avgGain')).setScale(1) : null;
 
         // KPI #7 — avg MRL gain
-        AggregateResult mrl = [SELECT AVG(MRL_Gain__c) avgGain FROM MRL__c];
+        AggregateResult mrl = [SELECT AVG(MRL_Gain__c) avgGain FROM pm_MRL__c];
         kpi.avgMrlGain = mrl.get('avgGain') != null ? ((Decimal)mrl.get('avgGain')).setScale(1) : null;
 
         // KPI #8 — avg exam pass rate
-        AggregateResult exam = [SELECT AVG(Pass_Rate__c) avgPass FROM Technical_Exam__c];
+        AggregateResult exam = [SELECT AVG(Pass_Rate__c) avgPass FROM pm_Technical_Exam__c];
         kpi.avgExamPassRate = exam.get('avgPass') != null ? ((Decimal)exam.get('avgPass')).setScale(0) : null;
 
         // KPI #9 — evidence decisions
-        kpi.totalDecisions = [SELECT COUNT() FROM Evidence__c WHERE Decision__c != null];
+        kpi.totalDecisions = [SELECT COUNT() FROM pm_Evidence__c WHERE Decision__c != null];
 
         // KPI #10 — total engagements
-        AggregateResult eng = [SELECT SUM(Engagement_Count__c) total FROM Program__c];
+        AggregateResult eng = [SELECT SUM(Engagement_Count__c) total FROM pm_Program__c];
         kpi.totalEngagements = eng.get('total') != null ? (Integer)((Decimal)eng.get('total')) : 0;
 
         // KPI #11-13 — transition pipeline
-        kpi.transitionsCommitted  = [SELECT COUNT() FROM Project_Transition__c WHERE Transition_Commitment_Complete__c = true];
-        kpi.transitionsTotal      = [SELECT COUNT() FROM Project_Transition__c];
-        kpi.programsTransitioned  = [SELECT COUNT() FROM Program__c WHERE Is_Transitioned__c = true];
+        kpi.transitionsCommitted  = [SELECT COUNT() FROM pm_Project_Transition__c WHERE Transition_Commitment_Complete__c = true];
+        kpi.transitionsTotal      = [SELECT COUNT() FROM pm_Project_Transition__c];
+        kpi.programsTransitioned  = [SELECT COUNT() FROM pm_Program__c WHERE Is_Transitioned__c = true];
 
         // KPI #14 — avg operational index
-        AggregateResult ops = [SELECT AVG(Operational_Index__c) avgOps FROM Program__c WHERE Operational_Index__c != null];
+        AggregateResult ops = [SELECT AVG(Operational_Index__c) avgOps FROM pm_Program__c WHERE Operational_Index__c != null];
         kpi.avgOperationalIndex = ops.get('avgOps') != null ? ((Decimal)ops.get('avgOps')).setScale(1) : null;
 
         return kpi;
@@ -73,7 +73,7 @@ public with sharing class PmDashboardController {
 
         for (AggregateResult ar : [
             SELECT Program_Status__c status, COUNT(Id) cnt
-            FROM Program__c
+            FROM pm_Program__c
             GROUP BY Program_Status__c
         ]) {
             String status = (String)ar.get('status');
@@ -105,9 +105,9 @@ public with sharing class PmDashboardController {
     @AuraEnabled(cacheable=true)
     public static List<ProgramRow> getMyPrograms() {
         List<ProgramRow> rows = new List<ProgramRow>();
-        for (Program__c p : [
+        for (pm_Program__c p : [
             SELECT Id, Name, Program_Status__c, LastModifiedDate
-            FROM Program__c
+            FROM pm_Program__c
             ORDER BY LastModifiedDate DESC
             LIMIT 10
         ]) {
@@ -128,7 +128,7 @@ public with sharing class PmDashboardController {
             SELECT Id, Subject, Status, Priority, ActivityDate
             FROM Task
             WHERE IsClosed = false
-            AND WhatId IN (SELECT Id FROM Program__c)
+            AND WhatId IN (SELECT Id FROM pm_Program__c)
             ORDER BY ActivityDate ASC NULLS LAST
             LIMIT 10
         ]) {
@@ -245,12 +245,12 @@ public with sharing class PmDashboardController {
 
     @AuraEnabled(cacheable=true)
     public static PortfolioMix getPortfolioMix() {
-        Integer total = [SELECT COUNT() FROM Program__c WHERE Program_Status__c != 'Closed'];
+        Integer total = [SELECT COUNT() FROM pm_Program__c WHERE Program_Status__c != 'Closed'];
         PortfolioMix mix = new PortfolioMix();
         mix.total = total;
         for (AggregateResult ar : [
             SELECT Fund_Allocation__c val, COUNT(Id) cnt
-            FROM Program__c WHERE Program_Status__c != 'Closed'
+            FROM pm_Program__c WHERE Program_Status__c != 'Closed'
             GROUP BY Fund_Allocation__c ORDER BY COUNT(Id) DESC
         ]) {
             mix.fundAllocation.add(new MixItem(
@@ -258,7 +258,7 @@ public with sharing class PmDashboardController {
         }
         for (AggregateResult ar : [
             SELECT Program_Balance__c val, COUNT(Id) cnt
-            FROM Program__c WHERE Program_Status__c != 'Closed'
+            FROM pm_Program__c WHERE Program_Status__c != 'Closed'
             GROUP BY Program_Balance__c ORDER BY COUNT(Id) DESC
         ]) {
             mix.portfolioBalance.add(new MixItem(
@@ -270,31 +270,31 @@ public with sharing class PmDashboardController {
     @AuraEnabled(cacheable=true)
     public static List<ReadinessRow> getReadinessData() {
         Map<Id, ReadinessRow> rowMap = new Map<Id, ReadinessRow>();
-        for (Program__c p : [
-            SELECT Id, Name, Program_Status__c FROM Program__c
+        for (pm_Program__c p : [
+            SELECT Id, Name, Program_Status__c FROM pm_Program__c
             WHERE Program_Status__c != 'Closed' ORDER BY Name
         ]) {
             rowMap.put(p.Id, new ReadinessRow(p.Id, p.Name, p.Program_Status__c));
         }
         Set<Id> ids = rowMap.keySet();
         Set<Id> trlDone = new Set<Id>();
-        for (TRL__c t : [
-            SELECT Program__c, Current_TRL__c FROM TRL__c
-            WHERE Program__c IN :ids ORDER BY Assessment_Date__c DESC NULLS LAST
+        for (pm_TRL__c t : [
+            SELECT pm_Program__c, Current_TRL__c FROM pm_TRL__c
+            WHERE pm_Program__c IN :ids ORDER BY Assessment_Date__c DESC NULLS LAST
         ]) {
-            if (!trlDone.contains(t.Program__c)) {
-                rowMap.get(t.Program__c).trl = t.Current_TRL__c != null ? (Integer)t.Current_TRL__c : null;
-                trlDone.add(t.Program__c);
+            if (!trlDone.contains(t.pm_Program__c)) {
+                rowMap.get(t.pm_Program__c).trl = t.Current_TRL__c != null ? (Integer)t.Current_TRL__c : null;
+                trlDone.add(t.pm_Program__c);
             }
         }
         Set<Id> mrlDone = new Set<Id>();
-        for (MRL__c m : [
-            SELECT Program__c, Current_MRL__c FROM MRL__c
-            WHERE Program__c IN :ids ORDER BY Assessment_Date__c DESC NULLS LAST
+        for (pm_MRL__c m : [
+            SELECT pm_Program__c, Current_MRL__c FROM pm_MRL__c
+            WHERE pm_Program__c IN :ids ORDER BY Assessment_Date__c DESC NULLS LAST
         ]) {
-            if (!mrlDone.contains(m.Program__c)) {
-                rowMap.get(m.Program__c).mrl = m.Current_MRL__c != null ? (Integer)m.Current_MRL__c : null;
-                mrlDone.add(m.Program__c);
+            if (!mrlDone.contains(m.pm_Program__c)) {
+                rowMap.get(m.pm_Program__c).mrl = m.Current_MRL__c != null ? (Integer)m.Current_MRL__c : null;
+                mrlDone.add(m.pm_Program__c);
             }
         }
         return new List<ReadinessRow>(rowMap.values());
@@ -305,7 +305,7 @@ public with sharing class PmDashboardController {
         EvidenceSummary es = new EvidenceSummary();
         for (AggregateResult ar : [
             SELECT Decision__c dec, COUNT(Id) cnt
-            FROM Evidence__c WHERE Decision__c != null
+            FROM pm_Evidence__c WHERE Decision__c != null
             GROUP BY Decision__c
         ]) {
             Integer cnt = (Integer)ar.get('cnt');
@@ -314,7 +314,7 @@ public with sharing class PmDashboardController {
             else if (dec == 'Pivot')   es.pivotCount   = cnt;
         }
         AggregateResult avg = [
-            SELECT AVG(Days_to_Decision__c) avgDays FROM Evidence__c
+            SELECT AVG(Days_to_Decision__c) avgDays FROM pm_Evidence__c
             WHERE Decision__c != null AND Days_to_Decision__c != null
         ];
         es.avgDaysToDecision = avg.get('avgDays') != null
@@ -326,7 +326,7 @@ public with sharing class PmDashboardController {
     public static List<UpeRow> getUpeBreakdown() {
         List<AggregateResult> results = [
             SELECT Engagement_Type__c etype, COUNT(Id) cnt, SUM(Participant_Count__c) pax
-            FROM User_Partner_Engagement__c
+            FROM pm_User_Partner_Engagement__c
             GROUP BY Engagement_Type__c ORDER BY COUNT(Id) DESC
         ];
         Integer maxCnt = 0;
@@ -348,13 +348,13 @@ public with sharing class PmDashboardController {
     @AuraEnabled(cacheable=true)
     public static List<TransitionRow> getTransitions() {
         List<TransitionRow> rows = new List<TransitionRow>();
-        for (Project_Transition__c t : [
-            SELECT Program__r.Name, Prototype_Transition__c,
+        for (pm_Project_Transition__c t : [
+            SELECT pm_Program__r.Name, Prototype_Transition__c,
                    Signed_Transition_Agreement__c, Transition_Commitment_Complete__c
-            FROM Project_Transition__c ORDER BY Program__r.Name
+            FROM pm_Project_Transition__c ORDER BY pm_Program__r.Name
         ]) {
             rows.add(new TransitionRow(
-                t.Program__r.Name, t.Prototype_Transition__c,
+                t.pm_Program__r.Name, t.Prototype_Transition__c,
                 t.Signed_Transition_Agreement__c == true,
                 t.Transition_Commitment_Complete__c == true
             ));

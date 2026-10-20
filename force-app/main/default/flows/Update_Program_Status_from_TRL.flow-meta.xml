@@ -15,7 +15,7 @@
                 <numberValue>7.0</numberValue>
             </value>
         </filters>
-        <object>TRL__c</object>
+        <object>pm_TRL__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
         <connector>
@@ -32,7 +32,7 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.Program__c</elementReference>
+                <elementReference>$Record.pm_Program__c</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -41,7 +41,7 @@
                 <stringValue>Transitioning</stringValue>
             </value>
         </inputAssignments>
-        <object>Program__c</object>
+        <object>pm_Program__c</object>
     </recordUpdates>
     <status>Active</status>
 </Flow>

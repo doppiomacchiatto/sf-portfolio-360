@@ -262,6 +262,22 @@
     .outcome-val { width: 36px; text-align: right; font-size: 12px; font-weight: 700; color: var(--p); }
     .outcome-na { font-size: 11px; color: #c5d3e8; font-style: italic; }
 
+    /* ── INTERACTIVITY ── */
+    .filter-chip { cursor: pointer; transition: background .15s, border-color .15s; }
+    .filter-chip:hover { border-color: var(--as); }
+    .prog-list li { cursor: pointer; border-radius: 8px; transition: background .15s; }
+    .prog-list li:hover { background: #f5f9fd; }
+    .prog-list li.prog-selected { background: #eaf4fd; box-shadow: inset 3px 0 0 var(--a); }
+    .prog-highlight { background: #eaf4fd; }
+    #defense-card.filtered-hidden, #saturn-card.filtered-hidden { display: none; }
+    .breach-row[data-target] { cursor: pointer; transition: filter .15s; }
+    .breach-row[data-target]:hover { filter: brightness(.97); }
+    @keyframes kpiFlash {
+      0%, 100% { box-shadow: var(--sh); border-color: var(--bd); }
+      25%, 65% { box-shadow: 0 0 0 3px rgba(52,152,219,.45), var(--sh); border-color: var(--a); }
+    }
+    .card.kpi-flash { animation: kpiFlash 1.6s ease; }
+
     @media (max-width: 1100px) {
       .s3,.s4,.s5,.s6,.s7,.s8 { grid-column: span 12; }
       .c3,.c4 { grid-template-columns: 1fr 1fr; }
@@ -316,8 +332,10 @@
       <p class="hero-sub">All 14 active programs — original 7 defense R&amp;D programs (SIGMA-1 through VECTOR) plus 7 Saturn-series space exploration programs (MIMAS through TITAN).</p>
       <div class="hero-meta">
         <span class="chip active">FY26 Q2</span>
-        <span class="chip">All Programs</span>
-        <span class="chip">14 Programs</span>
+        <span class="chip filter-chip active" data-filter="all">All Programs</span>
+        <span class="chip filter-chip" data-filter="defense">Defense R&amp;D</span>
+        <span class="chip filter-chip" data-filter="saturn">Saturn Series</span>
+        <span class="chip" id="program-count-chip">14 Programs</span>
         <span class="chip">Snapshot: Jun 19, 2026</span>
       </div>
       <div class="hero-stats">
@@ -348,27 +366,27 @@
   <!-- ═══════════ PROGRAM PIPELINE STRIP ═══════════ -->
   <!-- Ideation=SIGMA-1+MIMAS; Funded/Awarded=NEXUS-4+SHIELD-X+ENCELADUS+TETHYS; Prototype/Demo=FORGE+APEX-7+DIONE+IAPETUS; Transitioning=CLARITY+RHEA; Operational=VECTOR+TITAN -->
   <div class="phase-strip">
-    <div class="phase-item">
+    <div class="phase-item" data-phase="ideation">
       <div class="phase-icon">💡</div>
       <div class="phase-count">2</div>
       <div class="phase-name">Ideation</div>
     </div>
-    <div class="phase-item">
+    <div class="phase-item" data-phase="funded">
       <div class="phase-icon">💰</div>
       <div class="phase-count">4</div>
       <div class="phase-name">Funded / Awarded</div>
     </div>
-    <div class="phase-item">
+    <div class="phase-item" data-phase="prototype">
       <div class="phase-icon">🔬</div>
       <div class="phase-count">4</div>
       <div class="phase-name">Prototype / Demo</div>
     </div>
-    <div class="phase-item">
+    <div class="phase-item" data-phase="transitioning">
       <div class="phase-icon">🚀</div>
       <div class="phase-count">2</div>
       <div class="phase-name">Transitioning</div>
     </div>
-    <div class="phase-item">
+    <div class="phase-item" data-phase="operational">
       <div class="phase-icon">✅</div>
       <div class="phase-count">2</div>
       <div class="phase-name">Operational</div>
@@ -379,7 +397,7 @@
   <div class="section-label">Programs at a Glance</div>
   <div class="row c3" style="margin-bottom:14px">
 
-    <div class="card">
+    <div class="card" id="defense-card">
       <div class="card-hd">Defense R&amp;D Programs (7)</div>
       <ul class="prog-list">
         <li>
@@ -434,7 +452,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card" id="saturn-card">
       <div class="card-hd">Saturn Space Exploration Programs (7)</div>
       <ul class="prog-list">
         <li>
@@ -489,7 +507,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card" id="kpi-2">
       <div class="card-hd">Portfolio Mix</div>
       <!-- Fund Allocation -->
       <div class="kpi-lbl" style="margin-bottom:6px">Fund Allocation (KPI #1)</div>
@@ -555,7 +573,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" id="kpi-4">
       <div class="kpi-lbl">Award → First Prototype (KPI #4)</div>
       <div class="kpi-val">18.4<span class="kpi-unit"> mo</span></div>
       <div class="kpi-trend">Avg across 8 programs with prototype data — all above 12-mo target</div>
@@ -596,7 +614,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" id="kpi-5">
       <div class="kpi-lbl">Demo → Mission Use (KPI #5)</div>
       <div class="kpi-val">13.1<span class="kpi-unit"> mo</span></div>
       <div class="kpi-trend">Avg of VECTOR (7.1 mo) and TITAN (19.0 mo) — 2 programs with complete cycles</div>
@@ -742,7 +760,7 @@
       <div style="margin-top:8px;font-size:11px;color:var(--mu)">Pivots — CLARITY, FORGE (original) · ENCELADUS, DIONE, IAPETUS (Saturn)</div>
     </div>
 
-    <div class="card">
+    <div class="card" id="kpi-10">
       <div class="kpi-lbl">User &amp; Partner Engagements (KPI #10)</div>
       <div class="kpi-val">27<span class="kpi-unit"> total</span></div>
       <div class="kpi-trend">455 total participants · 12 original + 15 Saturn engagements</div>
@@ -943,7 +961,7 @@
 
     <div class="card s4">
       <div class="card-hd">Open KPI Watches <span class="card-hd-link">4 items</span></div>
-      <div class="breach-row" style="border-color:var(--wa-bg);background:#fffaf5">
+      <div class="breach-row" data-target="kpi-4" style="border-color:var(--wa-bg);background:#fffaf5">
         <div>
           <div class="breach-kpi">KPI #4 — Award → Prototype</div>
           <div class="breach-name">Portfolio avg 18.4 months</div>
@@ -951,7 +969,7 @@
         </div>
         <span class="badge warn">High</span>
       </div>
-      <div class="breach-row" style="border-color:var(--wa-bg);background:#fffaf5">
+      <div class="breach-row" data-target="kpi-2" style="border-color:var(--wa-bg);background:#fffaf5">
         <div>
           <div class="breach-kpi">KPI #2 — Portfolio Balance</div>
           <div class="breach-name">Near Term Concentration</div>
@@ -959,7 +977,7 @@
         </div>
         <span class="badge warn">Med</span>
       </div>
-      <div class="breach-row" style="border-color:var(--wa-bg);background:#fffaf5">
+      <div class="breach-row" data-target="kpi-5" style="border-color:var(--wa-bg);background:#fffaf5">
         <div>
           <div class="breach-kpi">KPI #5 / #13 — Demo → Mission Use</div>
           <div class="breach-name">Combined avg 13.1 months</div>
@@ -967,7 +985,7 @@
         </div>
         <span class="badge warn">Med</span>
       </div>
-      <div class="breach-row">
+      <div class="breach-row" data-target="kpi-10">
         <div>
           <div class="breach-kpi">KPI #10 — UPE Engagement</div>
           <div class="breach-name">SIGMA-1 + MIMAS — 1 engagement each</div>
@@ -990,5 +1008,103 @@
   <div class="class-banner-label">UNCLASSIFIED</div>
 </div>
 
+<script>
+(function () {
+  var CLASS_TO_PHASE = {
+    'sp-ideation': 'ideation', 'sp-funded': 'funded', 'sp-awarded': 'funded',
+    'sp-prototype': 'prototype', 'sp-demo': 'prototype',
+    'sp-transitioning': 'transitioning', 'sp-operational': 'operational'
+  };
+
+  var defenseCard = document.getElementById('defense-card');
+  var saturnCard = document.getElementById('saturn-card');
+  var countChip = document.getElementById('program-count-chip');
+
+  function visiblePills() {
+    return Array.prototype.slice.call(document.querySelectorAll('.card:not(.filtered-hidden) .status-pill'));
+  }
+
+  function recomputePhaseCounts() {
+    var counts = { ideation: 0, funded: 0, prototype: 0, transitioning: 0, operational: 0 };
+    visiblePills().forEach(function (pill) {
+      for (var i = 0; i < pill.classList.length; i++) {
+        var phase = CLASS_TO_PHASE[pill.classList[i]];
+        if (phase) { counts[phase]++; break; }
+      }
+    });
+    Object.keys(counts).forEach(function (phase) {
+      var el = document.querySelector('.phase-item[data-phase="' + phase + '"] .phase-count');
+      if (el) el.textContent = counts[phase];
+    });
+    if (countChip) countChip.textContent = visiblePills().length + ' Programs';
+  }
+
+  document.querySelectorAll('.filter-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      var filter = chip.dataset.filter;
+      defenseCard.classList.toggle('filtered-hidden', filter === 'saturn');
+      saturnCard.classList.toggle('filtered-hidden', filter === 'defense');
+      recomputePhaseCounts();
+    });
+  });
+
+  var selectedProgram = null;
+
+  function applyProgramHighlight() {
+    document.querySelectorAll('.prog-highlight').forEach(function (el) { el.classList.remove('prog-highlight'); });
+    document.querySelectorAll('.prog-list li').forEach(function (li) {
+      li.classList.toggle('prog-selected', li.dataset.program === selectedProgram);
+    });
+    if (!selectedProgram) return;
+    var escaped = selectedProgram.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+    var re = new RegExp('^' + escaped + '(\\s|$)');
+    document.querySelectorAll('.rl-table td:first-child, .tr-table td:first-child').forEach(function (td) {
+      if (re.test(td.textContent.trim())) td.closest('tr').classList.add('prog-highlight');
+    });
+    document.querySelectorAll('.prog-row .prog-lbl span:first-child').forEach(function (span) {
+      if (re.test(span.textContent.trim())) span.closest('.prog-row').classList.add('prog-highlight');
+    });
+  }
+
+  document.querySelectorAll('.prog-list li').forEach(function (li) {
+    var nameEl = li.querySelector('.prog-name');
+    if (!nameEl) return;
+    var code = nameEl.textContent.trim();
+    li.dataset.program = code;
+    li.tabIndex = 0;
+    li.setAttribute('role', 'button');
+    li.setAttribute('aria-label', 'Highlight ' + code + ' across dashboard');
+    function toggle() {
+      selectedProgram = selectedProgram === code ? null : code;
+      applyProgramHighlight();
+    }
+    li.addEventListener('click', toggle);
+    li.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  document.querySelectorAll('.breach-row[data-target]').forEach(function (row) {
+    row.tabIndex = 0;
+    row.setAttribute('role', 'button');
+    function go() {
+      var target = document.getElementById(row.dataset.target);
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      target.classList.remove('kpi-flash');
+      requestAnimationFrame(function () { target.classList.add('kpi-flash'); });
+      setTimeout(function () { target.classList.remove('kpi-flash'); }, 1600);
+    }
+    row.addEventListener('click', go);
+    row.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+  });
+
+  recomputePhaseCounts();
+})();
+</script>
 </body>
 </html>

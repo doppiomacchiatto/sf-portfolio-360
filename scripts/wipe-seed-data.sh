@@ -51,13 +51,13 @@ for r in records:
   rm -f "$tmpfile"
 }
 
-delete_object Project_Transition__c
-delete_object User_Partner_Engagement__c
-delete_object Evidence__c
-delete_object Technical_Exam__c
-delete_object MRL__c
-delete_object TRL__c
-delete_object Program__c
+delete_object pm_Project_Transition__c
+delete_object pm_User_Partner_Engagement__c
+delete_object pm_Evidence__c
+delete_object pm_Technical_Exam__c
+delete_object pm_MRL__c
+delete_object pm_TRL__c
+delete_object pm_Program__c
 
 echo ""
 echo "========================================"

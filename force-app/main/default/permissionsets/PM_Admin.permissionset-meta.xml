@@ -20,61 +20,61 @@
     <hasActivationRequired>false</hasActivationRequired>
     <label>PM Admin</label>
 
-    <!-- Program__c fields -->
-    <fieldPermissions><editable>true</editable><field>Program__c.Award_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>false</editable><field>Program__c.Engagement_Count__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Experiment_Cadence__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.First_Prototype_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Fund_Allocation__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Funding_Start_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>false</editable><field>Program__c.Is_Transitioned__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Mission_Need_Validated_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Mission_Use_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Operational_Index__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Operational_Outcomes__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Program_Balance__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Successful_Demo_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>false</editable><field>Program__c.Time_Award_to_Prototype_Months__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>false</editable><field>Program__c.Time_Demo_to_MissionUse_Months__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>false</editable><field>Program__c.Time_Mission_to_Funded_Days__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Program__c.Transition_Outcome__c</field><readable>true</readable></fieldPermissions>
+    <!-- pm_Program__c fields -->
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Award_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>pm_Program__c.Engagement_Count__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Experiment_Cadence__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.First_Prototype_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Fund_Allocation__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Funding_Start_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>pm_Program__c.Is_Transitioned__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Mission_Need_Validated_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Mission_Use_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Operational_Index__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Operational_Outcomes__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Program_Balance__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Successful_Demo_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>pm_Program__c.Time_Award_to_Prototype_Months__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>pm_Program__c.Time_Demo_to_MissionUse_Months__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>pm_Program__c.Time_Mission_to_Funded_Days__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Program__c.Transition_Outcome__c</field><readable>true</readable></fieldPermissions>
 
-    <!-- TRL__c fields -->
-    <fieldPermissions><editable>true</editable><field>TRL__c.Assessed_By__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>TRL__c.Critical_Technology__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>TRL__c.Notes__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>TRL__c.Previous_TRL__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>false</editable><field>TRL__c.TRL_Gain__c</field><readable>true</readable></fieldPermissions>
+    <!-- pm_TRL__c fields -->
+    <fieldPermissions><editable>true</editable><field>pm_TRL__c.Assessed_By__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_TRL__c.Critical_Technology__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_TRL__c.Notes__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_TRL__c.Previous_TRL__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>pm_TRL__c.TRL_Gain__c</field><readable>true</readable></fieldPermissions>
 
-    <!-- MRL__c fields -->
-    <fieldPermissions><editable>false</editable><field>MRL__c.MRL_Gain__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>MRL__c.Notes__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>MRL__c.Previous_MRL__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>MRL__c.Productivity_Score__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>MRL__c.Supply_Chain_Risk__c</field><readable>true</readable></fieldPermissions>
+    <!-- pm_MRL__c fields -->
+    <fieldPermissions><editable>false</editable><field>pm_MRL__c.MRL_Gain__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_MRL__c.Notes__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_MRL__c.Previous_MRL__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_MRL__c.Productivity_Score__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_MRL__c.Supply_Chain_Risk__c</field><readable>true</readable></fieldPermissions>
 
-    <!-- Technical_Exam__c fields -->
-    <fieldPermissions><editable>false</editable><field>Technical_Exam__c.Pass_Rate__c</field><readable>true</readable></fieldPermissions>
+    <!-- pm_Technical_Exam__c fields -->
+    <fieldPermissions><editable>false</editable><field>pm_Technical_Exam__c.Pass_Rate__c</field><readable>true</readable></fieldPermissions>
 
-    <!-- Evidence__c fields -->
-    <fieldPermissions><editable>false</editable><field>Evidence__c.Days_to_Decision__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Evidence__c.Decision__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Evidence__c.Decision_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Evidence__c.Evidence_Description__c</field><readable>true</readable></fieldPermissions>
+    <!-- pm_Evidence__c fields -->
+    <fieldPermissions><editable>false</editable><field>pm_Evidence__c.Days_to_Decision__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Evidence__c.Decision__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Evidence__c.Decision_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Evidence__c.Evidence_Description__c</field><readable>true</readable></fieldPermissions>
 
-    <!-- User_Partner_Engagement__c fields -->
-    <fieldPermissions><editable>true</editable><field>User_Partner_Engagement__c.Notes__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>User_Partner_Engagement__c.Participant_Count__c</field><readable>true</readable></fieldPermissions>
+    <!-- pm_User_Partner_Engagement__c fields -->
+    <fieldPermissions><editable>true</editable><field>pm_User_Partner_Engagement__c.Notes__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_User_Partner_Engagement__c.Participant_Count__c</field><readable>true</readable></fieldPermissions>
 
-    <!-- Project_Transition__c fields -->
-    <fieldPermissions><editable>true</editable><field>Project_Transition__c.Funded_Receiver_Path__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Project_Transition__c.Integration_Plan__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Project_Transition__c.Mission_Use_Date__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Project_Transition__c.Prototype_Transition__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Project_Transition__c.Signed_Transition_Agreement__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Project_Transition__c.Test_Venue__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>false</editable><field>Project_Transition__c.Transition_Commitment_Complete__c</field><readable>true</readable></fieldPermissions>
-    <fieldPermissions><editable>true</editable><field>Project_Transition__c.Transition_Owner__c</field><readable>true</readable></fieldPermissions>
+    <!-- pm_Project_Transition__c fields -->
+    <fieldPermissions><editable>true</editable><field>pm_Project_Transition__c.Funded_Receiver_Path__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Project_Transition__c.Integration_Plan__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Project_Transition__c.Mission_Use_Date__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Project_Transition__c.Prototype_Transition__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Project_Transition__c.Signed_Transition_Agreement__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Project_Transition__c.Test_Venue__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>pm_Project_Transition__c.Transition_Commitment_Complete__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>pm_Project_Transition__c.Transition_Owner__c</field><readable>true</readable></fieldPermissions>
 
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -82,7 +82,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>Program__c</object>
+        <object>pm_Program__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -91,7 +91,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>TRL__c</object>
+        <object>pm_TRL__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -100,7 +100,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>MRL__c</object>
+        <object>pm_MRL__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -109,7 +109,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>Technical_Exam__c</object>
+        <object>pm_Technical_Exam__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -118,7 +118,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>Evidence__c</object>
+        <object>pm_Evidence__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -127,7 +127,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>User_Partner_Engagement__c</object>
+        <object>pm_User_Partner_Engagement__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -136,7 +136,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>Project_Transition__c</object>
+        <object>pm_Project_Transition__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
@@ -144,31 +144,31 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>Program__c</tab>
+        <tab>pm_Program__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>TRL__c</tab>
+        <tab>pm_TRL__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>MRL__c</tab>
+        <tab>pm_MRL__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>Technical_Exam__c</tab>
+        <tab>pm_Technical_Exam__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>Evidence__c</tab>
+        <tab>pm_Evidence__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>User_Partner_Engagement__c</tab>
+        <tab>pm_User_Partner_Engagement__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>Project_Transition__c</tab>
+        <tab>pm_Project_Transition__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

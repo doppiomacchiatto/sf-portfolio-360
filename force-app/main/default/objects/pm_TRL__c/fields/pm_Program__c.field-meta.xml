@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Program__c</fullName>
+    <fullName>pm_Program__c</fullName>
     <label>Program</label>
-    <referenceTo>Program__c</referenceTo>
+    <referenceTo>pm_Program__c</referenceTo>
     <relationshipLabel>TRL Assessments</relationshipLabel>
     <relationshipName>TRL_Assessments</relationshipName>
     <relationshipOrder>0</relationshipOrder>

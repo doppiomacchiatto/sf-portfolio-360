@@ -34,10 +34,10 @@ sf data query \
   --query "SELECT Assignee.Username, PermissionSet.Name FROM PermissionSetAssignment WHERE PermissionSet.Name IN ('PM_Executive','PM_Admin','PM_Analyst') ORDER BY PermissionSet.Name, Assignee.Username"
 echo ""
 
-echo "[3/4] Verify baseline Program__c data is available..."
+echo "[3/4] Verify baseline pm_Program__c data is available..."
 sf data query \
   --target-org "$ORG" \
-  --query "SELECT COUNT(Id) totalPrograms FROM Program__c"
+  --query "SELECT COUNT(Id) totalPrograms FROM pm_Program__c"
 echo ""
 
 echo "[4/4] Manual UI walkthrough checkpoints"

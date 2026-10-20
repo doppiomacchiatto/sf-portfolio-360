@@ -5,7 +5,7 @@
     "activeViewId" : "Program_Related_List",
     "configurationTags" : [ ],
     "pageAccess" : "UseParent",
-    "routeType" : "relatedlist-Program__c",
+    "routeType" : "relatedlist-pm_Program__c",
     "urlPrefix" : "program"
   },
   "urlName" : "program-related-list"

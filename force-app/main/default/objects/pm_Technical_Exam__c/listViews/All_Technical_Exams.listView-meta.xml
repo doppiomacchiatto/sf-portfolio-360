@@ -4,7 +4,7 @@
     <filterScope>Everything</filterScope>
     <label>All Technical Exams</label>
     <columns>NAME</columns>
-    <columns>Program__c</columns>
+    <columns>pm_Program__c</columns>
     <columns>Exam_Date__c</columns>
     <columns>Exam_Type__c</columns>
     <columns>Exams_Administered__c</columns>

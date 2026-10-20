@@ -5,7 +5,7 @@
     "activeViewId" : "Program_Detail",
     "configurationTags" : [ ],
     "pageAccess" : "UseParent",
-    "routeType" : "detail-Program__c",
+    "routeType" : "detail-pm_Program__c",
     "urlPrefix" : "program"
   },
   "urlName" : "program-detail"

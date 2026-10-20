@@ -3,14 +3,14 @@ public with sharing class PmProgramDetailController {
     @AuraEnabled(cacheable=true)
     public static ProgramDetail getProgramDetail(Id recordId) {
         if (recordId == null) return null;
-        Program__c p = [
+        pm_Program__c p = [
             SELECT Name, Program_Status__c, Fund_Allocation__c, Program_Balance__c,
                    Award_Date__c, Funding_Start_Date__c, First_Prototype_Date__c,
                    Successful_Demo_Date__c, Mission_Need_Validated_Date__c, Mission_Use_Date__c,
                    Time_Award_to_Prototype_Months__c, Time_Demo_to_MissionUse_Months__c,
                    Time_Mission_to_Funded_Days__c, Experiment_Cadence__c, Engagement_Count__c,
                    Operational_Index__c, Operational_Outcomes__c, Is_Transitioned__c, Transition_Outcome__c
-            FROM Program__c WHERE Id = :recordId WITH SECURITY_ENFORCED LIMIT 1
+            FROM pm_Program__c WHERE Id = :recordId WITH SECURITY_ENFORCED LIMIT 1
         ];
         return new ProgramDetail(p);
     }
@@ -20,14 +20,14 @@ public with sharing class PmProgramDetailController {
         if (recordId == null) return null;
         ProgramRelated rel = new ProgramRelated();
 
-        List<TRL__c> trls = [
+        List<pm_TRL__c> trls = [
             SELECT Current_TRL__c, Previous_TRL__c, TRL_Gain__c, Assessment_Date__c,
                    Technology_Element__c
-            FROM TRL__c WHERE Program__c = :recordId
+            FROM pm_TRL__c WHERE pm_Program__c = :recordId
             ORDER BY Assessment_Date__c DESC NULLS LAST LIMIT 1
         ];
         if (!trls.isEmpty()) {
-            TRL__c t = trls[0];
+            pm_TRL__c t = trls[0];
             rel.currentTrl     = t.Current_TRL__c  != null ? (Integer)t.Current_TRL__c  : null;
             rel.previousTrl    = t.Previous_TRL__c != null ? (Integer)t.Previous_TRL__c : null;
             rel.trlGain        = t.TRL_Gain__c;
@@ -35,26 +35,26 @@ public with sharing class PmProgramDetailController {
             rel.trlElement     = t.Technology_Element__c;
         }
 
-        List<MRL__c> mrls = [
+        List<pm_MRL__c> mrls = [
             SELECT Current_MRL__c, Previous_MRL__c, MRL_Gain__c, Assessment_Date__c
-            FROM MRL__c WHERE Program__c = :recordId
+            FROM pm_MRL__c WHERE pm_Program__c = :recordId
             ORDER BY Assessment_Date__c DESC NULLS LAST LIMIT 1
         ];
         if (!mrls.isEmpty()) {
-            MRL__c m = mrls[0];
+            pm_MRL__c m = mrls[0];
             rel.currentMrl  = m.Current_MRL__c  != null ? (Integer)m.Current_MRL__c  : null;
             rel.previousMrl = m.Previous_MRL__c != null ? (Integer)m.Previous_MRL__c : null;
             rel.mrlGain     = m.MRL_Gain__c;
             rel.mrlDate     = m.Assessment_Date__c;
         }
 
-        List<Technical_Exam__c> exams = [
+        List<pm_Technical_Exam__c> exams = [
             SELECT Pass_Rate__c, Exams_Administered__c, Exams_Pass__c, Exam_Date__c, Exam_Type__c
-            FROM Technical_Exam__c WHERE Program__c = :recordId
+            FROM pm_Technical_Exam__c WHERE pm_Program__c = :recordId
             ORDER BY Exam_Date__c DESC NULLS LAST LIMIT 1
         ];
         if (!exams.isEmpty()) {
-            Technical_Exam__c e = exams[0];
+            pm_Technical_Exam__c e = exams[0];
             rel.examPassRate      = e.Pass_Rate__c;
             rel.examsAdministered = e.Exams_Administered__c != null ? (Integer)e.Exams_Administered__c : null;
             rel.examsPass         = e.Exams_Pass__c         != null ? (Integer)e.Exams_Pass__c         : null;
@@ -62,14 +62,14 @@ public with sharing class PmProgramDetailController {
             rel.examType          = e.Exam_Type__c;
         }
 
-        List<Project_Transition__c> pts = [
+        List<pm_Project_Transition__c> pts = [
             SELECT Prototype_Transition__c, Signed_Transition_Agreement__c,
                    Transition_Commitment_Complete__c, Funded_Receiver_Path__c,
                    Integration_Plan__c, Transition_Owner__c, Test_Venue__c
-            FROM Project_Transition__c WHERE Program__c = :recordId LIMIT 1
+            FROM pm_Project_Transition__c WHERE pm_Program__c = :recordId LIMIT 1
         ];
         if (!pts.isEmpty()) {
-            Project_Transition__c pt = pts[0];
+            pm_Project_Transition__c pt = pts[0];
             rel.transitionType      = pt.Prototype_Transition__c;
             rel.transitionSigned    = pt.Signed_Transition_Agreement__c    == true;
             rel.transitionCommitted = pt.Transition_Commitment_Complete__c == true;
@@ -82,7 +82,7 @@ public with sharing class PmProgramDetailController {
 
         for (AggregateResult ar : [
             SELECT Decision__c dec, COUNT(Id) cnt
-            FROM Evidence__c WHERE Program__c = :recordId AND Decision__c != null
+            FROM pm_Evidence__c WHERE pm_Program__c = :recordId AND Decision__c != null
             GROUP BY Decision__c
         ]) {
             String dec = (String)ar.get('dec');
@@ -92,7 +92,7 @@ public with sharing class PmProgramDetailController {
         }
         AggregateResult avgDays = [
             SELECT AVG(Days_to_Decision__c) avg
-            FROM Evidence__c WHERE Program__c = :recordId AND Days_to_Decision__c != null
+            FROM pm_Evidence__c WHERE pm_Program__c = :recordId AND Days_to_Decision__c != null
         ];
         if (avgDays.get('avg') != null) {
             rel.evidenceAvgDays = ((Decimal)avgDays.get('avg')).setScale(1);
@@ -100,7 +100,7 @@ public with sharing class PmProgramDetailController {
 
         List<AggregateResult> upeResults = [
             SELECT Engagement_Type__c etype, COUNT(Id) cnt, SUM(Participant_Count__c) pax
-            FROM User_Partner_Engagement__c WHERE Program__c = :recordId
+            FROM pm_User_Partner_Engagement__c WHERE pm_Program__c = :recordId
             GROUP BY Engagement_Type__c ORDER BY COUNT(Id) DESC
         ];
         Integer maxCnt = 0;
@@ -140,7 +140,7 @@ public with sharing class PmProgramDetailController {
         @AuraEnabled public Boolean isTransitioned;
         @AuraEnabled public String  transitionOutcome;
 
-        public ProgramDetail(Program__c p) {
+        public ProgramDetail(pm_Program__c p) {
             this.name                     = p.Name;
             this.status                   = p.Program_Status__c;
             this.fundAllocation           = p.Fund_Allocation__c;

@@ -1,8 +1,8 @@
 {
   "records": [
     {
-      "attributes": { "type": "Project_Transition__c", "referenceId": "TRRef_APEX" },
-      "Program__c": "@PRef_APEX",
+      "attributes": { "type": "pm_Project_Transition__c", "referenceId": "TRRef_APEX" },
+      "pm_Program__c": "@PRef_APEX",
       "Prototype_Transition__c": "Fielded Prototype",
       "Transition_Owner__c": "Col. M. Torres",
       "Signed_Transition_Agreement__c": false,
@@ -11,8 +11,8 @@
       "Test_Venue__c": "Yuma Proving Ground"
     },
     {
-      "attributes": { "type": "Project_Transition__c", "referenceId": "TRRef_CLARITY" },
-      "Program__c": "@PRef_CLARITY",
+      "attributes": { "type": "pm_Project_Transition__c", "referenceId": "TRRef_CLARITY" },
+      "pm_Program__c": "@PRef_CLARITY",
       "Prototype_Transition__c": "Program of Record",
       "Transition_Owner__c": "Capt. R. Chen",
       "Signed_Transition_Agreement__c": false,
@@ -21,8 +21,8 @@
       "Test_Venue__c": "Aberdeen Proving Ground"
     },
     {
-      "attributes": { "type": "Project_Transition__c", "referenceId": "TRRef_VECTOR" },
-      "Program__c": "@PRef_VECTOR",
+      "attributes": { "type": "pm_Project_Transition__c", "referenceId": "TRRef_VECTOR" },
+      "pm_Program__c": "@PRef_VECTOR",
       "Prototype_Transition__c": "Program of Record",
       "Transition_Owner__c": "Brig. Gen. K. Williams",
       "Signed_Transition_Agreement__c": true,

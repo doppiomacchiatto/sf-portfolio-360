@@ -91,6 +91,23 @@ The required `networkMemberGroups` in `experiences/main/default/networks/titanx.
 
 **Deploy note:** Redeploy `experiences/` after any change to `networkMemberGroups`. Changes do not take effect until deployed and the site is published.
 
+#### Experience Cloud — Object Renames Break digitalExperiences/* References
+
+Renaming a custom object's API name (e.g. `Program__c` → `pm_Program__c`) is **not** caught by a search/replace across `force-app/` alone. The Digital Experience site (`experiences/main/default/digitalExperiences/titan1/`) embeds object API names as plain string values inside route and view JSON, not as typed metadata references:
+
+- `sfdc_cms__route/<Name>/content.json` → `routeType` (e.g. `"detail-Program__c"`, `"list-Program__c"`, `"relatedlist-Program__c"`)
+- `sfdc_cms__view/<Name>/content.json` → `viewType` (same pattern)
+
+If these aren't updated to match the renamed object, deploying `experiences/` fails with:
+```
+No custom object exists in the Org with given ObjectAPIName: Program__c. Please update the routeType or install the required CustomObject.
+```
+
+**Whenever you rename/refactor a custom object, grep `experiences/` for the old API name and update every `routeType`/`viewType` hit before redeploying:**
+```bash
+rg "Program__c" experiences/
+```
+
 #### Experience Cloud — Cross-Domain Re-Login (Workspaces / Setup)
 
 Even with `networkMemberGroups` configured correctly, internal users can still be forced to log in again when they navigate from the site domain (`*.my.site.com`) to an internal Salesforce domain — for example, clicking through to Digital Experience Workspaces (Builder/Administration) from the live site. This is a separate, org-wide setting, not a Network/site setting.

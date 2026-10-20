@@ -4,7 +4,7 @@
     <filterScope>Everything</filterScope>
     <label>All MRL Assessments</label>
     <columns>NAME</columns>
-    <columns>Program__c</columns>
+    <columns>pm_Program__c</columns>
     <columns>Assessment_Date__c</columns>
     <columns>Manufacturing_Capability__c</columns>
     <columns>Current_MRL__c</columns>

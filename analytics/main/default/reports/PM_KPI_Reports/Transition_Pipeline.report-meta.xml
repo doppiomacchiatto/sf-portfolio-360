@@ -4,7 +4,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>FiscalYear</dateGranularity>
-        <field>Program__c.Project_Transitions__r$Prototype_Transition__c</field>
+        <field>pm_Program__c.Project_Transitions__r$Prototype_Transition__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Transition_Pipeline</name>

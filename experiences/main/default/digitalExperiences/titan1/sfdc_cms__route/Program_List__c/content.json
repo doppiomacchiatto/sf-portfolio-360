@@ -5,7 +5,7 @@
     "activeViewId" : "Program_List",
     "configurationTags" : [ ],
     "pageAccess" : "UseParent",
-    "routeType" : "list-Program__c",
+    "routeType" : "list-pm_Program__c",
     "urlPrefix" : "program"
   },
   "urlName" : "program-list"

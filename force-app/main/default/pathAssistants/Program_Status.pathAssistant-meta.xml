@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
     <active>true</active>
-    <entityName>Program__c</entityName>
+    <entityName>pm_Program__c</entityName>
     <fieldName>Program_Status__c</fieldName>
     <masterLabel>Program Status</masterLabel>
     <recordTypeName>__MASTER__</recordTypeName>

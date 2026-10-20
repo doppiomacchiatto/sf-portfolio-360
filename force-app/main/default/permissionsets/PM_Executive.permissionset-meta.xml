@@ -21,7 +21,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Program__c</object>
+        <object>pm_Program__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -30,7 +30,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>TRL__c</object>
+        <object>pm_TRL__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -39,7 +39,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>MRL__c</object>
+        <object>pm_MRL__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -48,7 +48,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Technical_Exam__c</object>
+        <object>pm_Technical_Exam__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -57,7 +57,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Evidence__c</object>
+        <object>pm_Evidence__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -66,7 +66,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>User_Partner_Engagement__c</object>
+        <object>pm_User_Partner_Engagement__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -75,7 +75,7 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
-        <object>Project_Transition__c</object>
+        <object>pm_Project_Transition__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -97,31 +97,31 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
-        <tab>Program__c</tab>
+        <tab>pm_Program__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>TRL__c</tab>
+        <tab>pm_TRL__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>MRL__c</tab>
+        <tab>pm_MRL__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>Technical_Exam__c</tab>
+        <tab>pm_Technical_Exam__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>Evidence__c</tab>
+        <tab>pm_Evidence__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>User_Partner_Engagement__c</tab>
+        <tab>pm_User_Partner_Engagement__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>Project_Transition__c</tab>
+        <tab>pm_Project_Transition__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
 </PermissionSet>

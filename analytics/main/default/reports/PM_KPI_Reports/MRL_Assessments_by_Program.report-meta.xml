@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>KPI #7 — MRL trajectory by program status; shows MRL assessment counts per program phase.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>pm_Program__c$Program_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MRL_Assessments_by_Program</name>
+    <reportType>Programs_with_MRL_Assessments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+</Report>

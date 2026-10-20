@@ -9,7 +9,7 @@
     </filters>
     <label>Critical Technology</label>
     <columns>NAME</columns>
-    <columns>Program__c</columns>
+    <columns>pm_Program__c</columns>
     <columns>Assessment_Date__c</columns>
     <columns>Technology_Element__c</columns>
     <columns>Current_TRL__c</columns>

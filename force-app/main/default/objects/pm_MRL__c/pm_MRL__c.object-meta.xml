@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>KPI #7: Tracks Manufacturing Readiness Level assessments per program. Related list on Program__c. Each record represents a point-in-time MRL assessment for a manufacturing capability.</description>
+    <description>KPI #7: Tracks Manufacturing Readiness Level assessments per program. Related list on pm_Program__c. Each record represents a point-in-time MRL assessment for a manufacturing capability.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>

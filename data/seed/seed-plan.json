@@ -1,42 +1,42 @@
 [
   {
-    "sobject": "Program__c",
+    "sobject": "pm_Program__c",
     "saveRefs": true,
     "resolveRefs": false,
     "files": ["programs.json"]
   },
   {
-    "sobject": "TRL__c",
+    "sobject": "pm_TRL__c",
     "saveRefs": false,
     "resolveRefs": true,
     "files": ["trl_assessments.json"]
   },
   {
-    "sobject": "MRL__c",
+    "sobject": "pm_MRL__c",
     "saveRefs": false,
     "resolveRefs": true,
     "files": ["mrl_assessments.json"]
   },
   {
-    "sobject": "Technical_Exam__c",
+    "sobject": "pm_Technical_Exam__c",
     "saveRefs": false,
     "resolveRefs": true,
     "files": ["technical_exams.json"]
   },
   {
-    "sobject": "Evidence__c",
+    "sobject": "pm_Evidence__c",
     "saveRefs": false,
     "resolveRefs": true,
     "files": ["evidence_records.json"]
   },
   {
-    "sobject": "User_Partner_Engagement__c",
+    "sobject": "pm_User_Partner_Engagement__c",
     "saveRefs": false,
     "resolveRefs": true,
     "files": ["upe_records.json"]
   },
   {
-    "sobject": "Project_Transition__c",
+    "sobject": "pm_Project_Transition__c",
     "saveRefs": false,
     "resolveRefs": true,
     "files": ["transitions.json"]

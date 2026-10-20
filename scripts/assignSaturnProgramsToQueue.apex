@@ -1,6 +1,6 @@
-List<Program__c> rows = [
+List<pm_Program__c> rows = [
     SELECT Id, Name, OwnerId
-    FROM Program__c
+    FROM pm_Program__c
     WHERE Name LIKE '%Saturn%'
        OR Name LIKE '%Titan%'
        OR Name LIKE '%Enceladus%'
@@ -17,11 +17,11 @@ Id qId = [
     SELECT Id
     FROM Group
     WHERE Type = 'Queue'
-      AND DeveloperName = 'Saturn_Programs'
+      AND DeveloperName = 'pm_Saturn_Programs'
     LIMIT 1
 ].Id;
 
-for (Program__c p : rows) {
+for (pm_Program__c p : rows) {
     p.OwnerId = qId;
 }
 

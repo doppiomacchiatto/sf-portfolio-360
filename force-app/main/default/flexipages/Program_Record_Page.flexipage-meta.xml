@@ -53,7 +53,7 @@
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Program Record Page</masterLabel>
-    <sobjectType>Program__c</sobjectType>
+    <sobjectType>pm_Program__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
     </template>

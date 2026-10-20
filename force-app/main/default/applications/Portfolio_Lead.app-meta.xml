@@ -15,13 +15,13 @@
     <label>Portfolio Lead</label>
     <navType>Standard</navType>
     <tabs>Portfolio_Leader_Home</tabs>
-    <tabs>Program__c</tabs>
-    <tabs>TRL__c</tabs>
-    <tabs>MRL__c</tabs>
-    <tabs>Technical_Exam__c</tabs>
-    <tabs>Evidence__c</tabs>
-    <tabs>User_Partner_Engagement__c</tabs>
-    <tabs>Project_Transition__c</tabs>
+    <tabs>pm_Program__c</tabs>
+    <tabs>pm_TRL__c</tabs>
+    <tabs>pm_MRL__c</tabs>
+    <tabs>pm_Technical_Exam__c</tabs>
+    <tabs>pm_Evidence__c</tabs>
+    <tabs>pm_User_Partner_Engagement__c</tabs>
+    <tabs>pm_Project_Transition__c</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>standard-Case</tabs>

@@ -84,7 +84,7 @@ export default class PmPortfolioLeadHome extends NavigationMixin(LightningElemen
         if (data) {
             this.programs = data.map((row) => ({
                 ...row,
-                programUrl: `/lightning/r/Program__c/${row.id}/view`
+                programUrl: `/lightning/r/pm_Program__c/${row.id}/view`
             }));
         }
     }

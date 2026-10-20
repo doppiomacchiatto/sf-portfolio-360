@@ -32,7 +32,7 @@
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
-        <object>Project_Transition__c</object>
+        <object>pm_Project_Transition__c</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
         <connector>
@@ -53,11 +53,11 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.Program__c</elementReference>
+                <elementReference>$Record.pm_Program__c</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Program__c</object>
+        <object>pm_Program__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>

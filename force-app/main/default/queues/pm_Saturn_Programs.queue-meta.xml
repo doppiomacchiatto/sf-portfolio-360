@@ -4,6 +4,6 @@
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Saturn_Programs</name>
     <queueSobject>
-        <sobjectType>Program__c</sobjectType>
+        <sobjectType>pm_Program__c</sobjectType>
     </queueSobject>
 </Queue>

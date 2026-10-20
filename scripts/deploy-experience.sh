@@ -34,18 +34,22 @@ if [[ ! -d "$SRC_DEFAULT_DIR" ]]; then
   exit 1
 fi
 
-if [[ -d "$SRC_DEFAULT_DIR/digitalExperiences" ]]; then
-  cp -R "$SRC_DEFAULT_DIR/digitalExperiences" "$MDAPI_DIR/"
-fi
 if [[ -d "$SRC_DEFAULT_DIR/digitalExperienceConfigs" ]]; then
   cp -R "$SRC_DEFAULT_DIR/digitalExperienceConfigs" "$MDAPI_DIR/"
 fi
 
 shopt -s nullglob
 bundle_members=()
-for d in "$SRC_DEFAULT_DIR"/digitalExperiences/site/*; do
+for d in "$SRC_DEFAULT_DIR"/digitalExperiences/*; do
   [[ -d "$d" ]] || continue
-  bundle_members+=("site/$(basename "$d")")
+  bundle_name="$(basename "$d")"
+  # MDAPI requires the physical path to nest under the workspace type
+  # (digitalExperiences/site/<bundleName>/...), unlike the flat source-format
+  # layout (digitalExperiences/<bundleName>/...). All bundles here are "site"
+  # workspaces (each has an sfdc_cms__site subfolder).
+  mkdir -p "$MDAPI_DIR/digitalExperiences/site"
+  cp -R "$d" "$MDAPI_DIR/digitalExperiences/site/$bundle_name"
+  bundle_members+=("site/$bundle_name")
 done
 
 config_members=()

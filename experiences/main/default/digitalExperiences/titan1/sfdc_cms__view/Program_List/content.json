@@ -52,7 +52,7 @@
     },
     "dataProviders" : [ ],
     "themeLayoutType" : "Inner",
-    "viewType" : "list-Program__c"
+    "viewType" : "list-pm_Program__c"
   },
   "urlName" : "program-list"
 }

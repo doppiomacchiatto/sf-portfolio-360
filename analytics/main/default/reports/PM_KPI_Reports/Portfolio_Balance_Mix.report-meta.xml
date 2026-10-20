@@ -4,7 +4,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>FiscalYear</dateGranularity>
-        <field>Program__c$Program_Balance__c</field>
+        <field>pm_Program__c$Program_Balance__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Portfolio_Balance_Mix</name>

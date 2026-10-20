@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <baseObject>Program__c</baseObject>
+    <baseObject>pm_Program__c</baseObject>
     <category>other</category>
     <deployed>true</deployed>
     <description>Programs — base report type for KPI reports on investment, speed, and portfolio health.</description>
@@ -9,47 +9,47 @@
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Name</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Program_Status__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Fund_Allocation__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Program_Balance__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Time_Mission_to_Funded_Days__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Time_Award_to_Prototype_Months__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Time_Demo_to_MissionUse_Months__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Operational_Index__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <field>Transition_Outcome__c</field>
-            <table>Program__c</table>
+            <table>pm_Program__c</table>
         </columns>
         <masterLabel>Program Fields</masterLabel>
     </sections>

@@ -1,7 +1,7 @@
 {
   "records": [
     {
-      "attributes": { "type": "Program__c", "referenceId": "PRef_MIMAS" },
+      "attributes": { "type": "pm_Program__c", "referenceId": "PRef_MIMAS" },
       "Name": "MIMAS",
       "Program_Status__c": "Ideation",
       "Fund_Allocation__c": "Validated",
@@ -9,7 +9,7 @@
       "Experiment_Cadence__c": 2
     },
     {
-      "attributes": { "type": "Program__c", "referenceId": "PRef_ENCELADUS" },
+      "attributes": { "type": "pm_Program__c", "referenceId": "PRef_ENCELADUS" },
       "Name": "ENCELADUS",
       "Program_Status__c": "Funded",
       "Fund_Allocation__c": "Approved Critical Tech Area",
@@ -19,7 +19,7 @@
       "Experiment_Cadence__c": 3
     },
     {
-      "attributes": { "type": "Program__c", "referenceId": "PRef_TETHYS" },
+      "attributes": { "type": "pm_Program__c", "referenceId": "PRef_TETHYS" },
       "Name": "TETHYS",
       "Program_Status__c": "Awarded",
       "Fund_Allocation__c": "Threat-Informed",
@@ -30,7 +30,7 @@
       "Experiment_Cadence__c": 5
     },
     {
-      "attributes": { "type": "Program__c", "referenceId": "PRef_DIONE" },
+      "attributes": { "type": "pm_Program__c", "referenceId": "PRef_DIONE" },
       "Name": "DIONE",
       "Program_Status__c": "Prototype",
       "Fund_Allocation__c": "Security-Gap",
@@ -40,7 +40,7 @@
       "Experiment_Cadence__c": 7
     },
     {
-      "attributes": { "type": "Program__c", "referenceId": "PRef_IAPETUS" },
+      "attributes": { "type": "pm_Program__c", "referenceId": "PRef_IAPETUS" },
       "Name": "IAPETUS",
       "Program_Status__c": "Demo Complete",
       "Fund_Allocation__c": "Threat-Informed",
@@ -51,7 +51,7 @@
       "Experiment_Cadence__c": 10
     },
     {
-      "attributes": { "type": "Program__c", "referenceId": "PRef_RHEA" },
+      "attributes": { "type": "pm_Program__c", "referenceId": "PRef_RHEA" },
       "Name": "RHEA",
       "Program_Status__c": "Demo Complete",
       "Fund_Allocation__c": "Approved Critical Tech Area",
@@ -62,7 +62,7 @@
       "Experiment_Cadence__c": 11
     },
     {
-      "attributes": { "type": "Program__c", "referenceId": "PRef_TITAN" },
+      "attributes": { "type": "pm_Program__c", "referenceId": "PRef_TITAN" },
       "Name": "TITAN",
       "Program_Status__c": "Operational",
       "Fund_Allocation__c": "Validated",

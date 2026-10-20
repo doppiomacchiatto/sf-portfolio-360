@@ -61,7 +61,7 @@
     },
     "dataProviders" : [ ],
     "themeLayoutType" : "Inner",
-    "viewType" : "detail-Program__c"
+    "viewType" : "detail-pm_Program__c"
   },
   "urlName" : "program-detail"
 }

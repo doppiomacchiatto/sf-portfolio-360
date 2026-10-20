@@ -9,7 +9,7 @@
     </filters>
     <label>Pending Decision</label>
     <columns>NAME</columns>
-    <columns>Program__c</columns>
+    <columns>pm_Program__c</columns>
     <columns>Evidence_Provided_Date__c</columns>
     <columns>Days_to_Decision__c</columns>
 </ListView>
