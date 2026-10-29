@@ -14,6 +14,9 @@ Use this order for sandbox/demo deployments:
 ### Quick Commands
 
 ```bash
+# 0) Configure Experience site admin username (required before experience deploy)
+./scripts/configure-site-username.sh <username>
+
 # 1) Package + permission sets
 ./scripts/deploy-package-and-permsets.sh -o <alias> -u <exec-user> -p PM_Executive,PM_Admin
 
