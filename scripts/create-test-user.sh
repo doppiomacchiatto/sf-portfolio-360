@@ -14,7 +14,7 @@
 #   username:   brian.smith@demo.vrm.<org alias>
 #   first/last: Brian / Smith
 #   alias:      bsmit
-#   email:      changeme@example.com
+#   email:      doppiomacchiatto@example.com
 #   profile:    PM_Standard if it exists in the org, else Standard User
 #
 # Notes:
@@ -27,7 +27,7 @@ TARGET_USER=""
 FIRST_NAME="Brian"
 LAST_NAME="Smith"
 ALIAS_FIELD="bsmit"
-EMAIL="changeme@example.com"
+EMAIL="doppiomacchiatto@example.com"
 PROFILE_NAME=""
 
 print_help() {
