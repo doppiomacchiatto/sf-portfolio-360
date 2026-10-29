@@ -7,3 +7,5 @@
 **/.sfdx/
 
 **/.vscode/
+
+scripts/deploy-history.jsonl
