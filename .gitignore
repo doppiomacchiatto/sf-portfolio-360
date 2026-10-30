@@ -3,6 +3,8 @@
 # Also ignore repository-root tsx-pull variant
 **./venv/
 
+.sf/
+.sfdx/
 **/.sf/
 **/.sfdx/
 
