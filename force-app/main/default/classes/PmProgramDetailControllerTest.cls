@@ -3,6 +3,33 @@ private class PmProgramDetailControllerTest {
 
     @TestSetup
     static void setupData() {
+        // Avoid MIXED_DML by creating setup objects in a separate runAs context.
+        System.runAs(new User(Id = UserInfo.getUserId())) {
+            Profile standardProfile = [
+                SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1
+            ];
+            User reader = new User(
+                Alias = 'pmdet',
+                Email = 'pm.detail.reader@example.com',
+                EmailEncodingKey = 'UTF-8',
+                LastName = 'DetailReader',
+                LanguageLocaleKey = 'en_US',
+                LocaleSidKey = 'en_US',
+                ProfileId = standardProfile.Id,
+                TimeZoneSidKey = 'America/New_York',
+                Username = 'pm.detail.reader.' + System.currentTimeMillis() + '@example.com'
+            );
+            insert reader;
+
+            PermissionSet adminPs = [
+                SELECT Id FROM PermissionSet WHERE Name = 'PM_Admin' LIMIT 1
+            ];
+            insert new PermissionSetAssignment(
+                AssigneeId = reader.Id,
+                PermissionSetId = adminPs.Id
+            );
+        }
+
         pm_Program__c program = new pm_Program__c(
             Name = 'Detail Program',
             Program_Status__c = 'Transitioning',
@@ -76,83 +103,105 @@ private class PmProgramDetailControllerTest {
         return [SELECT Id FROM pm_Program__c WHERE Name = 'Detail Program' LIMIT 1].Id;
     }
 
+    private static User readerUser() {
+        return [
+            SELECT Id
+            FROM User
+            WHERE Alias = 'pmdet'
+            ORDER BY CreatedDate DESC
+            LIMIT 1
+        ];
+    }
+
     @IsTest
     static void getProgramDetail_returnsNullForBlankId() {
-        Test.startTest();
-        PmProgramDetailController.ProgramDetail detail = PmProgramDetailController.getProgramDetail(null);
-        Test.stopTest();
-        System.assertEquals(null, detail);
+        System.runAs(readerUser()) {
+            Test.startTest();
+            PmProgramDetailController.ProgramDetail detail =
+                PmProgramDetailController.getProgramDetail(null);
+            Test.stopTest();
+            System.assertEquals(null, detail);
+        }
     }
 
     @IsTest
     static void getProgramDetail_mapsProgramFields() {
         Id recordId = programId();
 
-        Test.startTest();
-        PmProgramDetailController.ProgramDetail detail = PmProgramDetailController.getProgramDetail(recordId);
-        Test.stopTest();
+        System.runAs(readerUser()) {
+            Test.startTest();
+            PmProgramDetailController.ProgramDetail detail =
+                PmProgramDetailController.getProgramDetail(recordId);
+            Test.stopTest();
 
-        System.assertEquals('Detail Program', detail.name);
-        System.assertEquals('Transitioning', detail.status);
-        System.assertEquals('Threat-Informed', detail.fundAllocation);
-        System.assertEquals('Commercial Adoption', detail.programBalance);
-        System.assertEquals(Date.newInstance(2024, 6, 1), detail.awardDate);
-        System.assertEquals(3, detail.experimentCadence);
-        System.assertEquals(72, detail.operationalIndex);
-        System.assertEquals(true, detail.isTransitioned);
-        System.assertEquals('Operational Experiment', detail.transitionOutcome);
-        System.assertNotEquals(null, detail.timeMissionToFundedDays);
-        System.assertNotEquals(null, detail.timeAwardToPrototypeMonths);
-        System.assertNotEquals(null, detail.timeDemoToMissionUseMonths);
+            System.assertEquals('Detail Program', detail.name);
+            System.assertEquals('Transitioning', detail.status);
+            System.assertEquals('Threat-Informed', detail.fundAllocation);
+            System.assertEquals('Commercial Adoption', detail.programBalance);
+            System.assertEquals(Date.newInstance(2024, 6, 1), detail.awardDate);
+            System.assertEquals(3, detail.experimentCadence);
+            System.assertEquals(72, detail.operationalIndex);
+            System.assertEquals(true, detail.isTransitioned);
+            System.assertEquals('Operational Experiment', detail.transitionOutcome);
+            System.assertNotEquals(null, detail.timeMissionToFundedDays);
+            System.assertNotEquals(null, detail.timeAwardToPrototypeMonths);
+            System.assertNotEquals(null, detail.timeDemoToMissionUseMonths);
+        }
     }
 
     @IsTest
     static void getProgramRelated_returnsNullForBlankId() {
-        Test.startTest();
-        PmProgramDetailController.ProgramRelated related = PmProgramDetailController.getProgramRelated(null);
-        Test.stopTest();
-        System.assertEquals(null, related);
+        System.runAs(readerUser()) {
+            Test.startTest();
+            PmProgramDetailController.ProgramRelated related =
+                PmProgramDetailController.getProgramRelated(null);
+            Test.stopTest();
+            System.assertEquals(null, related);
+        }
     }
 
     @IsTest
     static void getProgramRelated_mapsChildRecords() {
         Id recordId = programId();
 
-        Test.startTest();
-        PmProgramDetailController.ProgramRelated related = PmProgramDetailController.getProgramRelated(recordId);
-        Test.stopTest();
+        System.runAs(readerUser()) {
+            Test.startTest();
+            PmProgramDetailController.ProgramRelated related =
+                PmProgramDetailController.getProgramRelated(recordId);
+            Test.stopTest();
 
-        System.assertEquals(7, related.currentTrl);
-        System.assertEquals(5, related.previousTrl);
-        System.assertEquals(2, related.trlGain);
-        System.assertEquals('Sensor Suite', related.trlElement);
+            System.assertEquals(7, related.currentTrl);
+            System.assertEquals(5, related.previousTrl);
+            System.assertEquals(2, related.trlGain);
+            System.assertEquals('Sensor Suite', related.trlElement);
 
-        System.assertEquals(6, related.currentMrl);
-        System.assertEquals(4, related.previousMrl);
-        System.assertEquals(2, related.mrlGain);
+            System.assertEquals(6, related.currentMrl);
+            System.assertEquals(4, related.previousMrl);
+            System.assertEquals(2, related.mrlGain);
 
-        System.assertEquals(87.5, related.examPassRate);
-        System.assertEquals(8, related.examsAdministered);
-        System.assertEquals(7, related.examsPass);
-        System.assertEquals('Final', related.examType);
+            System.assertEquals(87.5, related.examPassRate);
+            System.assertEquals(8, related.examsAdministered);
+            System.assertEquals(7, related.examsPass);
+            System.assertEquals('Final', related.examType);
 
-        System.assertEquals(true, related.hasTransition);
-        System.assertEquals('Fielded Prototype', related.transitionType);
-        System.assertEquals(true, related.transitionSigned);
-        System.assertEquals(false, related.transitionCommitted);
-        System.assertEquals(true, related.fundedReceiverPath);
-        System.assertEquals(false, related.integrationPlan);
-        System.assertEquals('Transition Lead', related.transitionOwner);
-        System.assertEquals('Lab B', related.testVenue);
+            System.assertEquals(true, related.hasTransition);
+            System.assertEquals('Fielded Prototype', related.transitionType);
+            System.assertEquals(true, related.transitionSigned);
+            System.assertEquals(false, related.transitionCommitted);
+            System.assertEquals(true, related.fundedReceiverPath);
+            System.assertEquals(false, related.integrationPlan);
+            System.assertEquals('Transition Lead', related.transitionOwner);
+            System.assertEquals('Lab B', related.testVenue);
 
-        System.assertEquals(1, related.evidenceContinue);
-        System.assertEquals(1, related.evidencePivot);
-        System.assertNotEquals(null, related.evidenceAvgDays);
+            System.assertEquals(1, related.evidenceContinue);
+            System.assertEquals(1, related.evidencePivot);
+            System.assertNotEquals(null, related.evidenceAvgDays);
 
-        System.assertEquals(1, related.engagements.size());
-        System.assertEquals('Acquirer/Program Office', related.engagements[0].engagementType);
-        System.assertEquals(1, related.engagements[0].count);
-        System.assertEquals(4, related.engagements[0].participants);
-        System.assertEquals(100, related.engagements[0].pct);
+            System.assertEquals(1, related.engagements.size());
+            System.assertEquals('Acquirer/Program Office', related.engagements[0].engagementType);
+            System.assertEquals(1, related.engagements[0].count);
+            System.assertEquals(4, related.engagements[0].participants);
+            System.assertEquals(100, related.engagements[0].pct);
+        }
     }
 }
