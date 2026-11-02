@@ -420,8 +420,15 @@ Experience Cloud metadata is intentionally separated from unlocked-package sourc
 
 Use your existing package version flow. The package is sourced from `force-app` via `sfdx-project.json`.
 
+Unlocked package promotion requires packaged Apex code coverage of at least **75%**. Always create versions with `--code-coverage` so coverage is calculated (and keep `*Test.cls` classes in `force-app`).
+
 ```bash
-sf package version create -p "Portfolio Manager" -x -w 20 -v DevHub
+sf package version create \
+  --package "Portfolio 360" \
+  --target-dev-hub vrm \
+  --installation-key-bypass \
+  --code-coverage \
+  --wait 30
 ```
 
 ### Deploy Experience Site Metadata (`experiences` only)
