@@ -20,3 +20,5 @@ experiences/main/default/sites/titan.site-meta.xml
 
 node_modules/
 coverage/
+**/__pycache__/
+*.pyc
