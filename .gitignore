@@ -12,8 +12,8 @@
 
 scripts/deploy-history.jsonl
 
-# Org-specific Salesforce Settings metadata (keep local; do not commit)
-force-app/main/default/settings/Security.settings-meta.xml
+# Org-specific Salesforce Settings metadata (do not commit)
+force-app/main/default/settings/
 
 node_modules/
 coverage/
