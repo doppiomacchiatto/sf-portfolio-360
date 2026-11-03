@@ -8,6 +8,11 @@
 **/.sf/
 **/.sfdx/
 
+.claude/
+.cursor/
+**/.claude/
+**/.cursor/
+
 **/.vscode/
 
 scripts/deploy-history.jsonl
