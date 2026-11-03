@@ -15,5 +15,8 @@ scripts/deploy-history.jsonl
 # Org-specific Salesforce Settings metadata (do not commit)
 force-app/main/default/settings/
 
+# Org-specific Experience site admin/owner (configured locally)
+experiences/main/default/sites/titan.site-meta.xml
+
 node_modules/
 coverage/
